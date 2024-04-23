@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-     <!-- landing page -->
-    <!--- This is the head which will contain the metadata [data about data]-->
+   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Villavicencio</title>
+    <title>Villavicencio - Registro</title>
    
 </head>
 
-<!--- This is the body where we will be writing the content of our website-->
 <body>  
-    <!-- Navegation bar to switch between pages and show quick access to more info.-->
-    <nav>   
+     <!-- Navegation bar to switch between pages and show quick access to more info.
+            the nav bar will be horizontally with css, meanwhile, just HTML will be shown this way.-->
+    <nav>
         <ul>
-            <li><a href="/index.html">Inicio</a></li>
-            <li><a href="/pages/more_info.htm">Mas informacion</a></li>
-            <li><a href="/pages/register_login.html">Registro / Ingreso</a></li>
-            <li><a href="/pages/contact.html">Contacto</a></li>
-            <!-- socials-->
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../pages/products.html">Productos</a></li>
+            <li><a href="../pages/more_info.html">Mas informacion</a></li>
+            <li><a href="../pages/register_login.html">Registro / Ingreso</a></li>
+            <li><a href="../pages/contact.html">Contacto</a></li>
+
             <!-- socials-->
             <li> <a href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA" target="_blank"> 
                 <img src="../images/socials/facebook_nav.webp" alt="facebook" height="50" width="75">
@@ -32,10 +31,64 @@
             </li>
             <li>
                 <a href="https://twitter.com/VillavicencioOK" target="_blank">
-                    <img src="../images/socials//x_nav.webp" alt="X" height="35" width="35">
+                    <img src="../images/socials/x_nav.webp" alt="X" height="35" width="35">
                 </a>
             </li>
         </ul>
+    </nav>
+
+  <!-- Background image for CSS, for the moment it will not be perfectly aligned or staged--->
+    <img src="" alt="Villavicencio Backgroud_register_login">
+    <br>
+    <br>
+
+
+    <h2>Registro</h2>
+
+    <!-- Form for the regestering of a new user-->
+    <form>
+
+        <!-- Label for the text area for the users name-->
+        <label for="name">Nombre:</label>
+        <textarea id="name" name="name" cols="30" rows="2"></textarea>
+
+            
+        <!-- Label for the text area for the users surname-->
+        <label for="surname">Apellido:</label>
+        <textarea id="surname" name="surname" cols="30" rows="2"></textarea>
+
+        <br> 
+                
+        <!-- Label for the text area for the users email address-->
+        <label for="email">Correo Electronico :</label>
+        <textarea id="email" name="email" cols="30" rows="2"></textarea>
+
+         <!-- Label for the text area for the users username-->
+         <label for="username">Nombre de usuario:</label>
+         <textarea id="username" name="username" cols="30" rows="2"></textarea>
+ 
+
+        <br> <!-- I recognize that this is not the suggested use for this label but its the first stage fo the webpage-->
+
+        <!-- Label for the text area for the users password-->
+        <label for="password">Contraseña:</label>
+        <textarea id="password" name="password" cols="30" rows="2"></textarea>
+
+            
+        <!-- Label for the text area for the user to retype the password-->
+        <label for="pass_retyped">Reingresar Contraseña:</label>
+        <textarea id="pass_retyped" name="pass_retyped" cols="30" rows="2"></textarea>
+
+        <br><br> 
+        <input type="button" value="Registrarme" onclick="" style="width: 400px; height: 80px;">
+
+        <br><br> 
+        <br><br> 
+        <!-- In case the user is already registered, we can guide him to the correct page-->
+        <input type="button" value="Ya soy usuario" onclick="window.location.href='login.html';" style="width: 400px; height: 40px;">
+
+    </form>
+        
 
 
         
