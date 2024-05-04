@@ -22,34 +22,82 @@ public class desafioSemanal6 {
 
     public static void main(String[] args) {
 
-        double montoTotal = 0;
+        int option;
+        boolean flag = true;
         Scanner sc = new Scanner(System.in);
 
-        // Validaciones de Distancia, tiempo, y dias
-        // Distancia
-        System.out.println("Ingrese la distancia en km: ");
-        while (!sc.hasNextDouble()) {
-            System.out.println("Por favor, ingrese la distancia en km: ");
-            sc.next();
-        }
-        double distancia = sc.nextDouble();
-        // Dias
-        System.out.println("Ingrese la el tiempo en dias: ");
-        while (!sc.hasNextInt()) {
-            System.out.println("Por favor ingrese una estadia valida en dias: ");
-            sc.next();
-        }
-        int tiempo = sc.nextInt();
+        // Variables Ejercicio 1
+        double montoTotal = 0;
 
-        // Validar el descuento
-        if (tiempo > 7 && distancia > 800) {
-            System.out.println("Ud tiene un descuento del 30%!");
-            montoTotal = (distancia * billete);
-            montoTotal = montoTotal - (montoTotal * 0.30);
-            System.out.println("El monto total a pagar es de: " + montoTotal);
-        } else {
-            montoTotal = (distancia * billete);
-            System.out.println("El monto total a pagar es de: " + montoTotal);
+        // Variable ejercicio 2
+        int numAleatorio, adivinanza, cantAdivinanzas = 0;
+
+        while (flag) {
+            System.out.println("Que ejercicio te gustaria hacer? (1 / 2 /3 para salir)");
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1:
+                    // Validaciones de Distancia, tiempo, y dias
+                    // Distancia
+                    System.out.println("\t >Ejercicio de billetes");
+                    System.out.println("Ingrese la distancia en km: ");
+                    while (!sc.hasNextDouble()) {
+                        System.out.println("Por favor, ingrese la distancia en km: ");
+                        sc.next();
+                    }
+                    double distancia = sc.nextDouble();
+                    // Dias
+                    System.out.println("Ingrese la el tiempo en dias: ");
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Por favor ingrese una estadia valida en dias: ");
+                        sc.next();
+                    }
+                    int tiempo = sc.nextInt();
+                    montoTotal = (distancia * billete);
+
+                    // Validar el descuento
+                    if (tiempo > 7 && distancia > 800) {
+                        System.out.println("Ud tiene un descuento del 30%!");
+                        montoTotal = montoTotal - (montoTotal * 0.30);
+                        System.out.println("El monto total a pagar es de: " + montoTotal);
+                    } else {
+                        System.out.println("El monto total a pagar es de: " + montoTotal);
+                    }
+
+                    break;
+                case 2:
+                    System.out.println("\t >>>Ejercicio de numero aleatorio");
+                    numAleatorio = (int) (Math.random() * 5) + 1;
+                    System.out.println("numero aletorio :" + numAleatorio);
+
+                    while (true) {
+                        System.out.println("Adinivine el numero entre 1 y 5");
+                        adivinanza = sc.nextInt();
+                        // if para ver si el numero es correcto
+                        if (adivinanza == numAleatorio) {
+                            System.out.println("Adivino correctamente! Le tomo: " + cantAdivinanzas);
+                            break;
+                        } else {
+                            cantAdivinanzas++;
+                            if (adivinanza < numAleatorio) {
+                                System.out.println("su adivinanza es menor que el numero aleatorio");
+                            } else {
+                                System.out.println("su adivinanza es mayo que el numero aleatorio");
+
+                            }
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("Ha decidido finalizar! Saludos.");
+                    flag = !flag;
+                    break;
+                default:
+                    System.out.println("debe elegir una opcion correcta");
+
+            }
+
         }
 
     }

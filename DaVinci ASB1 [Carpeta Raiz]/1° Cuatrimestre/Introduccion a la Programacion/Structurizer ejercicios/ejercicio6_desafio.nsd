@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.32-21" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preThrow="throw" preForIn="foreach" stepFor="by" namespace="" author="agus" created="2024-05-01" changedby="agus" changed="2024-05-01" origin="Structorizer 3.32-21" text="&#34;Conectivos&#34;" comment="" color="ffffff" type="program" style="nice">
+	<children>
+		<instruction text="&#34;billete &#60;- 3.70&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;montoTotal &#60;- 0&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;OUTPUT &#34;&#34;Ingrese la distancia en km:&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;INPUT distancia&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;OUTPUT &#34;&#34;Ingrese la el tiempo en dias:&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;INPUT tiempo&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;montoTotal &#60;- (distancia * billete)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<alternative text="&#34;(tiempo&#62; 7) &amp;&amp; (distancia&#62;800)&#34;" comment="" color="ffffff" disabled="0">
+			<qTrue>
+				<instruction text="&#34;montoTotal &#60;- (montoTotal - (montoTotal * 0.30))&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+				<instruction text="&#34;OUTPUT &#34;&#34;Ud tiene un descuento del 30%!&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+				<instruction text="&#34;OUTPUT &#34;&#34;El monto total a pagar es de: &#34;&#34; + montoTotal&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+			</qTrue>
+			<qFalse>
+				<instruction text="&#34;OUTPUT &#34;&#34;El monto total a pagar es de: &#34;&#34; + montoTotal&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+			</qFalse>
+		</alternative>
+	</children>
+</root>
