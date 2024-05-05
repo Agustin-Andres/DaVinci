@@ -1,0 +1,14 @@
+#mainText{
+    line-height: 24px;
+    padding: 30px 30px 30px 30px;
+    width: 800px;
+    background-color: #30648e00;
+    border-radius: 20px 20px;
+    border: 20px;
+
+}
+#mainText::after {
+    background-color: rgba(48, 99, 142, 0.2);
+    border-radius: 20px 20px;
+}
+

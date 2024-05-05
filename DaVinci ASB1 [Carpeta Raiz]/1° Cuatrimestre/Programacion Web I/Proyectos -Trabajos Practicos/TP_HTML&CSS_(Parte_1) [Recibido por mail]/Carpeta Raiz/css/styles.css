@@ -1,34 +1,65 @@
-/* Global Styles */
+/* Global Styles for all pages, main "aspect" of the webpage
+Pallete :https://coolors.co/palette/edae49-d1495b-00798c-30638e-003d5b
+*/
+/**/
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'gibsonlight';
+    font-size: medium;
+    line-height: 14px;
+    background-color: rgba(48, 99, 142, 0.3);
+
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-}
-
-/* NAV BAR*/
 nav ul {
-    border: solid 6px rgba(52, 71, 61, 0.37);
+    font-family: 'gibsonlight';
+    font-size: large;
+    font-weight: bold;
+    height: 100px;
+
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+
     border-radius: 20px 20px;
     outline: rgba(0, 0, 0, 0.521) solid;
     outline-offset: 1px;
-    align-items: center;
 }
 
-nav ul li {
-    display: inline-block;
-    margin-right: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    padding-bottom: 25px; /* Add padding to the bottom */
-
-    height: 30px;
+.socials {
+    float: right;
 }
-a{
+
+li {
+    float: left;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+
+
+}
+
+
+li a {
+    color: rgba(209, 73, 91, 0.5);
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration-line: none;
+
+    font-style: normal;
+
+    font-weight: none;
+    letter-spacing: 1px;
+}
+
+li a:hover {
+    background-color: rgba(48, 99, 142, 0.2);
+    border-radius: 30px 30px;
+    font-size: larger;
+
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
 
 }
