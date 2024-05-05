@@ -10,12 +10,15 @@
 		<instruction text="&#34;marruecosGoles&#60;-0&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;marruecosAcumulador&#60;-0&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;contador&#60;-0&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;finalista1 &#60;- &#34;&#34;&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;finalista2 &#60;- &#34;&#34;&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;OUTPUT &#34;&#34; Semi final #1 : Agentina vs Croacia&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;argentinaGoles &#60;- random(6)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;croaciaGoles &#60;- random(6)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;OUTPUT &#34;&#34; &#62; Finalizo la partida, Argentina: &#34;&#34; + argentinaGoles + &#34;&#34; | Croacia: &#34;&#34; + croaciaGoles&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<alternative text="&#34;(argentinaGoles == croaciaGoles)&#34;" comment="" color="ffffff" disabled="0">
 			<qTrue>
-				<instruction text="&#34;OUTPUT &#34;&#34;Han empatado :&#34;&#34; + argentinaGoles + &#34;&#34; a &#34;&#34; + croaciaGoles + &#34;&#34; se va a penales&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+				<instruction text="&#34;OUTPUT &#34;&#34;Han empatado :&#34;&#34; + argentinaGoles + &#34;&#34; a &#34;&#34; + croaciaGoles + &#34;&#34; Se iran a penalesnSe iran a penales&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 				<while text="&#34;while (contador &#60;5)&#34;" comment="" color="ffffff" disabled="0">
 					<qWhile>
 						<instruction text="&#34;argentinaAcumulador&#60;- argentinaAcumulador + random(2)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
@@ -25,13 +28,14 @@
 				</while>
 				<alternative text="&#34;(argentinaAcumulador == croaciaAcumulador)&#34;" comment="" color="ffffff" disabled="0">
 					<qTrue>
-						<instruction text="&#34;OUTPUT &#34;&#34;Empataron los penales, el primero a desempatar gana!&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+						<instruction text="&#34;OUTPUT &#34;&#34;Han empatado los penales! El proximo a meter el gol gana!&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 						<instruction text="&#34;argentinaAcumulador &#60;- 0&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 						<instruction text="&#34;croaciaAcumulador &#60;-0&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 						<while text="&#34;while (argentinaAcumulador == croaciaAcumulador)&#34;" comment="" color="ffffff" disabled="0">
 							<qWhile>
 								<instruction text="&#34;argentinaAcumulador &#60;- argentinaAcumulador + random(2)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 								<instruction text="&#34;croaciaAcumulador &#60;- croaciaAcumulador + random(2)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+								<instruction text="&#34;OUTPUT &#34;&#34; # PENALES Argentina: &#34;&#34; + argentinaAcumulador + &#34;&#34; | Croacia: &#34;&#34; + croaciaAcumulador&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 							</qWhile>
 						</while>
 						<alternative text="&#34;(argentinaAcumulador &#62; croaciaAcumulador)&#34;" comment="" color="ffffff" disabled="0">
@@ -62,17 +66,19 @@
 				</alternative>
 			</qFalse>
 		</alternative>
-		<instruction text="&#34;OUTPUT &#34;&#34;Francia vs Marruecos&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;contador&#60;-0&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;OUTPUT &#34;&#34;Segundo partido, Francia vs Marruecos&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;franciaGoles &#60;- random(6)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<instruction text="&#34;marruecosGoles &#60;- random(6)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 		<alternative text="&#34;(marruecosGoles == franciaGoles)&#34;" comment="" color="ffffff" disabled="0">
 			<qTrue>
-				<instruction text="&#34;OUTPUT &#34;&#34;Han empatado &#34;&#34; +marruecosGoles + &#34;&#34; a &#34;&#34; + franciaGoles + &#34;&#34; Se ira a penales&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+				<instruction text="&#34;OUTPUT &#34;&#34;Han empatado &#34;&#34; +marruecosGoles + &#34;&#34; a &#34;&#34; + franciaGoles + &#34;&#34; Se iran a penales&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
 				<while text="&#34;while (contador &#60;5)&#34;" comment="" color="ffffff" disabled="0">
 					<qWhile>
 						<instruction text="&#34;marruecosAcumulador&#60;- marruecosAcumulador + random(2)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 						<instruction text="&#34;franciaAcumulador &#60;- franciaAcumulador + random(2)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 						<instruction text="&#34;contador &#60;- contador+1;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+						<instruction text="&#34;OUTPUT &#34;&#34; # PENALES Francia: &#34;&#34; + franciaAcumulador + &#34;&#34; | Marruecos: &#34;&#34; + marruecosAcumulador&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
 					</qWhile>
 				</while>
 				<alternative text="&#34;(franciaAcumulador == marruecosAcumulador)&#34;" comment="" color="ffffff" disabled="0">
@@ -114,6 +120,6 @@
 				</alternative>
 			</qFalse>
 		</alternative>
-		<instruction text="&#34;OUTPUT &#34;&#34;Los finalistas son : &#34;&#34; + finalista1 + &#34;&#34; y &#34;&#34; + finalista2 &#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;OUTPUT &#34;&#34;Los finalistas son : &#34;&#34; + finalista1 + &#34;&#34; y &#34;&#34; + finalista2 &#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
 	</children>
 </root>
