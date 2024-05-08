@@ -1,14 +1,59 @@
-#mainText{
+body {
+    background-image: url('../images/1.\ landing_page/background.jpg');
+    background-size: cover;
+}
+
+#intro_div {
+    width: 100%;
+    height: 100%;
+}
+
+#heading_div {
+    width: 100%;
+    height: 100px;
+    padding-left: 40px;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: 600;
+    background-image: linear-gradient(to left, rgb(191, 49, 49), rgb(125, 10, 10));
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    height: 75px;
+    margin: 0;
+    padding-top: 40px;
+
+
+}
+
+#mainText {
     line-height: 24px;
-    padding: 30px 30px 30px 30px;
-    width: 800px;
-    background-color: #30648e00;
-    border-radius: 20px 20px;
-    border: 20px;
-
+    padding: 30px;
+    width: 50%;
+    color: rgb(51, 66, 87);
+    float: left;
+    border-radius: 20px;
+    margin-right: 20px;
+    padding-top: 0px;
+    background-color: rgba(51, 66, 87, 0.25);
+    /* Adjust alpha value to control transparency and dimness */
 }
-#mainText::after {
-    background-color: rgba(48, 99, 142, 0.2);
-    border-radius: 20px 20px;
+
+
+
+#Villavicencio_container {
+    float: right;
 }
 
+#villavicencio_image {
+    height: 650px;
+    width: auto;
+    /* Adjusted width to maintain aspect ratio */
+    max-width: 100%;
+    /* Ensures the image doesn't exceed the container width */
+    margin-top: 0px;
+    /* Added margin to align the image with the text */
+    margin-right: 200px;
+}
