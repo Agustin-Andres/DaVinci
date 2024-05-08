@@ -1,65 +1,88 @@
 /* Global Styles for all pages, main "aspect" of the webpage
-Pallete :https://coolors.co/palette/edae49-d1495b-00798c-30638e-003d5b
+Pallete :https://colorhunt.co/palette/334257476072548ca8eeeeee
+
+This style sheet is general aspect of the page,I have placed the general body, nav bar
+lists (divided by socials and roots)
+#rootpages-> id for the div that contains the list items of class "roots"
+list items "roots" -> contains the links to other webpages
+
+#socials_nav -> id for the div that contains the list items of class "socials"
+list items "socials" ->for the links that contains the images to derive the user to the social media
+"
 */
+
 /**/
 body {
-    font-family: 'gibsonlight';
+    font-family: "gibsonlight";
     font-size: medium;
     line-height: 14px;
-    background-color: rgba(48, 99, 142, 0.3);
-
+    background-color: rgba(238, 238, 238, 0.3);
 }
 
 nav ul {
-    font-family: 'gibsonlight';
+    font-family: "gibsonlight";
     font-size: large;
     font-weight: bold;
     height: 100px;
-
     list-style-type: none;
     margin: 0;
+    padding: 0;
+
     overflow: hidden;
-
-    border-radius: 20px 20px;
-    outline: rgba(0, 0, 0, 0.521) solid;
-    outline-offset: 1px;
-}
-
-.socials {
-    float: right;
 }
 
 li {
-    float: left;
-
+    display: inline-block;
+    /* Cambiado a inline-block para que los elementos se muestren como cajas */
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 30px;
-
-
+    padding-top: 10px;
+    /* Ajustado para centrar verticalmente los elementos dentro de las cajas */
 }
 
+#socials_nav {
+    float: right;
+    height: 100px;
+    /* Ajustado para que coincida con la altura del nav */
+    width: auto;
+}
 
-li a {
-    color: rgba(209, 73, 91, 0.5);
+.socials {
+    margin-top: 8px;
+}
+
+#ig_image,
+#fb_image,
+#x_image {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+#rootpages {
+    color: rgb(71, 96, 114, 0.1);
     display: block;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration-line: none;
 
+    text-decoration-line: none;
+    float: left;
     font-style: normal;
 
     font-weight: none;
     letter-spacing: 1px;
 }
 
-li a:hover {
-    background-color: rgba(48, 99, 142, 0.2);
-    border-radius: 30px 30px;
-    font-size: larger;
+.roots {
+    margin-top: 20px;
+}
 
+Copy code a:focus {
+    outline: none;
+}
+
+li a:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-thickness: 2px;
-
 }

@@ -1,41 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-   
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Villavicencio - Registro</title>
-   
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
 </head>
 
-<body>  
+<body>
      <!-- Navegation bar to switch between pages and show quick access to more info.
             the nav bar will be horizontally with css, meanwhile, just HTML will be shown this way.-->
-    <nav>
-        <ul>
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="../pages/products.html">Productos</a></li>
-            <li><a href="../pages/more_info.html">Mas informacion</a></li>
-            <li><a href="../pages/register_login.html">Registro / Ingreso</a></li>
-            <li><a href="../pages/contact.html">Contacto</a></li>
+            <nav>
+                <ul>
+                  <div id= "rootpages">
+                    <li class="roots" ><a href="/Carpeta Raiz/index.html">Inicio</a></li>
+                    <li class="roots" ><a href="/Carpeta Raiz/pages/products.html">Productos</a></li>
+                    <li class="roots" >
+                      <a href="/Carpeta Raiz/pages/more_info.html">Mas informacion</a>
+                    </li>
+                    <li class="roots" >
+                      <a href="/Carpeta Raiz/pages/register_login.html"
+                        >Registro / Ingreso</a
+                      >
+                    </li>
+                    <li><a href="/Carpeta Raiz/pages/contact.html">Contacto</a></li>
+                  </div>
+                  <!-- socials-->
+                  <div id="socials_nav">
+                    <li id="fb" class="socials">
+                      <a
+                        href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA"
+                        target="_blank"
+                      >
+                        <img
+                          id="fb_image"
+                          src="/Carpeta Raiz/images/socials/Facebook.png"
+                          alt="facebook"
+                        />
+                      </a>
+                    </li>
 
-            <!-- socials-->
-            <li> <a href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA" target="_blank"> 
-                <img src="../images/socials/facebook_nav.webp" alt="facebook" height="50" width="75">
-                </a>           
-            </li>
-            <li>
-                <a href="https://www.instagram.com/villavicencio/?hl=en" target="_blank">
-                    <img src="../images/socials/instagram_nav.png" alt="instagram" height="35" width="35">
-                </a>
-            </li>
-            <li>
-                <a href="https://twitter.com/VillavicencioOK" target="_blank">
-                    <img src="../images/socials/x_nav.webp" alt="X" height="35" width="35">
-                </a>
-            </li>
-        </ul>
-    </nav>
+                    <li id="ig" class="socials">
+                      <a
+                        href="https://www.instagram.com/villavicencio/?hl=en"
+                        target="_blank"
+                      >
+                        <img
+                          id="ig_image"
+                          src="/Carpeta Raiz/images/socials/instagram.png"
+                          alt="instagram"
+                        />
+                      </a>
+                    </li>
+
+                    <li id="x" class="socials">
+                      <a href="https://twitter.com/VillavicencioOK" target="_blank">
+                        <img
+                          id="x_image"
+                          src="/Carpeta Raiz/images/socials/twitter_x.png"
+                          alt="X"
+                        />
+                      </a>
+                    </li>
+                  </div>
+                </ul>
+              </nav>
 
   <!-- Background image for CSS, for the moment it will not be perfectly aligned or staged--->
     <img src="" alt="Villavicencio Backgroud_register_login">
@@ -52,13 +83,13 @@
         <label for="name">Nombre:</label>
         <textarea id="name" name="name" cols="30" rows="2"></textarea>
 
-            
+
         <!-- Label for the text area for the users surname-->
         <label for="surname">Apellido:</label>
         <textarea id="surname" name="surname" cols="30" rows="2"></textarea>
 
-        <br> 
-                
+        <br>
+
         <!-- Label for the text area for the users email address-->
         <label for="email">Correo Electronico :</label>
         <textarea id="email" name="email" cols="30" rows="2"></textarea>
@@ -66,7 +97,7 @@
          <!-- Label for the text area for the users username-->
          <label for="username">Nombre de usuario:</label>
          <textarea id="username" name="username" cols="30" rows="2"></textarea>
- 
+
 
         <br> <!-- I recognize that this is not the suggested use for this label but its the first stage fo the webpage-->
 
@@ -74,24 +105,24 @@
         <label for="password">Contraseña:</label>
         <textarea id="password" name="password" cols="30" rows="2"></textarea>
 
-            
+
         <!-- Label for the text area for the user to retype the password-->
         <label for="pass_retyped">Reingresar Contraseña:</label>
         <textarea id="pass_retyped" name="pass_retyped" cols="30" rows="2"></textarea>
 
-        <br><br> 
+        <br><br>
         <input type="button" value="Registrarme" onclick="" style="width: 400px; height: 80px;">
 
-        <br><br> 
-        <br><br> 
+        <br><br>
+        <br><br>
         <!-- In case the user is already registered, we can guide him to the correct page-->
         <input type="button" value="Ya soy usuario" onclick="window.location.href='login.html';" style="width: 400px; height: 40px;">
 
     </form>
-        
 
 
-        
+
+
 
 </body>
 </html>

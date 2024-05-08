@@ -1,87 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-   
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Villavicencio - Contacto</title>
-   
-</head>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  </head>
 
-<body>  
+  <body>
     <!-- Navegation bar to switch between pages and show quick access to more info.
             the nav bar will be horizontally with css, meanwhile, just HTML will be shown this way.-->
     <nav>
-        <ul>
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="../pages/products.html">Productos</a></li>
-            <li><a href="../pages/more_info.html">Mas informacion</a></li>
-            <li><a href="../pages/register_login.html">Registro / Ingreso</a></li>
-            <li><a href="../pages/contact.html">Contacto</a></li>
-            <!-- socials-->
-            <li> <a href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA" target="_blank"> 
-                <img src="../images/socials/facebook_nav.webp" alt="facebook" height="50" width="75">
-                </a>           
-            </li>
-            <li>
-                <a href="https://www.instagram.com/villavicencio/?hl=en" target="_blank">
-                    <img src="../images/socials/instagram_nav.png" alt="instagram" height="35" width="35">
-                </a>
-            </li>
-            <li>
-                <a href="https://twitter.com/VillavicencioOK" target="_blank">
-                    <img src="../images/socials/x_nav.webp" alt="X" height="35" width="35">
-                </a>
-            </li>
-        </ul>
+      <ul>
+        <div id="rootpages">
+          <li class="roots"><a href="/Carpeta Raiz/index.html">Inicio</a></li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/pages/products.html">Productos</a>
+          </li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/pages/more_info.html">Mas informacion</a>
+          </li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/pages/register_login.html"
+              >Registro / Ingreso</a
+            >
+          </li>
+          <li><a href="/Carpeta Raiz/pages/contact.html">Contacto</a></li>
+        </div>
+        <!-- socials-->
+        <div id="socials_nav">
+          <li id="fb" class="socials">
+            <a
+              href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA"
+              target="_blank"
+            >
+              <img
+                id="fb_image"
+                src="/Carpeta Raiz/images/socials/Facebook.png"
+                alt="facebook"
+              />
+            </a>
+          </li>
+
+          <li id="ig" class="socials">
+            <a
+              href="https://www.instagram.com/villavicencio/?hl=en"
+              target="_blank"
+            >
+              <img
+                id="ig_image"
+                src="/Carpeta Raiz/images/socials/instagram.png"
+                alt="instagram"
+              />
+            </a>
+          </li>
+
+          <li id="x" class="socials">
+            <a href="https://twitter.com/VillavicencioOK" target="_blank">
+              <img
+                id="x_image"
+                src="/Carpeta Raiz/images/socials/twitter_x.png"
+                alt="X"
+              />
+            </a>
+          </li>
+        </div>
+      </ul>
     </nav>
 
-      <!-- Background image for CSS, for the moment it will not be perfectly aligned or staged--->
-    <img src="" alt="Villavicencio Backgroud_contact">
+    <!-- Background image for CSS, for the moment it will not be perfectly aligned or staged--->
+    <img src="" alt="Villavicencio Backgroud_contact" />
 
     <!-- Contact form-->
     <h3>Contacto</h3>
     <form>
-        <!-- Label for the text area for the users name-->
-        <label for="name">Nombre:</label>
-        <textarea id="name" name="name" cols="20" rowsz="2"></textarea>
-        
-        <!-- Label for the text area for the users surname-->
-        <label for="surname">Apellido:</label>
-        <textarea id="surname" name="surname" cols="20" rows="2"></textarea>
- 
-        <br> 
+      <!-- Label for the text area for the users name-->
+      <label for="name">Nombre:</label>
+      <textarea id="name" name="name" cols="20" rowsz="2"></textarea>
 
-        <br> <!-- I recognize that this is not the suggested use for this label but its the first stage fo the webpage-->
+      <!-- Label for the text area for the users surname-->
+      <label for="surname">Apellido:</label>
+      <textarea id="surname" name="surname" cols="20" rows="2"></textarea>
 
-        <!-- label for the email address --> 
-        <!-- Label for the text area for the users email-->
-        <label for="email"> Correo:</label>
-        <textarea id="email" name="email" cols="30" rows="2"></textarea>
-        <br>
-        <!-- Label for the text area for the users phone-->
-        <label for="phone">Telefono:</label>
-        <textarea id="phone" name="phone" cols="30" rows="2"></textarea>
- 
-        
+      <br />
 
-        <br> 
+      <br />
+      <!-- I recognize that this is not the suggested use for this label but its the first stage fo the webpage-->
 
-       
-        <!-- Label for the text area for the users message-->
-        <label for="message" > Mensaje:</label>
-        <!-- Text area with specified size -->
-        <textarea id="message" name="message" cols="30" rows="8"></textarea>
+      <!-- label for the email address -->
+      <!-- Label for the text area for the users email-->
+      <label for="email"> Correo:</label>
+      <textarea id="email" name="email" cols="30" rows="2"></textarea>
+      <br />
+      <!-- Label for the text area for the users phone-->
+      <label for="phone">Telefono:</label>
+      <textarea id="phone" name="phone" cols="30" rows="2"></textarea>
 
-        <br><br> 
-        <input type="button" value="Enviar" onclick="" style="width: 400px; height: 80px;">
+      <br />
 
-               
+      <!-- Label for the text area for the users message-->
+      <label for="message"> Mensaje:</label>
+      <!-- Text area with specified size -->
+      <textarea id="message" name="message" cols="30" rows="8"></textarea>
 
-
-            
+      <br /><br />
+      <input
+        type="button"
+        value="Enviar"
+        onclick=""
+        style="width: 400px; height: 80px"
+      />
     </form>
-
-</body>
+  </body>
 </html>
