@@ -63,8 +63,7 @@ public class SemiFinal {
                 while (argentinaAcumulador == croaciaAcumulador) {
                     argentinaAcumulador += (int) (Math.random() * 2);
                     croaciaAcumulador += (int) (Math.random() * 2);
-                    // System.out.println( " # PENALES Argentina: " + argentinaAcumulador + " |
-                    // Croacia: " + croaciaAcumulador);
+
 
                 }
             }

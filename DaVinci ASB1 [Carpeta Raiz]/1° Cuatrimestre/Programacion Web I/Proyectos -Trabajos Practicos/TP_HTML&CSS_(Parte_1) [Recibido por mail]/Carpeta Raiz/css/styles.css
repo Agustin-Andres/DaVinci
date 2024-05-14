@@ -24,32 +24,27 @@ nav ul {
     font-size: large;
     font-weight: bold;
     height: 100px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
 }
 
 li {
     display: inline-block;
-    /* Cambiado a inline-block para que los elementos se muestren como cajas */
+
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
-    /* Ajustado para centrar verticalmente los elementos dentro de las cajas */
+
 }
 
-#socials_nav {
-    float: right;
-    height: 100px;
-    /* Ajustado para que coincida con la altura del nav */
-    width: auto;
+
+#rootpages {
+    color: rgb(71, 96, 114, 0.1);
+
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 1px;
+    padding-top: 20px;
 }
 
-.socials {
-    margin-top: 8px;
-}
 
 #ig_image,
 #fb_image,
@@ -60,29 +55,23 @@ li {
     padding: 0;
 }
 
-#rootpages {
-    color: rgb(71, 96, 114, 0.1);
-    display: block;
-    text-align: center;
+#socials_nav {
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-content: center;
 
-    text-decoration-line: none;
-    float: left;
-    font-style: normal;
 
-    font-weight: none;
-    letter-spacing: 1px;
 }
-
-.roots {
-    margin-top: 20px;
-}
-
-Copy code a:focus {
-    outline: none;
-}
-
 li a:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-thickness: 2px;
 }
+
+/*
+Copy code a:focus {
+    outline: none;
+}
+*/
