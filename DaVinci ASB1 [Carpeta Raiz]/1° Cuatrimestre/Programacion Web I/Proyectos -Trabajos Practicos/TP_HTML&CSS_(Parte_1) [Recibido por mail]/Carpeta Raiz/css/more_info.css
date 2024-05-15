@@ -1,0 +1,32 @@
+#first_container,
+#second_container {
+    display: flex;
+    padding-left: 60px;
+
+}
+
+.articles {
+    display: inline-flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+h3 {
+    font-size: 30px;
+    margin-bottom: 0px;
+    text-shadow: 2px -1.75px rgba(0, 78, 137, 0.25);
+}
+
+p {
+    font-style: normal;
+    font-size: 18px;
+    color: black;
+    letter-spacing: 0.5px;
+    line-height: normal;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, );
+    backdrop-filter: blur(1px);
+}
+
+.left_articles {
+    padding-right: 100px;
+}
