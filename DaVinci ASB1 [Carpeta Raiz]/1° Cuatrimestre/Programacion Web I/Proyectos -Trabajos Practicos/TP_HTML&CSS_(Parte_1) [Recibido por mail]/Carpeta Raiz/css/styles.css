@@ -12,7 +12,13 @@ list items "socials" ->for the links that contains the images to derive the user
 */
 
 /**/
+
 body {
+    /* dejamos background provisorio por todos las paginas */
+    background-image: url('../images/1.\ landing_page/background.jpg');
+    background-size: cover;
+
+
     font-family: "gibsonlight";
     font-size: medium;
     line-height: 14px;
@@ -24,6 +30,7 @@ nav ul {
     font-size: large;
     font-weight: bold;
     height: 100px;
+
 }
 
 li {
@@ -34,6 +41,14 @@ li {
     padding-top: 10px;
 
 }
+
+a {
+    color: rgba(64, 123, 167, 1);
+    text-shadow: 1.25px 1.5px rgba(0, 41, 98, 0.25);
+    text-decoration: none;
+    font-size: 22px;
+}
+
 
 
 #rootpages {
@@ -64,8 +79,14 @@ li {
 
 
 }
+
 li a:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-thickness: 2px;
+}
+
+a:visited {
+
+    text-decoration: none;
 }
