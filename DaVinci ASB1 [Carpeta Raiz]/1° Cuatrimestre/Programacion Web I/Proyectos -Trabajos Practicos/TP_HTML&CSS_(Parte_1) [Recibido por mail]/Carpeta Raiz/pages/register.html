@@ -1,128 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Villavicencio - Registro</title>
+    <link rel="stylesheet" type="text/css" href="../css/register.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  </head>
 
-</head>
-
-<body>
-     <!-- Navegation bar to switch between pages and show quick access to more info.
+  <body>
+    <!-- Navegation bar to switch between pages and show quick access to more info.
             the nav bar will be horizontally with css, meanwhile, just HTML will be shown this way.-->
-            <nav>
-                <ul>
-                  <div id= "rootpages">
-                    <li class="roots" ><a href="/Carpeta Raiz/index.html">Inicio</a></li>
-                    <li class="roots" ><a href="/Carpeta Raiz/pages/products.html">Productos</a></li>
-                    <li class="roots" >
-                      <a href="/Carpeta Raiz/pages/more_info.html">Mas informacion</a>
-                    </li>
-                    <li class="roots" >
-                      <a href="/Carpeta Raiz/pages/register_login.html"
-                        >Registro / Ingreso</a
-                      >
-                    </li>
-                    <li><a href="/Carpeta Raiz/pages/contact.html">Contacto</a></li>
-                  </div>
-                  <!-- socials-->
-                  <div id="socials_nav">
-                    <li id="fb" class="socials">
-                      <a
-                        href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA"
-                        target="_blank"
-                      >
-                        <img
-                          id="fb_image"
-                          src="/Carpeta Raiz/images/socials/Facebook.png"
-                          alt="facebook"
-                        />
-                      </a>
-                    </li>
+    <nav>
+      <ul>
+        <div id="rootpages">
+          <li class="roots"><a href="/Carpeta Raiz/index.html">Inicio</a></li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/pages/products.html">Productos</a>
+          </li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/pages/more_info.html">Mas informacion</a>
+          </li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/pages/register_login.html"
+              >Registro / Ingreso</a
+            >
+          </li>
+          <li><a href="/Carpeta Raiz/pages/contact.html">Contacto</a></li>
+        </div>
+        <!-- socials-->
+        <div id="socials_nav">
+          <li id="fb" class="socials">
+            <a
+              href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA"
+              target="_blank"
+            >
+              <img
+                id="fb_image"
+                src="/Carpeta Raiz/images/socials/Facebook.png"
+                alt="facebook"
+              />
+            </a>
+          </li>
 
-                    <li id="ig" class="socials">
-                      <a
-                        href="https://www.instagram.com/villavicencio/?hl=en"
-                        target="_blank"
-                      >
-                        <img
-                          id="ig_image"
-                          src="/Carpeta Raiz/images/socials/instagram.png"
-                          alt="instagram"
-                        />
-                      </a>
-                    </li>
+          <li id="ig" class="socials">
+            <a
+              href="https://www.instagram.com/villavicencio/?hl=en"
+              target="_blank"
+            >
+              <img
+                id="ig_image"
+                src="/Carpeta Raiz/images/socials/instagram.png"
+                alt="instagram"
+              />
+            </a>
+          </li>
 
-                    <li id="x" class="socials">
-                      <a href="https://twitter.com/VillavicencioOK" target="_blank">
-                        <img
-                          id="x_image"
-                          src="/Carpeta Raiz/images/socials/twitter_x.png"
-                          alt="X"
-                        />
-                      </a>
-                    </li>
-                  </div>
-                </ul>
-              </nav>
+          <li id="x" class="socials">
+            <a href="https://twitter.com/VillavicencioOK" target="_blank">
+              <img
+                id="x_image"
+                src="/Carpeta Raiz/images/socials/twitter_x.png"
+                alt="X"
+              />
+            </a>
+          </li>
+        </div>
+      </ul>
+    </nav>
 
-  <!-- Background image for CSS, for the moment it will not be perfectly aligned or staged--->
-    <img src="" alt="Villavicencio Backgroud_register_login">
-    <br>
-    <br>
+    <div class="parent_container">
+      <h2>Registro</h2>
 
+      <div class="form_container">
+        <form>
+          <!-- Label for the text area for the users name-->
+          <div class="name_container">
+            <label for="name">Nombre:</label>
+            <textarea id="name" name="name" cols="30" rows="2"></textarea>
+          </div>
 
-    <h2>Registro</h2>
+          <!-- Label for the text area for the users surname-->
+          <div class="surname_container">
+            <label for="surname">Apellido:</label>
+            <textarea id="surname" name="surname" cols="30" rows="2"></textarea>
+          </div>
 
-    <!-- Form for the regestering of a new user-->
-    <form>
+          <!-- Label for the text area for the users email address-->
+          <div class="email_container">
+            <label for="email">Correo Electronico :</label>
+            <textarea id="email" name="email" cols="30" rows="2"></textarea>
+          </div>
 
-        <!-- Label for the text area for the users name-->
-        <label for="name">Nombre:</label>
-        <textarea id="name" name="name" cols="30" rows="2"></textarea>
+          <!-- Label for the text area for the users username-->
+          <div class="username_container">
+            <label for="username">Nombre de usuario:</label>
+            <textarea
+              id="username"
+              name="username"
+              type="password"
+              cols="30"
+              rows="2"
+            ></textarea>
+          </div>
 
+          <!-- Label for the text area for the users password-->
+          <div class="password_container">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" />
+          </div>
 
-        <!-- Label for the text area for the users surname-->
-        <label for="surname">Apellido:</label>
-        <textarea id="surname" name="surname" cols="30" rows="2"></textarea>
+          <!-- Label for the text area for the user to retype the password-->
+          <div class="retyped_pass_container">
+            <label for="pass_retyped">Reingresar Contraseña:</label>
+            <input type="password" id="pass_retyped" name="pass_retyped" />
+          </div>
 
-        <br>
+          <div class="buttons">
+            <div class="register_button_container">
+              <input
+                id="register_button"
+                type="button"
+                value="Registrarme"
+                onclick=""
+              />
+            </div>
 
-        <!-- Label for the text area for the users email address-->
-        <label for="email">Correo Electronico :</label>
-        <textarea id="email" name="email" cols="30" rows="2"></textarea>
-
-         <!-- Label for the text area for the users username-->
-         <label for="username">Nombre de usuario:</label>
-         <textarea id="username" name="username" cols="30" rows="2"></textarea>
-
-
-        <br> <!-- I recognize that this is not the suggested use for this label but its the first stage fo the webpage-->
-
-        <!-- Label for the text area for the users password-->
-        <label for="password">Contraseña:</label>
-        <textarea id="password" name="password" cols="30" rows="2"></textarea>
-
-
-        <!-- Label for the text area for the user to retype the password-->
-        <label for="pass_retyped">Reingresar Contraseña:</label>
-        <textarea id="pass_retyped" name="pass_retyped" cols="30" rows="2"></textarea>
-
-        <br><br>
-        <input type="button" value="Registrarme" onclick="" style="width: 400px; height: 80px;">
-
-        <br><br>
-        <br><br>
-        <!-- In case the user is already registered, we can guide him to the correct page-->
-        <input type="button" value="Ya soy usuario" onclick="window.location.href='login.html';" style="width: 400px; height: 40px;">
-
-    </form>
-
-
-
-
-
-</body>
+            <!-- In case the user is already registered, we can guide him to the correct page-->
+            <div class="user_container">
+              <input
+                id="user_button"
+                type="button"
+                value="Ya soy usuario"
+                onclick="window.location.href='login.html';"
+                style="width: 400px; height: 40px"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Form for the regestering of a new user-->
+    </div>
+  </body>
 </html>
