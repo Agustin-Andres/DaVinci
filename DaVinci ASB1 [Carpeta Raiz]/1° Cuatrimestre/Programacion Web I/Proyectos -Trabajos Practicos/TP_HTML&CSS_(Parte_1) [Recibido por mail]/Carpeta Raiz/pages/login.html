@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Villavicencio - Ingreso</title>
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
   </head>
 
@@ -70,42 +71,65 @@
         </div>
       </ul>
     </nav>
-    <!-- Background image for CSS, for the moment it will not be perfectly aligned or staged--->
-    <img src="" alt="Villavicencio Backgroud_login" />
 
     <!-- Form for the users credentials to login-->
-    <h2>Ingreso</h2>
-    <form>
-      <!-- Label for the text area for the users email address-->
-      <label for="email">Correo / Usuario:</label>
-      <textarea id="email" name="email" cols="30" rows="2"></textarea>
+    <div class="parent_container">
+      <div class="h2_container"><h2>Ingreso</h2></div>
 
-      <br />
+      <div class="form_container">
+        <form>
+          <!-- Label for the text area for the users email address-->
 
-      <!-- Label for the text area for the users password-->
-      <label for="password">Contraseña:</label>
+          <div class="email_container">
+            <label for="email">Correo Electronico :</label>
+            <textarea id="email" name="email" cols="30" rows="2"></textarea>
+          </div>
 
-      <textarea id="password" name="password" cols="30" rows="2"></textarea>
-      <br />
+          <div class="username_container">
+            <label for="username">Nombre de usuario:</label>
+            <textarea
+              id="username"
+              name="username"
+              type="password"
+              cols="30"
+              rows="2"
+            ></textarea>
+          </div>
 
-      <!-- link reset password-->
-      <a href="#">Olvide mi contraseña</a>
+           <!-- Label for the text area for the users password-->
+           <div class="password_container">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" />
+          </div>
 
-      <br /><br />
-      <input
-        type="button"
-        value="Ingresar"
-        onclick="window.location.href='';"
-        style="width: 400px; height: 80px"
-      />
+          <!-- link reset password-->
+          <div class="reset_pass_conntainer">
+            <a id="reset_password" href="#">Olvide mi contraseña</a>
+          </div>
 
-      <br /><br />
-      <input
-        type="button"
-        value="Registarme"
-        onclick="window.location.href='register.html';"
-        style="width: 300px; height: 60px"
-      />
-    </form>
+          <div class="buttons">
+            <div class="login_button_container">
+              <input
+                id="login_button"
+                type="button"
+                value="Ingresar"
+                onclick="window.location.href='';"
+
+              />
+            </div>
+
+            <div class="register_button_container">
+              <input
+                id="register_button"
+                type="button"
+                value="Registarme"
+                onclick="window.location.href='register.html';"
+
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
