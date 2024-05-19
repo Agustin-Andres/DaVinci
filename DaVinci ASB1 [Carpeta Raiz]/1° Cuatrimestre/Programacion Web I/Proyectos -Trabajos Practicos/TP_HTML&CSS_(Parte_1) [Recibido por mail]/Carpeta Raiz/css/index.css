@@ -1,7 +1,8 @@
 
-.container {
+.parent_container {
     display: flex;
-    padding-left: 60px;
+    padding-left: 4em;
+
 
 }
 
@@ -11,7 +12,7 @@ h1 {
 
     font-size: 70px;
     font-weight: 600;
-    height: 75px;
+    height: 1em;
     margin: 0;
 
     background-image: linear-gradient(to left, rgb(192, 0, 33), rgb(160, 0, 28));
@@ -27,7 +28,7 @@ h1 {
 }
 p {
     font-style: normal;
-    font-size: 26px;
+    font-size: 1.5em;
     color: black;
     letter-spacing: 1px;
     line-height: normal;
@@ -36,21 +37,22 @@ p {
     backdrop-filter: blur(1px);
 }
 
-#intro_div {
-    padding-top: 40px;
+.intro_div {
+    padding-top: 2.5em;
     display: inline-flex;
 
 }
 
 #mainText {
-    line-height: 24px;
-    padding: 30px;
+    line-height: 1.5em;
+    padding: 1.8em;
     width: 50%;
+
     color: rgb(51, 66, 87);
     float: left;
     border-radius: 20px;
     margin-right: 20px;
-    padding-top: 0px;
+
 
 
 }
@@ -58,9 +60,13 @@ p {
 #Villavicencio_container {
     display: inline-flex;
     float: left;
-    height: 800px;
-    width: 800px;
+    height: 50em;
+    width: 50em;
 
 
+}
+#villavicencio_image{
+
+    margin-bottom: 10em;
 }
 
