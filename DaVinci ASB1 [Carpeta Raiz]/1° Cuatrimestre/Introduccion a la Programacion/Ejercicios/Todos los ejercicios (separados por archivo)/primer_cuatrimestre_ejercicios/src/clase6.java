@@ -15,7 +15,7 @@ public class clase6 {
 
     // Bucle para la validación de la credencial (3 intentos)
     while (intentosRestantes > 0 && continuarProgramar) {
-        
+
         // Solicitar la contraseña al usuario
         System.out.println("Ingrese su contraseña:");
         int contraseñaIngresada = scanner.nextInt();
@@ -64,7 +64,7 @@ public class clase6 {
                 }
 
             }
-            
+
         } else {
             // Restar al contador de intentos y mostrar la cantidad de intentos restantes
             intentosRestantes--;

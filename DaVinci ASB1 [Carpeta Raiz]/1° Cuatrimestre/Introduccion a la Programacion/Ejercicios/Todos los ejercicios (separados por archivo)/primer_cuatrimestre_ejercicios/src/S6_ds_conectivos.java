@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class desafioSemanal6 {
+public class S6_ds_conectivos {
 
     /*
      * . Actividad de conectivos:

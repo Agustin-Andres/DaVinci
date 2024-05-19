@@ -1,0 +1,16 @@
+###################################################3
+[SCANNER]
+import java.util.Scanner;
+    Scanner sc = new Scanner(System.in);
+[Validador de Data]
+Part 1 - Integer ingresado validador
+
+while (!sc.hasNextInt()) { // validacion es por si el usuario NO ingresa un INT
+    System.out.println("Por favor, ingrese un número valido.");
+    sc.next(); // limpiar
+    }
+    int prediccion = sc.nextInt();
+
+
+
+######################################
