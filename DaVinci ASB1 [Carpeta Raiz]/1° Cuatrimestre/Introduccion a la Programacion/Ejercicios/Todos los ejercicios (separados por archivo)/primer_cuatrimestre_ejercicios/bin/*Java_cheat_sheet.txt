@@ -1,16 +1,40 @@
-###################################################3
+一 ######################################
 [SCANNER]
 import java.util.Scanner;
     Scanner sc = new Scanner(System.in);
-[Validador de Data]
-Part 1 - Integer ingresado validador
-
+一 ######################################
+[VALIDADOR DE DATOS]
 while (!sc.hasNextInt()) { // validacion es por si el usuario NO ingresa un INT
     System.out.println("Por favor, ingrese un número valido.");
     sc.next(); // limpiar
     }
-    int prediccion = sc.nextInt();
+    int variable = sc.nextInt();
+
+一 ######################################
+[CASE SWITCH (menu)]
+switch(int) {
+    case 1:
+      // Codigo por este caso
+      break;
+    case 2:
+      // Codigo por este caso
+      break;
+    default:
+      // Codigo por este caso
+  }
+一 ######################################
+[Random]
+  #aca es un numero entre 0 y 100 (incluyendo el 100)
+  int randomNumber = (int) (Math.random() * 101)  ;
 
 
+  #entre dos rangos
+ int randomNumber = (int) (Math.random() * num1) + num2;
+  #num 1 es el rango inicial, entre 0 hasta num1
+  #num 2 es para desplazar el rango x numeros sobre el rango inicial
+   ## ejemplo -
+   int randomNumber = (int) (Math.random() * 51) + 50; # aca obetenemos un rango entre 50 y 100.
 
-######################################
+一 ######################################
+[default]
+一 ######################################

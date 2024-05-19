@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class S8_ds {
     /*
      * 1. Ciclos for -
@@ -23,12 +25,47 @@ public class S8_ds {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Desafio Semanal (Semana 8)");
+        System.out.println("Cual ejercicio desea realizar?");
 
-        int desafioElegido = 0;
+        int desafioElegido;
+        Scanner sc = new Scanner(System.in);
 
+        while (!sc.hasNextInt()) { // validacion es por si el usuario NO ingresa un INT
+            System.out.println("Por favor, ingrese un número valido.");
+            sc.next(); // limpiar
+        }
+        desafioElegido = sc.nextInt();
 
+        switch (desafioElegido) {
+            case 1:
+                // variables para ejercicio 1
+                int acumulador25 = 0, acumulador50 = 0, acumulador75 = 0, acumulador100 = 0;
+                for (int i = 0; i < 100; i++) {
+                    int numAleatorio = (int) (Math.random() * 101);
 
+                    // validador para acumular los numeros:
+                    if (numAleatorio < 25) {
+                        acumulador25++;
+                    } else if (numAleatorio < 50) {
+                        acumulador50++;
+                    } else if (numAleatorio < 75) {
+                        acumulador75++;
+                    } else {
+                        acumulador100++;
+                    }
 
-
+                }
+                System.out.println("100 numero generados aleatoriamente.");
+                System.out.println("Numeros entre 0 y 24: " + acumulador25);
+                System.out.println("Numeros entre 25 y 49: " + acumulador50);
+                System.out.println("Numeros entre 50 y 74: " + acumulador75);
+                System.out.println("Numeros entre 75 y 100 : " + acumulador100);
+                break;
+            case 2:
+                // code block
+                break;
+            default:
+                // code block
+        }
     }
 }
