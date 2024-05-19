@@ -25,7 +25,7 @@ switch(int) {
 一 ######################################
 [Random]
   #aca es un numero entre 0 y 100 (incluyendo el 100)
-  int randomNumber = (int) (Math.random() * 101)  ;
+  int randomNumber = (int) (Math.random() * 101);
 
 
   #entre dos rangos
