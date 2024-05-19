@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class enunciado_3 {
+public class S8_enunciado_3 {
 
     /*
      * Cálculo de promedio: Pedí al usuario que ingrese una serie de números
