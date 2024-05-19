@@ -2,8 +2,6 @@
 .parent_container {
     display: flex;
     padding-left: 4em;
-
-
 }
 
 h1 {
@@ -23,8 +21,6 @@ h1 {
 
 #heading_div {
     background-color: transparent;
-
-
 }
 p {
     font-style: normal;
@@ -52,21 +48,16 @@ p {
     float: left;
     border-radius: 20px;
     margin-right: 20px;
-
-
-
 }
 
 #Villavicencio_container {
     display: inline-flex;
     float: left;
+
     height: 50em;
     width: 50em;
-
-
 }
 #villavicencio_image{
-
     margin-bottom: 10em;
 }
 
