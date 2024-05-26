@@ -41,7 +41,7 @@ p {
 }
 
 .mainText {
-    flex-basis: 70em;
+    flex-basis: 100em;
     line-height: 1.5em;
     padding: 1.8em;
     width: 50%;
@@ -61,7 +61,7 @@ p {
 }
 
 #villavicencio_image {
-    height: 50%;
+    height: 80%;
     width: auto;
     margin-bottom: 10em;
 }

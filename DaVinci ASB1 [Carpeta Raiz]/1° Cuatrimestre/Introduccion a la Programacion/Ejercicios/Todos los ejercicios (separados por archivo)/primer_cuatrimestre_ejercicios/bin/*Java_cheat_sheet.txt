@@ -36,5 +36,35 @@ switch(int) {
    int randomNumber = (int) (Math.random() * 51) + 50; # aca obetenemos un rango entre 50 y 100.
 
 一 ######################################
-[default]
+[bubble_sort]
+
+int[] numeros = new int[5];
+        boolean swapping = true;
+
+        //bucle para revisar si se hizo algun cambio
+        while (swapping) {
+            swapping = false;
+
+
+            //bucle para recorrer el array y comparar datos
+            for (int i = 0; i < numeros.length - 1; i++) {
+
+                if (numeros[i] > numeros[i + 1]) {
+                    //si se cumple la condicion se hace el cambio
+                    int temp = numeros[i];
+                    numeros[i] = numeros[i + 1];
+                    numeros[i + 1] = temp;
+                    //aclaramos que si se hizo el cambio para que se revise el array nuevamente
+                    swapping = true;
+                }
+
+            }
+
+        }
+
+        // mostramos el array
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print(numeros[i] + " | ");
+        }
 一 ######################################
+[Default]

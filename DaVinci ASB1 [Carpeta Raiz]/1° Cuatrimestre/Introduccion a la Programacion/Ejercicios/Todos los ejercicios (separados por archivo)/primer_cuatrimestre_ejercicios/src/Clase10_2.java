@@ -19,7 +19,7 @@ public class Clase10_2 {
 
         System.out.println("Numeros ingresados de ultimo a primero:");
         // indice lo colocamos como el max del array, y vamos decrementando el indice
-        // hasta que sea igual a 0z
+        // hasta que sea igual a 0
         for (int i = (userNums.length - 1); i >= 0; i--) {
             System.out.print(userNums[i] + " ,");
         }
