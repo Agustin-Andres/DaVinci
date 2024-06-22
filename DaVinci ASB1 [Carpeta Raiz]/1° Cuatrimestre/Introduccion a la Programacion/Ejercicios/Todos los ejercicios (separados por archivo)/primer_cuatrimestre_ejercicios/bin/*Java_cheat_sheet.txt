@@ -67,4 +67,18 @@ int[] numeros = new int[5];
             System.out.print(numeros[i] + " | ");
         }
 一 ######################################
+[Matriz]
+public static final int FILAS = 4;
+public static final int COLUMNAS = 4;
+int matriz[][] = new int[FILAS][COLUMNAS];
+//imprision matriz
+System.out.println("\n\nMatriz original : \n");
+        for (int i = 0; i < FILAS; i++) {
+            for (int j = 0; j < COLUMNAS; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+
 [Default]
