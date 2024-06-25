@@ -25,44 +25,140 @@ public class MenuPrincipalDivisas {
         boolean salida = true;
         Scanner sc = new Scanner(System.in);
 
+        int opcionMenuPrincipal;
         System.out.println("Bienvenido al Conversor de Divisas!");
+
         // bucle para el menu
         do {
-            System.out.println("¿Qué deseas hacer?");
+            System.out.println("\n¿Qué deseas hacer?");
             mostrarMenuPrincipal();
+
             // validacion es por si el usuario NO ingresa un INT, para el menu principal
-            while (!sc.hasNextInt()) {
-                System.out.println("Por favor, ingrese un número valido.");
-                sc.next(); // limpiar
-            }
-            int opcionMenuPrincipal = sc.nextInt();
+            opcionMenuPrincipal = validarInt(sc);
 
             switch (opcionMenuPrincipal) {
                 case 1:
-                    // Codigo por este caso
+                    System.out.println("Ha seleccionado comparar divisas.");
+                    mostrarCambioDeDivisasMenu(sc);
                     break;
+
                 case 2:
                     System.out.println("Cambio de tipos de cambio histórico");
+                    tipoDeCambioHistorico();
                     break;
+
                 case 3:
                     System.out.println("Ha solicitado la finalizacion del programa, saludos!");
                     salida = false;
                     break;
+
                 default:
                     System.out.println("No ha ingresado un dato valido.");
             }
 
         } while (salida);
-
+        sc.close();
     }
 
     // metodos
     public static void mostrarMenuPrincipal() {
-        System.out.println("1. Ingrese el dinero en pesos ARG\n2. Ver tipos de cambio histórico\n3. Salir");
+        System.out.print("1. Ingrese el dinero en pesos ARG\n2. Ver tipos de cambio histórico\n3. Salir\n > ");
     }
 
-    public static void tipoDeCambioHistorico(){
+    public static int validarInt(Scanner sc) {
+        while (!sc.hasNextInt()) {
+            System.out.println("Por favor, ingrese un número valido.");
+            sc.next(); // limpiar
+        }
+        return sc.nextInt();
 
     }
 
+    public static void tipoDeCambioHistorico() {
+        // mostramos los meses primero:
+        System.out.print("\nDivisa\t");
+        for (int i = 0; i < MESES.length; i++) {
+            System.out.print(String.format("%s\t", MESES[i]));
+        }
+        System.out.println();
+        // mostramos los tipos de cambio con su divisa
+        for (int i = 0; i < (DIVISAS.length); i++) {
+            System.out.print(String.format("%s\t", DIVISAS[i]));
+            for (int j = 0; j < (TIPOS_DE_CAMBIO[0].length); j++) {
+                System.out.print(String.format("%.2f\t", TIPOS_DE_CAMBIO[i][j]));
+            }
+            System.out.println();
+        }
+
+    }
+
+    public static void mostrarCambioDeDivisasMenu(Scanner sc) {
+        boolean salida = true;
+        double conversion;
+        // validamos que el usuario haya ingresado un monto correcto
+        System.out.print("Ingrese el dinero en pesos ARG\n $ ");
+        while (!sc.hasNextDouble()) {
+            System.out.println("Por favor, ingrese un número valido.");
+            sc.next(); // limpiar
+        }
+        double pesosArg = sc.nextDouble();
+
+        do {
+            // mostramos menu de divisas disponibles
+            MenuConversorDivisas.mostrarMenuDivisas();
+
+            System.out.print("Con cual divisa desea comparar?\n > ");
+            int opcionMenuDivisas = validarInt(sc);
+
+            // conversion de divis
+            switch (opcionMenuDivisas) {
+                // USD
+                case 1:
+                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[0][MESES.length - 1]);
+                    System.out.println(String.format("El Dolar cotiza a $%.2f", TIPOS_DE_CAMBIO[0][MESES.length - 1]));
+                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f USD", pesosArg, conversion));
+                    break;
+
+                // EUR
+                case 2:
+                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[1][MESES.length - 1]);
+                    System.out.println(String.format("El Euro cotiza a $%.2f", TIPOS_DE_CAMBIO[1][MESES.length - 1]));
+                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f EUR", pesosArg, conversion));
+                    break;
+
+                // GBP
+                case 3:
+                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[2][MESES.length - 1]);
+                    System.out.println(
+                            String.format("La Libra Esterlina cotiza a $%.2f", TIPOS_DE_CAMBIO[2][MESES.length - 1]));
+                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f GBP", pesosArg, conversion));
+                    break;
+
+                // CNY
+                case 4:
+                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[3][MESES.length - 1]);
+                    System.out.println(String.format("El Yuan cotiza a $%.2f", TIPOS_DE_CAMBIO[3][MESES.length - 1]));
+                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f CNY", pesosArg, conversion));
+                    break;
+
+                // BRL
+                case 5:
+                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[4][MESES.length - 1]);
+                    System.out.println(String.format("El Real cotiza a $%.2f", TIPOS_DE_CAMBIO[4][MESES.length - 1]));
+                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f BRL", pesosArg, conversion));
+                    break;
+
+                case 6:
+                    tipoDeCambioHistorico();
+                    break;
+
+                case 7:
+                    salida = false;
+                    break;
+                default:
+                    System.out.println("No ha ingresado un dato valido.");
+            }
+        } while (salida);
+
+    }
 }
