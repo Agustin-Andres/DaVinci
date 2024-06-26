@@ -21,30 +21,30 @@ public class MenuPrincipalDivisas {
             "Mar", "Abr", "May" };
 
     public static void main(String[] args) throws Exception {
-
+        // variables
         boolean salida = true;
         Scanner sc = new Scanner(System.in);
-
         int opcionMenuPrincipal;
+
+        // comienzo de programa
         System.out.println("Bienvenido al Conversor de Divisas!");
 
-        // bucle para el menu
+        // bucle para el menu, obligado a correr una vez al menos.
         do {
+
             System.out.println("\n¿Qué deseas hacer?");
             mostrarMenuPrincipal();
-
-            // validacion es por si el usuario NO ingresa un INT, para el menu principal
             opcionMenuPrincipal = validarInt(sc);
 
             switch (opcionMenuPrincipal) {
                 case 1:
                     System.out.println("Ha seleccionado comparar divisas.");
-                    mostrarCambioDeDivisasMenu(sc);
+                    mostrarCambioDeDivisasMenu(sc); // enviamos a menu secundario
                     break;
 
                 case 2:
                     System.out.println("Cambio de tipos de cambio histórico");
-                    tipoDeCambioHistorico();
+                    tipoDeCambioHistorico(); // display de cambio historico
                     break;
 
                 case 3:
@@ -61,10 +61,12 @@ public class MenuPrincipalDivisas {
     }
 
     // metodos
+    // Menu principal
     public static void mostrarMenuPrincipal() {
         System.out.print("1. Ingrese el dinero en pesos ARG\n2. Ver tipos de cambio histórico\n3. Salir\n > ");
     }
 
+    // Validador de entero ingresado por user
     public static int validarInt(Scanner sc) {
         while (!sc.hasNextInt()) {
             System.out.println("Por favor, ingrese un número valido.");
@@ -74,6 +76,7 @@ public class MenuPrincipalDivisas {
 
     }
 
+    // Mostrar el tipo de cambio historico, meses, divisas y valores.
     public static void tipoDeCambioHistorico() {
         // mostramos los meses primero:
         System.out.print("\nDivisa\t");
@@ -93,9 +96,10 @@ public class MenuPrincipalDivisas {
     }
 
     public static void mostrarCambioDeDivisasMenu(Scanner sc) {
+
         boolean salida = true;
-        double conversion;
-        // validamos que el usuario haya ingresado un monto correcto
+
+        // validamos que el usuario haya ingresado un monto correcto de pesos.
         System.out.print("Ingrese el dinero en pesos ARG\n $ ");
         while (!sc.hasNextDouble()) {
             System.out.println("Por favor, ingrese un número valido.");
@@ -107,52 +111,25 @@ public class MenuPrincipalDivisas {
             // mostramos menu de divisas disponibles
             MenuConversorDivisas.mostrarMenuDivisas();
 
-            System.out.print("Con cual divisa desea comparar?\n > ");
+            System.out.print("¿Qué deseas hacer?\n > ");
             int opcionMenuDivisas = validarInt(sc);
 
             // conversion de divis
             switch (opcionMenuDivisas) {
-                // USD
+                // conversiones en caso de que el user elija de 1 a 5
                 case 1:
-                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[0][MESES.length - 1]);
-                    System.out.println(String.format("El Dolar cotiza a $%.2f", TIPOS_DE_CAMBIO[0][MESES.length - 1]));
-                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f USD", pesosArg, conversion));
-                    break;
-
-                // EUR
                 case 2:
-                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[1][MESES.length - 1]);
-                    System.out.println(String.format("El Euro cotiza a $%.2f", TIPOS_DE_CAMBIO[1][MESES.length - 1]));
-                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f EUR", pesosArg, conversion));
-                    break;
-
-                // GBP
                 case 3:
-                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[2][MESES.length - 1]);
-                    System.out.println(
-                            String.format("La Libra Esterlina cotiza a $%.2f", TIPOS_DE_CAMBIO[2][MESES.length - 1]));
-                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f GBP", pesosArg, conversion));
-                    break;
-
-                // CNY
                 case 4:
-                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[3][MESES.length - 1]);
-                    System.out.println(String.format("El Yuan cotiza a $%.2f", TIPOS_DE_CAMBIO[3][MESES.length - 1]));
-                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f CNY", pesosArg, conversion));
-                    break;
-
-                // BRL
                 case 5:
-                    conversion = MenuConversorDivisas.compararDivisa(pesosArg, TIPOS_DE_CAMBIO[4][MESES.length - 1]);
-                    System.out.println(String.format("El Real cotiza a $%.2f", TIPOS_DE_CAMBIO[4][MESES.length - 1]));
-                    System.out.println(String.format("$%s (ARG) equivalen a $%.2f BRL", pesosArg, conversion));
+                    MenuConversorDivisas.mostrarConversion(opcionMenuDivisas, pesosArg, TIPOS_DE_CAMBIO, MESES.length);
                     break;
 
                 case 6:
-                    tipoDeCambioHistorico();
+                    tipoDeCambioHistorico(); // display de cambio historico
                     break;
 
-                case 7:
+                case 7: // salida de menu y vuelve al principal
                     salida = false;
                     break;
                 default:
