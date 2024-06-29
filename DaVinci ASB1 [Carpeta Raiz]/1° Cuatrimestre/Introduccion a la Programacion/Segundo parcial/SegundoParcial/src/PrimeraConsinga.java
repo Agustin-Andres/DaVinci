@@ -11,7 +11,7 @@ public class PrimeraConsinga {
 
     static public void mayorNumeroIngresado(Scanner sc) {
         boolean flag = true;
-        int numIngresado;
+        int numIngresado = 0;
         int numeroMayor = 0;
 
         // bucle evaluando los numeros ingresado por el usuario

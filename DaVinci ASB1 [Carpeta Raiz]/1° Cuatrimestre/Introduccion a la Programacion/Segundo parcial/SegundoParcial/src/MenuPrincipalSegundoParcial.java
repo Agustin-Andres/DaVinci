@@ -21,28 +21,41 @@ public class MenuPrincipalSegundoParcial {
                     // Consigna 1
                     System.out.println("Ha seleccionado la primera consigna");
                     PrimeraConsinga.mayorNumeroIngresado(sc);
+                    insertarLinea();
                     break;
 
                 case 2:
                     // Consigna 2
                     System.out.println("Ha seleccionado la segunda consigna");
                     SegundaConsigna.tablaDeNumero(sc);
+                    insertarLinea();
                     break;
 
                 case 3:
                     // Consigna 3
                     System.out.println("Ha seleccionado la Tercera consigna");
                     TerceraConsigna.sumaTotalDeArray(sc);
+                    insertarLinea();
                     break;
 
                 case 4:
                     // Consigna 3
                     System.out.println("Ha seleccionado la Cuarta consigna");
                     CuartaConsigna.notasAlumnos(sc);
+                    insertarLinea();
+                    break;
+
+                case 5:
+
+                    System.out.println("El programa finalizara, muchas gracias");
+                    salida = false;
+                    insertarLinea();
                     break;
 
                 default:
-                    System.out.println("No se ha seleccionado una opcion correcta, intente de nuevo");
+                    System.out.println("No se ha seleccionado una opcion correcta.");
+                    menuConsignas();
+                    insertarLinea();
             }
         } while (salida);
 
@@ -51,6 +64,7 @@ public class MenuPrincipalSegundoParcial {
     }
 
     // Menu de consignas
+
     public static void menuConsignas() {
 
         System.out.println("\n1 - Escribir un programa que tome números enteros hasta que el usuario " + //
@@ -72,6 +86,7 @@ public class MenuPrincipalSegundoParcial {
     }
 
     // validador de enteros
+
     public static int validadorEntero(Scanner sc) {
         while (!sc.hasNextInt()) { // validacion es por si el usuario NO ingresa un INT
             System.out.print("Por favor, ingrese un número valido. \n > ");
@@ -80,4 +95,12 @@ public class MenuPrincipalSegundoParcial {
         int entero = sc.nextInt();
         return entero;
     }
+
+    public static void insertarLinea() {
+        String line = "_";
+        for (int i = 0; i < 50; i++) {
+            System.out.print(line);
+        }
+    };
+
 }
