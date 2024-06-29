@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MenuPrincipalDivisas {
+public class Divisas {
 
     // Constantes, las divisas de los meses correspondientes
     public static final double[][] TIPOS_DE_CAMBIO = {
@@ -85,9 +85,10 @@ public class MenuPrincipalDivisas {
         }
         System.out.println();
         // mostramos los tipos de cambio con su divisa
-        for (int i = 0; i < (DIVISAS.length); i++) {
+        for (int i = 0; i < DIVISAS.length; i++) {
             System.out.print(String.format("%s\t", DIVISAS[i]));
-            for (int j = 0; j < (TIPOS_DE_CAMBIO[0].length); j++) {
+
+            for (int j = 0; j < (TIPOS_DE_CAMBIO[i].length); j++) {
                 System.out.print(String.format("%.2f\t", TIPOS_DE_CAMBIO[i][j]));
             }
             System.out.println();
@@ -100,12 +101,6 @@ public class MenuPrincipalDivisas {
         boolean salida = true;
 
         // validamos que el usuario haya ingresado un monto correcto de pesos.
-        System.out.print("Ingrese el dinero en pesos ARG\n $ ");
-        while (!sc.hasNextDouble()) {
-            System.out.println("Por favor, ingrese un número valido.");
-            sc.next(); // limpiar
-        }
-        double pesosArg = sc.nextDouble();
 
         do {
             // mostramos menu de divisas disponibles
@@ -122,6 +117,15 @@ public class MenuPrincipalDivisas {
                 case 3:
                 case 4:
                 case 5:
+
+                    //tomamos el ingreso de dinero y lo enviamos a la conversion seleccionada
+                    System.out.print("Ingrese el dinero en pesos ARG\n $ ");
+                    while (!sc.hasNextDouble()) {
+                        System.out.println("Por favor, ingrese un número valido.");
+                        sc.next(); // limpiar
+                    }
+                    double pesosArg = sc.nextDouble();
+                    System.out.println();
                     MenuConversorDivisas.mostrarConversion(opcionMenuDivisas, pesosArg, TIPOS_DE_CAMBIO, MESES.length);
                     break;
 

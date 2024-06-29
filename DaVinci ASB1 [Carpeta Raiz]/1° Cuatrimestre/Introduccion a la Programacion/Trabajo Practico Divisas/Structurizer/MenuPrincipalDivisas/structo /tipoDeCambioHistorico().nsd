@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.32-21" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preThrow="throw" preForIn="foreach" stepFor="by" namespace="" author="agus" created="2024-06-27" changedby="agus" changed="2024-06-27" origin="Structorizer 3.32-21" text="&#34;tipoDeCambioHistorico()&#34;" comment="&#34;&#34;" color="ffffff" type="sub" style="nice">
+	<children>
+		<instruction text="&#34;OUTPUT &#34;&#34;Divisa&#34;&#34;&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+		<for text="&#34;for i &#60;- 0 to MESES.length&#34;" comment="&#34;&#34;" counterVar="i" startValue="0" endValue="MESES.length" stepConst="1" style="COUNTER" color="ffffff" disabled="0">
+			<qFor>
+				<instruction text="&#34;OUTPUT MESES[i]&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+			</qFor>
+		</for>
+		<instruction text="&#34;OUTPUT&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+		<for text="&#34;for i &#60;- 0 to DIVISAS.length&#34;" comment="&#34;&#34;" counterVar="i" startValue="0" endValue="DIVISAS.length" stepConst="1" style="COUNTER" color="ffffff" disabled="0">
+			<qFor>
+				<instruction text="&#34;OUTPUT DIVISAS[i]&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+				<for text="&#34;for j &#60;- 0 to TIPOS_DE_CAMBIO[i].length&#34;" comment="&#34;&#34;" counterVar="j" startValue="0" endValue="TIPOS_DE_CAMBIO[i].length" stepConst="1" style="COUNTER" color="ffffff" disabled="0">
+					<qFor>
+						<instruction text="&#34;OUTPUT TIPOS_DE_CAMBIO[i][j]&#34;" comment="&#34;\ &#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+					</qFor>
+				</for>
+				<instruction text="&#34;OUTPUT&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+			</qFor>
+		</for>
+	</children>
+</root>
