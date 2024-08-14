@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Villavicencio - Registro</title>
+    <link rel="stylesheet" type="text/css" href="../css/register.css" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  </head>
+
+  <body>
+    <!-- Navegation bar to switch between pages and show quick access to more info.
+            the nav bar will be horizontally with css, meanwhile, just HTML will be shown this way.-->
+    <nav>
+      <ul>
+        <div id="rootpages">
+          <li class="roots"><a href="/Carpeta Raiz/index.html">Inicio</a></li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/HTML/products.html">Productos</a>
+          </li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/HTML/more_info.html">Mas informacion</a>
+          </li>
+          <li class="roots">
+            <a href="/Carpeta Raiz/HTML/register_login.html"
+              >Registro / Ingreso</a
+            >
+          </li>
+          <li><a href="/Carpeta Raiz/HTML/contact.html">Contacto</a></li>
+        </div>
+        <!-- socials-->
+        <div id="socials_nav">
+          <li id="fb" class="socials">
+            <a
+              href="https://www.facebook.com/VillavicencioAgua/?locale=es_LA"
+              target="_blank"
+            >
+              <img
+                id="fb_image"
+                src="/Carpeta Raiz/IMAGENES/socials/Facebook.png"
+                alt="facebook"
+              />
+            </a>
+          </li>
+
+          <li id="ig" class="socials">
+            <a
+              href="https://www.instagram.com/villavicencio/?hl=en"
+              target="_blank"
+            >
+              <img
+                id="ig_image"
+                src="/Carpeta Raiz/IMAGENES/socials/instagram.png"
+                alt="instagram"
+              />
+            </a>
+          </li>
+
+          <li id="x" class="socials">
+            <a href="https://twitter.com/VillavicencioOK" target="_blank">
+              <img
+                id="x_image"
+                src="/Carpeta Raiz/IMAGENES/socials/twitter_x.png"
+                alt="X"
+              />
+            </a>
+          </li>
+        </div>
+      </ul>
+    </nav>
+
+    <div class="parent_container">
+      <div class="h2_container"><h2>Registro</h2></div>
+
+      <div class="form_container">
+        <form>
+          <!-- Label for the input for the user's name -->
+          <div class="name_container">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" />
+          </div>
+
+          <!-- Label for the input for the user's surname -->
+          <div class="surname_container">
+            <label for="surname">Apellido:</label>
+            <input type="text" id="surname" name="surname" />
+          </div>
+
+          <!-- Label for the input for the user's email address -->
+          <div class="email_container">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" />
+          </div>
+
+          <!-- Label for the input for the user's username -->
+          <div class="username_container">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" />
+          </div>
+
+          <!-- Label for the input for the user's password -->
+          <div class="password_container">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" />
+          </div>
+
+          <!-- Label for the input to retype the user's password -->
+          <div class="retyped_pass_container">
+            <label for="pass_retyped">Reingresar Contraseña:</label>
+            <input type="password" id="pass_retyped" name="pass_retyped" />
+          </div>
+
+          <div class="buttons">
+            <div class="register_button_container">
+              <input
+                id="register_button"
+                type="button"
+                value="Registrarme"
+                onclick=""
+              />
+            </div>
+
+            <!-- In case the user is already registered, we can guide them to the correct page -->
+            <div class="user_container">
+              <input
+                id="user_button"
+                type="button"
+                value="Ya soy usuario"
+                onclick="window.location.href='login.html';"
+                style="width: 400px; height: 40px"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Form for the registering of a new user -->
+    </div>
+  </body>
+</html>
