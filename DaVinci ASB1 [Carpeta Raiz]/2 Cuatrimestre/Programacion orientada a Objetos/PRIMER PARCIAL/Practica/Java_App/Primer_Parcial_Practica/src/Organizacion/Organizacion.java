@@ -8,33 +8,34 @@ Por ejemplo, si se contrata un proveedor, podemos escalarlo con la clase Organiz
 
 public abstract class Organizacion {
 
-	//variables primitivas abstractas
+	// variables primitivas abstractas
 	private String nombre;
-	private int teléfono;
-	private String dirección;
+	private String telefono;
+	private String direccion;
 	private String localidad;
 	private String email;
-	private int cuit;
+	private String cuit;
 
-
-	//constructores, uno vacio y completo
-	public Organizacion(String nombre, int teléfono, String dirección, String localidad, String email, int cuit){
+	// constructores, uno vacio y completo
+	public Organizacion(String nombre, String telefono, String direccion, String localidad, String email, String cuit) {
 		this.nombre = nombre;
-		this.teléfono = teléfono;
-		this.dirección = dirección;
+		this.telefono = telefono;
+		this.direccion = direccion;
 		this.localidad = localidad;
 		this.email = email;
 		this.cuit = cuit;
 
 	}
 
-	public Organizacion(){};
-
+	public Organizacion() {
+	};
 
 	// metodos
 	public abstract String toString();
 
-	//getters and setters
+	public abstract void mostrarInformacionEditorial();
+
+	// getters and setters
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -43,20 +44,20 @@ public abstract class Organizacion {
 		this.nombre = nombre;
 	}
 
-	public int getTeléFono() {
-		return this.teléfono;
+	public String getTelefono() {
+		return this.telefono;
 	}
 
-	public void setTeléFono(int teléfono) {
-		this.teléfono = teléfono;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
-	public String getDireccióN() {
-		return this.dirección;
+	public String getDireccion() {
+		return this.direccion;
 	}
 
-	public void setDireccióN(String dirección) {
-		this.dirección = dirección;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getLocalidad() {
@@ -75,11 +76,11 @@ public abstract class Organizacion {
 		this.email = email;
 	}
 
-	public int getCuit() {
+	public String getCuit() {
 		return this.cuit;
 	}
 
-	public void setCuit(int cuit) {
+	public void setCuit(String cuit) {
 		this.cuit = cuit;
 	}
 

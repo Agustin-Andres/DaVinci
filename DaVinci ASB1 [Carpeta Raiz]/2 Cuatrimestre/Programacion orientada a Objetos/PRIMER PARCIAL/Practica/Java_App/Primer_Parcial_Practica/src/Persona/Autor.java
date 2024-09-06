@@ -17,5 +17,17 @@ public class Autor extends Persona {
     public String toString(){
         return "";
     };
+    // metodos
+    @Override
+    public void mostrarInformacionAutor(){
+        System.out.println("Nombre: " + this.getNombre());
+        System.out.println("Apellido: " + this.getApellido());
+        System.out.println("Fecha nacimiento: " + this.getFecha_nacimiento());
+        System.out.println("Sexo: " + this.getSexo());
+        System.out.println("Email: " + this.getEmail());
+
+
+
+    };
 
 }

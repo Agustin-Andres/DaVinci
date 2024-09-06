@@ -17,7 +17,7 @@ public class LibroSinEditorial extends Libro {
 
     //Metodos
     @Override
-    public void mostrarInformacion() {
+    public void mostrarInformacionLibro() {
         System.out.println("Mostrar informacion de libro");
     };
 

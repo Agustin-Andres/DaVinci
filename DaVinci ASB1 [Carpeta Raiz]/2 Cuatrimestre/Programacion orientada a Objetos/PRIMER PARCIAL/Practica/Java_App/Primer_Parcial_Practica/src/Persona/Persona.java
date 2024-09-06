@@ -38,6 +38,8 @@ public abstract class Persona {
     // metodos
     public abstract String toString();
 
+    public abstract void mostrarInformacionAutor();
+
     // getters and setters
     public String getNombre() {
         return this.nombre;
@@ -59,7 +61,7 @@ public abstract class Persona {
         return this.fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
+    public void setFechaNacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
@@ -72,11 +74,11 @@ public abstract class Persona {
     }
 
     public String getEmail() {
-        return this.nombre;
+        return this.email;
     }
 
-    public void setEmail(String nombre) {
-        this.nombre = nombre;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

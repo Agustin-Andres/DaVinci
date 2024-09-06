@@ -1,18 +1,18 @@
 package Libro;
 
-import Persona.Autor; //Todo libro puede tener autor pero no Editorial, lo dejamos para su hijo
+import Persona.Autor; //Todo libro puede tener autor pero no Editorial, lo dejamos para su hijo 'por si acaso jaja'
 
 // clase Abstracta con metodos publicos para que no sean modificables.
 public abstract class Libro {
 
-    //variables primitivas abstractas
+    // variables primitivas abstractas
     private String nombre;
     private Autor autor;
     private String anio_publicacion;
     private int cantidad_ejemplares;
     private float costo;
 
-    //constructores, uno vacio y otro con el resto de la info
+    // constructores, uno vacio y otro con el resto de la info
     public Libro(String nombre, Autor autor, String anio_publicacion, int cantidad_ejemplares, float costo) {
         this.nombre = nombre;
         this.autor = autor;
@@ -25,7 +25,7 @@ public abstract class Libro {
     }
 
     // metodos - van a ser Overriden
-    public abstract void mostrarInformacion();
+    public abstract void mostrarInformacionLibro();
 
     public abstract String toString();
 
