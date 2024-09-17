@@ -24,21 +24,13 @@ public class LibroConEditorial extends Libro {
 
     // metodos
     @Override
-    public void mostrarInformacionLibro() {
-
-        // notar en el output como llamamos los metodos en la instancia de Editorial y
-        // Autor
-        System.out.println("Nombre de libro: " + this.getNombre());
-        System.out.println("Autor del libro: " + this.getAutor().getNombre());
-        System.out.println("Editorial: " + this.getEditorial().getNombre());
-        System.out.println("Año de publicación: " + this.getAnio_publicacion());
-        System.out.println("Cantidad de ejemplares: " + this.getCantidad_ejemplares());
-        System.out.println("Costo del libro: $" + this.getCosto());
-    }
-
-    @Override
     public String toString() {
-        return "";
+        return "Nombre de libro: " + this.getNombre() + "\n" +
+                "Autor del libro: " + this.getAutor().nombreCompleto() + "\n" +
+                "Editorial: " + this.getEditorial().getNombre() + "\n" +
+                "Año de publicación: " + this.getAnio_publicacion() + "\n" +
+                "Cantidad de ejemplares: " + this.getCantidad_ejemplares() + "\n" +
+                "Costo del libro: $" + this.getCosto();
     }
 
     // getter y setter de la clase Editorial

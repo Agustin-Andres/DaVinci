@@ -16,7 +16,7 @@ public class Interfaz {
     // Libro
     final static String[] LIBRO_NOMBRES = { "Cien años de soledad", "El gran Gatsby" };
     final static String[] LIBRO_ANIO_PUBLICACION = { "1967-06-05", "1925-04-10" };
-    final static int[] LIBRO_CANTIDAD_EJEMPLARES = { 12, 10 };
+    final static int[] LIBRO_CANTIDAD_EJEMPLARES = { 3, 10 };
     final static float[] LIBRO_COSTOS = { 32000, 27000 };
 
     // Editorial
@@ -41,34 +41,28 @@ public class Interfaz {
         // 2 autores, un arreglo conteniendo variables de referencias
         Autor[] autores = new Autor[2];
         autores[0] = crearAutor(0);
-        autores[1] = crearAutor(1);
 
         // 2 editoriales, un arreglo conteniendo variables de referencias
         Editorial[] editoriales = new Editorial[2];
         editoriales[0] = crearEditorial(0);
-        editoriales[1] = crearEditorial(1);
 
         // 2 libros, un arreglo conteniendo variables de referencias
         LibroConEditorial[] libros = new LibroConEditorial[2];
         // pasamos por parametro el indice, autores y editoriales
         libros[0] = crearLibroConEditorial(0, autores[0], editoriales[0]);
-        libros[1] = crearLibroConEditorial(1, autores[1], editoriales[1]);
 
         // output de la informacion
         System.out.println("\n###### Libros en el sistema ######\n");
-        libros[0].mostrarInformacionLibro();
+        System.out.println(libros[0].toString());
         System.out.println("\t - - - - - - - - - -");
-        libros[0].mostrarInformacionLibro();
 
         System.out.println("\n###### Autores presentes en el sistema ######\n");
-        autores[0].mostrarInformacionAutor();
+        System.out.println(autores[0].toString());
         System.out.println("\t - - - - - - - - - -");
-        autores[1].mostrarInformacionAutor();
 
         System.out.println("\n###### Editoriales presentes en el sistema ######\n");
-        editoriales[0].mostrarInformacionEditorial();
+        System.out.println(editoriales[0].toString());
         System.out.println("\t - - - - - - - - - -");
-        editoriales[1].mostrarInformacionEditorial();
 
     }
 

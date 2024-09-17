@@ -38,7 +38,7 @@ public abstract class Persona {
     // metodos
     public abstract String toString();
 
-    public abstract void mostrarInformacionAutor();
+    public abstract String nombreCompleto();
 
     // getters and setters
     public String getNombre() {

@@ -33,7 +33,6 @@ public abstract class Organizacion {
 	// metodos
 	public abstract String toString();
 
-	public abstract void mostrarInformacionEditorial();
 
 	// getters and setters
 	public String getNombre() {

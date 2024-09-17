@@ -25,8 +25,7 @@ public abstract class Libro {
     }
 
     // metodos - van a ser Overriden
-    public abstract void mostrarInformacionLibro();
-
+    @Override
     public abstract String toString();
 
     // getter and setters

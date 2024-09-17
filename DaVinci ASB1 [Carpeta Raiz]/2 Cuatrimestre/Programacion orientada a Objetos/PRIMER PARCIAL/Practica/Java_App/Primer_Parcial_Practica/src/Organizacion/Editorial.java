@@ -12,21 +12,14 @@ public class Editorial extends Organizacion {
         super();
     }
 
-    // metodos
     @Override
     public String toString() {
-        return "";
+        return "Nombre Editorial: " + this.getNombre() + "\n" +
+               "Teléfono: " + this.getTelefono() + "\n" +
+               "Dirección: " + this.getDireccion() + "\n" +
+               "Localidad: " + this.getLocalidad() + "\n" +
+               "Email: " + this.getEmail() + "\n" +
+               "CUIT: " + this.getCuit();
     }
 
-    @Override
-    public void mostrarInformacionEditorial() {
-
-        System.out.println("Nombre Editorial: " + this.getNombre());
-        System.out.println("Teléfono: " + this.getTelefono());
-        System.out.println("Dirección: " + this.getDireccion());
-        System.out.println("Localidad: " + this.getLocalidad());
-        System.out.println("Email: " + this.getEmail());
-        System.out.println("CUIT: " + this.getCuit());
-
-    }
 }
