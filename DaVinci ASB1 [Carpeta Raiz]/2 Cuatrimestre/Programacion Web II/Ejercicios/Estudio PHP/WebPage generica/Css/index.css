@@ -1,0 +1,106 @@
+body {
+    /* Background image for all pages */
+    background-image: url('../images/styles/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Main container for centering the content */
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center horizontally */
+    justify-content: center;
+    /* Center vertically */
+    min-height: 75vh;
+    /* Adjust the height for better centering */
+    text-align: center;
+}
+
+/* The content box (growing the background) */
+.content {
+    background-color: #e9f0f4;
+    /* Soft background color */
+    padding: 40px;
+    /* Add padding to give the content room */
+    border-radius: 10px;
+    /* Add rounded corners for a better look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add a shadow to lift the content */
+    max-width: 600px;
+    /* Limit the maximum width */
+    width: 100%;
+    /* Ensure it takes full width within the limit */
+
+
+}
+
+/* Header styles */
+header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Logo */
+header img {
+    margin-top: 10px;
+    width: 150px;
+}
+
+/* Welcome section */
+.heading h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Description text */
+.mensaje p {
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #555;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Session choice buttons */
+.session_choice {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+/* Style for the buttons */
+#login,
+#signup {
+
+    padding: 12px 24px;
+    background-color: #2a9d8f;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+#login:hover,
+#signup:hover {
+    background-color: #007a33;
+    font-weight: bold;
+}

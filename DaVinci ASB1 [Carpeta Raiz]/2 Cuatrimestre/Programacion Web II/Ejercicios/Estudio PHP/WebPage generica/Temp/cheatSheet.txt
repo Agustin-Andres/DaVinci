@@ -1,0 +1,111 @@
+PHP
+[Comentarios]
+<?php
+  // Esto es un comentario de una línea
+
+  /* Esto es un comentario
+     de varias líneas */
+?>
+--------------------------------------------------------
+[variables]
+<?php
+  $nombre = "Agustín"; // String
+  $edad = 25;          // Entero
+  $pi = 3.1416;        // Flotante
+  $es_estudiante = true; // Booleano
+?>
+--------------------------------------------------------
+[operadores]
+<?php
+  $a = 10;
+  $b = 5;
+
+  echo $a + $b;  // Suma
+  echo $a == $b; // Comparación
+  echo $a && $b; // Lógico
+?>
+--------------------------------------------------------
+[If - Else]
+<?php
+  $edad = 20;
+
+  if ($edad >= 18) {
+      echo "Mayor de edad";
+  } else {
+      echo "Menor de edad";
+  }
+?>
+--------------------------------------------------------
+[Switch-case]
+<?php
+  $dia = "lunes";
+
+  switch ($dia) {
+      case "lunes":
+          echo "Hoy es lunes";
+          break;
+      case "martes":
+          echo "Hoy es martes";
+          break;
+      default:
+          echo "No es lunes ni martes";
+  }
+?>
+--------------------------------------------------------
+[For]
+<?php
+  for ($i = 0; $i < 10; $i++) {
+      echo $i;
+  }
+?>
+--------------------------------------------------------
+[While]
+<?php
+  $i = 0;
+  while ($i < 10) {
+      echo $i;
+      $i++;
+  }
+?>
+--------------------------------------------------------
+[Foreach]
+<?php
+  $frutas = ["Manzana", "Banana", "Naranja"];
+  foreach ($frutas as $fruta) {
+      echo $fruta;
+  }
+?>
+--------------------------------------------------------
+[Metodos]
+<?php
+  function sumar($a, $b) {
+      return $a + $b;
+  }
+
+  echo sumar(5, 10); // Llamada a la función
+?>
+--------------------------------------------------------
+[Arrays]
+//INDEXADO
+<?php
+  $frutas = ["Manzana", "Banana", "Naranja"];
+  echo $frutas[0]; // Manzana
+?>
+
+//ASOCIATIVO
+<?php
+  $persona = ["nombre" => "Agustín", "edad" => 25];
+  echo $persona["nombre"]; // Agustín
+?>
+
+//Multidimensional
+<?php
+  $personas = [
+      ["nombre" => "Juan", "edad" => 30],
+      ["nombre" => "Pedro", "edad" => 25]
+  ];
+
+  echo $personas[1]["nombre"]; // Pedro
+?>
+[///]
+

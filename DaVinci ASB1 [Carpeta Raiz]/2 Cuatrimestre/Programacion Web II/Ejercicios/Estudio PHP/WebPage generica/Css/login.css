@@ -1,0 +1,100 @@
+/* Background image for all pages */
+body {
+    background-image: url('../images/styles/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Style for h1 and h2 */
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Center the heading */
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Center the heading */
+}
+
+/* Main container for centering the content */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Form content box */
+.content {
+    background-color: #e9f0f4;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    /* Left-align form elements */
+}
+
+/* Input fields */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Button */
+button {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+/* Reset password link and registration button */
+#reset_pass {
+    margin-top: 1vh;
+}
+
+.button {
+    background-color: #2a9d8f;
+    width: 90%;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 1vh;
+}
+
+button:hover,
+.button:hover {
+    background-color: #007a33;
+    font-weight: bold;
+}
