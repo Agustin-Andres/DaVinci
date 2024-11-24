@@ -29,7 +29,7 @@ public class InterfazGaraje {
         System.out.printf("%-5s %-50s\n", "#1", "Continuar ultima sesion [popular datos aleatorios]");
         System.out.printf("%-5s %-50s\n", "#2", "Comenzar nueva sesion [Sin vehiculos pre-cargados]");
         System.out.printf("%-5s %-50s\n", "#3", "Cerrar sesion [Cantidad maxima de vehiculos alcanzado]");
-        System.out.printf("%-5s %-50s\n", "#4", "Salir");
+        System.out.printf("%-5s %-50s\n", "#4", "Salir de programa");
         System.out.println("-------------------------------------------");
         System.out.print("[#]> ");
     }
@@ -70,6 +70,7 @@ public class InterfazGaraje {
                     break;
 
                 case 4:
+                    // cerramos session directamente al salir de programa
                     System.out.println("Sesion Finalizada. Saludos.");
                     System.exit(0);
                     garaje = null;

@@ -2,30 +2,20 @@ package Vehiculos;
 
 public class Moto extends Vehiculo {
 
+    private static final int cantidadRuedasMoto = 2;
     private int cilindrada;
 
-    public Moto(int cantidadRuedas, Double montoCobrar, Double kilometraje, String patente, String marca,
+    public Moto(int cantidadRuedasTrabajadas, Double montoCobrar, Double kilometraje,
+            String patente, String marca,
             int cilindrada) {
         // herencia
-        super(cantidadRuedas, montoCobrar, kilometraje, patente, marca);
+        super(cantidadRuedasMoto, cantidadRuedasTrabajadas, montoCobrar, kilometraje, patente, marca);
         this.cilindrada = cilindrada;
     }
 
     // constructor vacio
     public Moto() {
 
-    }
-
-    @Override
-    public String toString() {
-        return "Moto{" +
-                "marca=' " + this.getMarca() + '\'' +
-                ", cantidad_puertas=" + this.getCilindrada() +
-                ", cantidadRuedas=" + this.getCantidadRuedas() +
-                ", montoCobrar=" + this.getMontoCobrar() +
-                ", kilometraje=" + this.getKilometraje() +
-                ", patente='" + this.getPatente() + '\'' +
-                '}';
     }
 
     public int getCilindrada() {
@@ -35,4 +25,18 @@ public class Moto extends Vehiculo {
     public void setCilindrada(int cilindrada) {
         this.cilindrada = cilindrada;
     }
+    
+    @Override
+    public String toString() {
+        return "Moto {" +
+               "\n   Marca                : " + this.getMarca() +
+               "\n   Patente              : " + this.getPatente() +
+               "\n   Kilometraje          : " + String.format("%.2f", this.getKilometraje()) +
+               "\n   Monto a Cobrar       : $" + String.format("%.2f", this.getMontoCobrar()) +
+               "\n   Cantidad de Ruedas   : " + this.getCantidadRuedas() +
+               "\n   Ruedas Trabajadas    : " + this.getCantidadRuedasTrabajadas() +
+               "\n   Cilindrada           : " + this.getCilindrada() + " cc" +
+               "\n}";
+    }
+  
 }

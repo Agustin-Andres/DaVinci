@@ -7,21 +7,23 @@ public abstract class Vehiculo {
     private Double kilometraje;
     private String patente;
     private String marca;
+    private int cantidadRuedasTrabajadas;
 
-
-    //constructor vacio, no sera instanciada por ser abstracta.
-    public Vehiculo (){
+    // constructor vacio, no sera instanciada por ser abstracta.
+    public Vehiculo() {
 
     }
-    //para aplicar herencia
-    public Vehiculo (int cantidadRuedas, Double montoCobrar, Double kilometraje,String patente, String marca ){
+
+    // para aplicar herencia
+    public Vehiculo(int cantidadRuedas, int cantidadRuedasTrabajadas, Double montoCobrar, Double kilometraje,
+            String patente, String marca) {
         this.cantidadRuedas = cantidadRuedas;
         this.montoCobrar = montoCobrar;
         this.kilometraje = kilometraje;
         this.patente = patente;
         this.marca = marca;
+        this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
     }
-
 
     public int getCantidadRuedas() {
         return this.cantidadRuedas;
@@ -61,6 +63,14 @@ public abstract class Vehiculo {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public int getCantidadRuedasTrabajadas() {
+        return this.cantidadRuedasTrabajadas;
+    }
+
+    public void setCantidadRuedasTrabajadas(int cantidadRuedasTrabajadas) {
+        this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
     }
 
     public abstract String toString();

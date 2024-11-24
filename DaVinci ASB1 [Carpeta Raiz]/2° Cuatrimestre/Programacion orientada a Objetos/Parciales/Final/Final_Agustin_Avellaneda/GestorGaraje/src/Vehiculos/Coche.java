@@ -1,42 +1,45 @@
 package Vehiculos;
 
-//clase hija de 
+//clase hija de vehiculo
 public class Coche extends Vehiculo {
 
-    private int cantidad_puertas;
+    // constante estableciendo que cada coche tiene 4 ruedas a trabajar
+    private static final int cantidadRuedasCoche = 4;
+    private int cantidadPuertas;
 
-    public Coche(int cantidadRuedas, Double montoCobrar, Double kilometraje, String patente, String marca,
-            int cantidad_puertas) {
-        // herencia
-        super(cantidadRuedas, montoCobrar, kilometraje, patente,marca);
-        this.cantidad_puertas = cantidad_puertas;
+    // por defecto todo coche tiene 4 ruedas, lo podemos pasar como constante
+    public Coche(int cantidadRuedasTrabajadas, Double montoCobrar, Double kilometraje, String patente, String marca,
+            int cantidadPuertas) {
+
+        // pasamos la cantidad de ruedas
+        super(cantidadRuedasCoche, cantidadRuedasTrabajadas, montoCobrar, kilometraje, patente, marca);
+        this.cantidadPuertas = cantidadPuertas;
     }
 
-    // constructor vacio
+    // constructor estableciendo el valor defecto por cantidad de ruedas
     public Coche() {
+        this.setCantidadRuedas(cantidadRuedasCoche);
+    }
 
+    public int getCantidadPuertas() {
+        return this.cantidadPuertas;
+    }
+
+    public void setCantidadPuertas(int cantidadPuertas) {
+        this.cantidadPuertas = cantidadPuertas;
     }
 
     @Override
     public String toString() {
-        return "Coche{" +
-                "marca='" + this.getMarca() + '\'' +
-                ", cantidad_puertas=" + this.cantidad_puertas +
-                ", cantidadRuedas=" + this.getCantidadRuedas() +
-                ", montoCobrar=" + this.getMontoCobrar() +
-                ", kilometraje=" + this.getKilometraje() +
-                ", patente='" + this.getPatente() + '\'' +
-                '}';
-    }
-    
-
-
-    public int getCantidad_puertas() {
-        return this.cantidad_puertas;
-    }
-
-    public void setCantidad_puertas(int cantidad_puertas) {
-        this.cantidad_puertas = cantidad_puertas;
+        return "Coche {" +
+                "\n   Marca                : " + this.getMarca() +
+                "\n   Patente              : " + this.getPatente() +
+                "\n   Kilometraje          : " + String.format("%.2f", this.getKilometraje()) +
+                "\n   Monto a Cobrar       : $" + String.format("%.2f", this.getMontoCobrar()) +
+                "\n   Cantidad de Ruedas   : " + this.getCantidadRuedas() +
+                "\n   Ruedas Trabajadas    : " + this.getCantidadRuedasTrabajadas() +
+                "\n   Cantidad de Puertas  : " + this.getCantidadPuertas() +
+                "\n}";
     }
 
 }

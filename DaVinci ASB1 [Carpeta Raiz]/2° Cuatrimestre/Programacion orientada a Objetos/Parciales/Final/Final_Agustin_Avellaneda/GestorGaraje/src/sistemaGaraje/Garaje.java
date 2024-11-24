@@ -110,22 +110,35 @@ public class Garaje {
         sb.append(String.format("%-30s: %d\n", "Capacidad Actual", this.getCapacidadActual()));
         sb.append(String.format("%-30s: %d\n", "Capacidad Disponible", this.getCapacidadDisponible()));
         sb.append(String.format("%-30s: %b\n", "Capacidad Maxima alcanzada?", this.isCapacidadAlcanzada()));
-        sb.append("--------------------------------------------------\n");
-        sb.append("Vehiculos almacenados:\n");
-
-        if (vehiculos != null && !vehiculos.isEmpty()) {
-            sb.append(String.format("%-10s %-10s %-15s %-10s\n", "Tipo", "Marca", "Patente", "Kilometraje"));
-            sb.append("--------------------------------------------------\n");
-            for (Vehiculo v : vehiculos) {
-                String tipo = v instanceof Coche ? "Coche" : "Moto";
-                sb.append(String.format("%-10s %-10s %-15s %-10.2f\n",
-                        tipo, v.getMarca(), v.getPatente(), v.getKilometraje()));
-            }
-        } else {
-            sb.append("No hay vehiculos almacenados.\n");
-        }
-        sb.append("--------------------------------------------------");
+        sb.append("--------------------------------------------------\n\n");
 
         return sb.toString();
+    }
+
+    public void informacionVehiculos() {
+        StringBuilder sb = new StringBuilder();
+
+        if (vehiculos != null && !vehiculos.isEmpty()) {
+            System.out.println("*****************************************************************************");
+            System.out.println("                          Vehiculos en Garaje                            ");
+            System.out.println("*****************************************************************************");
+
+            // Cabecera
+            sb.append(String.format("%-10s %-15s %-15s %-15s %-15s\n",
+                    "Tipo", "Marca", "Patente", "Kilometraje", "Ruedas Trabajadas"));
+            sb.append("----------------------------------------------------------------------------------\n");
+
+            // filas
+            for (Vehiculo v : vehiculos) {
+                String tipo = v instanceof Coche ? "Coche" : "Moto";
+                sb.append(String.format("%-10s %-15s %-15s %-22.2f %-10d\n",
+                        tipo, v.getMarca(), v.getPatente(), v.getKilometraje(), v.getCantidadRuedasTrabajadas()));
+            }
+        } else {
+            sb.append("No hay vehículos almacenados.\n");
+        }
+        sb.append("----------------------------------------------------------------------------------\n");
+        System.out.println(sb.toString());
+
     }
 }
