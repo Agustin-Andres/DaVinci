@@ -1,46 +1,82 @@
 package sistemaGaraje;
 
+import Vehiculos.Coche;
 import Vehiculos.Vehiculo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Garaje {
-    private Double precio_cambio_rueda;
-    private int capacidad_maxima;
-    private int capacidad_actual;
+    private Double precioCambioRueda;
+    private int capacidadMaxima;
+    // capacidadActual muestra la diferencia entre la cantidad de vehiculos y la
+    // capacidad maxima
+    private int capacidadActual;
+    private int capacidadDisponible;
+    private boolean capacidadAlcanzada;
+
     private List<Vehiculo> vehiculos;
 
-    public Garaje(Double precio_cambio_rueda, int capacidad_maxima, int capacidad_actual) {
-        this.precio_cambio_rueda = precio_cambio_rueda;
-        this.capacidad_maxima = capacidad_maxima;
-        this.capacidad_actual = capacidad_actual; //vemos cuanta disponibiliada hay 
+    // constructor para opcion por defecto populado por el sistema
+    public Garaje(Double precioCambioRueda, int capacidadMaxima, int capacidadActual, int capacidadDisponible) {
+        this.precioCambioRueda = precioCambioRueda;
+        this.capacidadMaxima = capacidadMaxima;
+        this.capacidadActual = capacidadActual; // vemos cuanta disponibiliada hay
         // lo populamos en el main
         this.vehiculos = new ArrayList<>();
     }
 
-    public Double getPrecio_cambio_rueda() {
-        return this.precio_cambio_rueda;
+    // constructor para opcion de nueva sesion por el user
+    public Garaje(Double precioCambioRueda, int capacidadMaxima) {
+        this.precioCambioRueda = precioCambioRueda;
+        this.capacidadMaxima = capacidadMaxima;
+        // lo populamos desde la interfaz
+        this.vehiculos = new ArrayList<>();
     }
 
-    public void setPrecio_cambio_rueda(Double precio_cambio_rueda) {
-        this.precio_cambio_rueda = precio_cambio_rueda;
+    // por defecto, no tiene la capacidad alcanzada
+    public Garaje() {
+        this.setCapacidadAlcanzada(false);
     }
 
-    public int getCapacidad_maxima() {
-        return this.capacidad_maxima;
+    public Double getPrecioCambioRueda() {
+        return this.precioCambioRueda;
     }
 
-    public void setCapacidad_maxima(int capacidad_maxima) {
-        this.capacidad_maxima = capacidad_maxima;
+    public void setPrecioCambioRueda(Double precioCambioRueda) {
+        this.precioCambioRueda = precioCambioRueda;
     }
 
-    public int getCapacidad_actual() {
-        return this.capacidad_actual;
+    public int getCapacidadMaxima() {
+        return this.capacidadMaxima;
     }
 
-    public void setCapacidad_actual(int capacidad_actual) {
-        this.capacidad_actual = capacidad_actual;
+    public void setCapacidadMaxima(int capacidadMaxima) {
+        this.capacidadMaxima = capacidadMaxima;
+    }
+
+    public int getCapacidadActual() {
+        return this.capacidadActual;
+    }
+
+    public int getCapacidadDisponible() {
+        return this.capacidadDisponible;
+    }
+
+    public void setCapacidadDisponible(int capacidadDisponible) {
+        this.capacidadDisponible = capacidadDisponible;
+    }
+
+    public boolean isCapacidadAlcanzada() {
+        return this.capacidadAlcanzada;
+    }
+
+    public void setCapacidadAlcanzada(boolean capacidadAlcanzada) {
+        this.capacidadAlcanzada = capacidadAlcanzada;
+    }
+
+    public void setCapacidadActual(int capacidadActual) {
+        this.capacidadActual = capacidadActual;
     }
 
     public List<Vehiculo> getVehiculos() {
@@ -50,8 +86,46 @@ public class Garaje {
     public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
     }
-    // cant vehiculos almacenados
 
-    public Garaje() {
+    // toString
+    @Override
+    public String toString() {
+        return "-----------------------------------------------\n" +
+                "Informacion de Garaje\n" +
+                "\nPrecio del Cambio de rueda:\t$" + this.getPrecioCambioRueda() +
+                "\nCapacidad Maxima de garaje:\t" + this.getCapacidadMaxima() +
+                "\nCapacidad Actual:   \t" + this.getCapacidadActual() +
+                "\nCapacidad Disponible    :\t" + this.getCapacidadDisponible() +
+                "\nCapacidad Maxima alcanzada?\t" + this.isCapacidadAlcanzada() +
+                "\nVehiculos almacenados: \n " + (vehiculos != null ? this.vehiculos.toString() : "[]");
+    }
+
+    public String toStringCompleto() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("--------------------------------------------------\n");
+        sb.append("               Informacion de Garaje              \n");
+        sb.append("--------------------------------------------------\n");
+        sb.append(String.format("%-30s: $%.2f\n", "Precio del Cambio de rueda", this.getPrecioCambioRueda()));
+        sb.append(String.format("%-30s: %d\n", "Capacidad Maxima de garaje", this.getCapacidadMaxima()));
+        sb.append(String.format("%-30s: %d\n", "Capacidad Actual", this.getCapacidadActual()));
+        sb.append(String.format("%-30s: %d\n", "Capacidad Disponible", this.getCapacidadDisponible()));
+        sb.append(String.format("%-30s: %b\n", "Capacidad Maxima alcanzada?", this.isCapacidadAlcanzada()));
+        sb.append("--------------------------------------------------\n");
+        sb.append("Vehiculos almacenados:\n");
+
+        if (vehiculos != null && !vehiculos.isEmpty()) {
+            sb.append(String.format("%-10s %-10s %-15s %-10s\n", "Tipo", "Marca", "Patente", "Kilometraje"));
+            sb.append("--------------------------------------------------\n");
+            for (Vehiculo v : vehiculos) {
+                String tipo = v instanceof Coche ? "Coche" : "Moto";
+                sb.append(String.format("%-10s %-10s %-15s %-10.2f\n",
+                        tipo, v.getMarca(), v.getPatente(), v.getKilometraje()));
+            }
+        } else {
+            sb.append("No hay vehiculos almacenados.\n");
+        }
+        sb.append("--------------------------------------------------");
+
+        return sb.toString();
     }
 }

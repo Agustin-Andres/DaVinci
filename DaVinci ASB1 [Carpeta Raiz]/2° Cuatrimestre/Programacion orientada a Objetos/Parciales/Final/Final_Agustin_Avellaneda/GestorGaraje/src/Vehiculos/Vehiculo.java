@@ -2,8 +2,8 @@ package Vehiculos;
 
 public abstract class Vehiculo {
 
-    private int cantidad_ruedas;
-    private Double monto_cobrar;
+    private int cantidadRuedas;
+    private Double montoCobrar;
     private Double kilometraje;
     private String patente;
     private String marca;
@@ -14,29 +14,29 @@ public abstract class Vehiculo {
 
     }
     //para aplicar herencia
-    public Vehiculo (int cantidad_ruedas, Double monto_cobrar, Double kilometraje,String patente, String marca ){
-        this.cantidad_ruedas = cantidad_ruedas;
-        this.monto_cobrar = monto_cobrar;
+    public Vehiculo (int cantidadRuedas, Double montoCobrar, Double kilometraje,String patente, String marca ){
+        this.cantidadRuedas = cantidadRuedas;
+        this.montoCobrar = montoCobrar;
         this.kilometraje = kilometraje;
         this.patente = patente;
         this.marca = marca;
     }
 
 
-    public int getCantidad_ruedas() {
-        return this.cantidad_ruedas;
+    public int getCantidadRuedas() {
+        return this.cantidadRuedas;
     }
 
-    public void setCantidad_ruedas(int cantidad_ruedas) {
-        this.cantidad_ruedas = cantidad_ruedas;
+    public void setCantidadRuedas(int cantidadRuedas) {
+        this.cantidadRuedas = cantidadRuedas;
     }
 
-    public Double getMonto_cobrar() {
-        return this.monto_cobrar;
+    public Double getMontoCobrar() {
+        return this.montoCobrar;
     }
 
-    public void setMonto_cobrar(Double monto_cobrar) {
-        this.monto_cobrar = monto_cobrar;
+    public void setmontoCobrar(Double montoCobrar) {
+        this.montoCobrar = montoCobrar;
     }
 
     public Double getKilometraje() {
