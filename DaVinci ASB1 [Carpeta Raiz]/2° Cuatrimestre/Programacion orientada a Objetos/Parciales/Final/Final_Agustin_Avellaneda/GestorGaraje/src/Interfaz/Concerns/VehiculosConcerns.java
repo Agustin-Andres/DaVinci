@@ -1,11 +1,13 @@
-package utilities;
+package Interfaz.Concerns;
 
 import java.util.List;
 import java.util.Scanner;
 
 import Vehiculos.Vehiculo;
 
-public class ValidadorVehiculo {
+//clase para llevar las
+
+public class VehiculosConcerns {
 
     private static final int cantidadRuedasCoche = 4;
     private static final int cantidadRuedasMoto = 2;
@@ -97,20 +99,41 @@ public class ValidadorVehiculo {
 
     }
 
-    // validador de booleano necesitamos un si o no [true | false]
-    public static boolean validadorBooleanoConfirmacion(Scanner sc) {
-        // iteramos hasta recibir un dato valido
+    // busqueda avanzada - se reutiliza este codigo para el update, delete
+    public static Vehiculo busquedaAvanzada(List<Vehiculo> vehiculos, Scanner sc) {
+        System.out.print("> La búsqueda avanzada es por PATENTE. Ingrese la patente del vehículo a buscar\n> ");
+
         while (true) {
-            String opcion = sc.nextLine().toLowerCase().trim();
-            opcion = opcion.substring(0);
-            char primeraLetra = opcion.charAt(0);
-            if (primeraLetra == 's' || primeraLetra == 'n') {
-                // retornamos el valor en el caso de que opcion contenga un valor valido
-                return primeraLetra == 'n' ? false : true;
-            } else {
-                System.out.print("Por favor ingrese un valor valido [ si | no ]");
+            String patente = sc.nextLine().trim();
+
+            // iteramos hasta encotnrar la patente
+            Vehiculo vehiculoEncontrado = null;
+            for (Vehiculo v : vehiculos) {
+                if (v.getPatente().equalsIgnoreCase(patente)) {
+                    vehiculoEncontrado = v;
+                    break;
+                }
             }
 
+            // Evaluamos si se encuentra el vehiculo o no
+            if (vehiculoEncontrado != null) {
+                System.out.println("\nVehículo encontrado:");
+                System.out.println(vehiculoEncontrado); // Usa toString() del objeto
+                return vehiculoEncontrado;
+            } else {
+                // No se encontró el vehículo
+                System.out
+                        .print("No se encuentra un Vehículo con esa patente. ¿Desea buscar nuevamente? [si | no]\n> ");
+                String busquedaNueva = sc.nextLine().trim().toLowerCase();
+
+                if (busquedaNueva.contains("n")) {
+                    System.out.println("Volviendo al menú Vehículo...");
+                    return null; // retornamos null si no se desea continuar
+                } else {
+                    System.out.print("Ingrese otra patente a buscar\n> ");
+                }
+            }
         }
     }
+
 }

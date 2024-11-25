@@ -10,6 +10,8 @@ public abstract class Vehiculo {
     private String marca;
     private int cantidadRuedasTrabajadas;
     private int cantidadRuedasATrabajar;
+    private boolean fueCobrado;
+    private Double montoCobrado; // se settea en clases hijas
 
     // constructor vacio, no sera instanciada por ser abstracta.
     public Vehiculo() {
@@ -18,13 +20,15 @@ public abstract class Vehiculo {
 
     // para aplicar herencia
     public Vehiculo(int cantidadRuedas, int cantidadRuedasTrabajadas, Double kilometraje,
-            String patente, String marca, int cantidadRuedasATrabajar) {
+            String patente, String marca, int cantidadRuedasATrabajar, boolean fueCobrado) {
         this.cantidadRuedas = cantidadRuedas;
         this.kilometraje = kilometraje;
         this.patente = patente;
         this.marca = marca;
         this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
         this.cantidadRuedasATrabajar = cantidadRuedasATrabajar;
+        this.montoCobrado = montoCobrado;
+        this.fueCobrado = fueCobrado;
     }
 
     public int getCantidadRuedas() {
@@ -91,6 +95,22 @@ public abstract class Vehiculo {
         this.cotizacion = cotizacion;
     }
 
+    public boolean isFueCobrado() {
+        return this.fueCobrado;
+    }
+
+    public void setFueCobrado(boolean fueCobrado) {
+        this.fueCobrado = fueCobrado;
+    }
+
+    public Double getMontoCobrado() {
+        return this.montoCobrado;
+    }
+
+    public void setMontoCobrado(Double montoCobrado) {
+        this.montoCobrado = montoCobrado;
+    }
+
     public void calcularMontoACobrar(Double precioDiario) {
     };
 
@@ -100,5 +120,6 @@ public abstract class Vehiculo {
     public void agregarCostoAdicional(Double montoAdicional) {
     };
 
+    public void calcularSiFueCobrado(Double montoAdicional){};
     public abstract String toString();
 }

@@ -123,22 +123,23 @@ public class Garaje {
             System.out.println("                          Vehiculos en Garaje                            ");
             System.out.println("*****************************************************************************");
 
-            // Cabecera
-            sb.append(String.format("%-10s %-15s %-15s %-15s %-15s\n",
-                    "Tipo", "Marca", "Patente", "Kilometraje", "Ruedas Trabajadas"));
+            // Cabecera (todos los formatos deben estar bien definidos)
+            sb.append(String.format("%-10s %-15s %-15s %-15s %-15s %-15s %-15s\n",
+                    "Tipo", "Marca", "Patente", "Kilometraje", "Ruedas Trabajadas", "Fue Cobrado?", "Monto Cobrado"));
             sb.append("----------------------------------------------------------------------------------\n");
 
-            // filas
+            // Filas
             for (Vehiculo v : vehiculos) {
                 String tipo = v instanceof Coche ? "Coche" : "Moto";
-                sb.append(String.format("%-10s %-15s %-15s %-22.2f %-10d\n",
-                        tipo, v.getMarca(), v.getPatente(), v.getKilometraje(), v.getCantidadRuedasTrabajadas()));
+                sb.append(String.format("%-10s %-15s %-15s %-15.2f %-15d %-15s %-15.2f\n",
+                        tipo, v.getMarca(), v.getPatente(), v.getKilometraje(), v.getCantidadRuedasTrabajadas(),
+                        v.isFueCobrado() ? "Si" : "No", v.getMontoCobrado()));
             }
         } else {
             sb.append("No hay vehículos almacenados.\n");
         }
         sb.append("----------------------------------------------------------------------------------\n");
         System.out.println(sb.toString());
-
     }
+
 }

@@ -3,6 +3,9 @@ package Interfaz;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.text.Utilities;
+
+import Interfaz.Concerns.VehiculosConcerns;
 import Vehiculos.Coche;
 import Vehiculos.Moto;
 import Vehiculos.Vehiculo;
@@ -29,17 +32,19 @@ public class InterfazVehiculo {
                     // Listar todos los vehiculos
                     listarVehiculos(vehiculos);
                     break;
+
                 case 2:
                     // Listar todos los vehiculos
                     listarCoches(vehiculos);
                     break;
+
                 case 3:
                     // Listar todos los vehiculos
                     listarMotos(vehiculos);
                     break;
+
                 case 4:
-                    // Listar todos los vehiculos
-                    Vehiculo vehiculoBuscado = busquedaAvanzada(vehiculos, sc);
+                    Vehiculo vehiculoBuscado = VehiculosConcerns.busquedaAvanzada(vehiculos, sc);
 
                     // mostramos el toString dependiendo de que es
                     if (vehiculoBuscado instanceof Coche) {
@@ -50,7 +55,6 @@ public class InterfazVehiculo {
                         Moto motoEncontrada = (Moto) vehiculoBuscado;
                         System.out.println("Es una Moto: " + motoEncontrada.getMarca());
                     }
-
                     break;
 
                 case 5:
@@ -63,6 +67,10 @@ public class InterfazVehiculo {
                     } else {
                         System.out.println("Ya se ha alcanzado la capacidad maxima");
                     }
+                    break;
+
+                case 6:
+                    // actualizacion de
                     break;
                 case 8:
                     System.out.println("Volviendo a Gestion de Garaje");
@@ -188,43 +196,6 @@ public class InterfazVehiculo {
         System.out.println(sb.toString());
     }
 
-    // busqueda avanzada - se reutiliza este codigo para el update, delete
-    private static Vehiculo busquedaAvanzada(List<Vehiculo> vehiculos, Scanner sc) {
-        System.out.print("> La búsqueda avanzada es por PATENTE. Ingrese la patente del vehículo a buscar\n> ");
-
-        while (true) {
-            String patente = sc.nextLine().trim();
-
-            // iteramos hasta encotnrar la patente
-            Vehiculo vehiculoEncontrado = null;
-            for (Vehiculo v : vehiculos) {
-                if (v.getPatente().equalsIgnoreCase(patente)) {
-                    vehiculoEncontrado = v;
-                    break;
-                }
-            }
-
-            // Evaluamos si se encuentra el vehiculo o no
-            if (vehiculoEncontrado != null) {
-                System.out.println("\nVehículo encontrado:");
-                System.out.println(vehiculoEncontrado); // Usa toString() del objeto
-                return vehiculoEncontrado;
-            } else {
-                // No se encontró el vehículo
-                System.out
-                        .print("No se encuentra un Vehículo con esa patente. ¿Desea buscar nuevamente? [si | no]\n> ");
-                String busquedaNueva = sc.nextLine().trim().toLowerCase();
-
-                if (busquedaNueva.contains("n")) {
-                    System.out.println("Volviendo al menú Vehículo...");
-                    return null; // retornamos null si no se desea continuar
-                } else {
-                    System.out.print("Ingrese otra patente a buscar\n> ");
-                }
-            }
-        }
-    }
-
     // createeeeee
     // para creacion de objeto vehiculo / sea moto o coche --- llama metodos
     private static List<Vehiculo> ingresoVehiculo(List<Vehiculo> vehiculos, Scanner sc, boolean isCapacidadAlcanzada,
@@ -299,11 +270,14 @@ public class InterfazVehiculo {
             System.out.print("\nIngrese el cilindraje de la moto \n> ");
             int cilindrada = ValidadorNumeros.validarEntero(sc);
 
+            System.out.println("El titular ya abono de forma anticipada?");
+            boolean fueCobrado = ValidadorVehiculo.validadorBooleanoConfirmacion(sc);
+
             // Validacionnes
             // validamos algunas restricciones logicas de ruedas
             if (!ValidadorVehiculo.validarRuedasMoto(cantidadDeRuedasTrabajadas, cantidadDeRuedasATrabajar)) {
                 // dejamos vacio porque los mensajes estan en validacioRuedasMoto dentro de
-                // utilities.
+                // concerns.
             } else if (kilometraje < 0) {
                 System.out.println("#Error en carga de datos: El kilometraje no puede ser un numero negativo");
                 System.out.println("\t> Reiniciando la carga de datos...\n");
@@ -312,7 +286,7 @@ public class InterfazVehiculo {
                 System.out.println("#Error en carga de datos: El Cilindraje no puede ser un numero negativo");
                 System.out.println("\t> Reiniciando la carga de datos...\n");
 
-            } else if (!ValidadorVehiculo.validarPatente(vehiculos, patente) || patente == null || patente.equals("")) {
+            } else if (!VehiculosConcerns.validarPatente(vehiculos, patente) || patente == null || patente.equals("")) {
                 System.out.println("#Error en carga de datos: La patente es invalida.");
                 System.out.println("\t> Reiniciando la carga de datos...\n");
 
@@ -321,18 +295,18 @@ public class InterfazVehiculo {
                 System.out.println("\t> Reiniciando la carga de datos...\n");
 
             } else {
-                // datos son validos, instanciamos moto y solicitamos confirmacion para ingresar
-                // la moto
-                motoAIngresar = new Moto(cantidadDeRuedasATrabajar, cantidadDeRuedasTrabajadas, kilometraje,
-                        patente, marca, cilindrada, precioDiario);
+
+                // creamos la instancia con los datos validos
+                motoAIngresar = new Moto(cantidadDeRuedasATrabajar, cantidadDeRuedasTrabajadas, kilometraje, patente,
+                        marca, cilindrada, cilindrada, fueCobrado);
 
                 System.out.println("Los datos de la moto son:");
                 System.out.println(motoAIngresar);
 
+                // solicitamos confirmacion
                 System.out.print("\n> Confirma el ingreso de la moto? [ si | no ]\n> ");
-                String confirmacionIngreso = sc.nextLine().toLowerCase();
 
-                if (confirmacionIngreso.contains("s")) {
+                if (ValidadorVehiculo.validadorBooleanoConfirmacion(sc)) {
                     System.out.println("Moto almacenada exitosamente");
                     break;
                 } else {
@@ -372,11 +346,14 @@ public class InterfazVehiculo {
             System.out.print("\nIngrese el cilindraje de la moto \n> ");
             int cantidadPuertas = ValidadorNumeros.validarEntero(sc);
 
+            System.out.println("El titular ya abono de forma anticipada?");
+            boolean fueCobrado = ValidadorVehiculo.validadorBooleanoConfirmacion(sc);
+
             // Validacionnes
             // validamos algunas restricciones logicas de ruedas
-            if (!ValidadorVehiculo.validarRuedasCoche(cantidadDeRuedasTrabajadas, cantidadDeRuedasATrabajar)) {
+            if (!VehiculosConcerns.validarRuedasCoche(cantidadPuertas, cantidadPuertas)) {
                 // dejamos vacio porque los mensajes estan en validacioRuedasMoto dentro de
-                // utilities.
+                // concerns.
             } else if (kilometraje < 0) {
                 System.out.println("#Error en carga de datos: El kilometraje no puede ser un numero negativo");
                 System.out.println("\t> Reiniciando la carga de datos...\n");
@@ -395,18 +372,15 @@ public class InterfazVehiculo {
                 System.out.println("\t> Reiniciando la carga de datos...\n");
 
             } else {
-                // datos son validos, instanciamos moto y solicitamos confirmacion para ingresar
-                // la moto
+                // instanciamos el objeto con datos validos.
                 cocheAIngresar = new Coche(cantidadDeRuedasATrabajar, cantidadDeRuedasTrabajadas, kilometraje, patente,
-                        marca, cantidadPuertas, cantidadPuertas);
-
+                        marca, cantidadPuertas, cantidadPuertas, fueCobrado);
                 System.out.println("Los datos del coche son:");
                 System.out.println(cocheAIngresar);
 
+                // consultamos por confirmacion
                 System.out.print("\n> Confirma el ingreso del coche? [ si | no ]\n> ");
-                String confirmacionIngreso = sc.nextLine().toLowerCase();
-
-                if (confirmacionIngreso.contains("s")) {
+                if (ValidadorVehiculo.validadorBooleanoConfirmacion(sc)) {
                     System.out.println("Coche almacenado exitosamente");
                     break;
                 } else {
@@ -419,6 +393,10 @@ public class InterfazVehiculo {
 
     };
 
-    //update
+    // update
+    private static Vehiculo actualizarVehiculo() {
+
+        return null;
+    }
 
 }

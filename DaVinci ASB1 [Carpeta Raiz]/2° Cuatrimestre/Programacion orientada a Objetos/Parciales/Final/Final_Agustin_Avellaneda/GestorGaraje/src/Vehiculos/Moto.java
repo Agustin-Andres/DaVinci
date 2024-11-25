@@ -7,13 +7,15 @@ public class Moto extends Vehiculo {
 
     public Moto(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje,
             String patente, String marca,
-            int cilindrada, double precioDiario) {
+            int cilindrada, double precioDiario, boolean fueCobrado) {
         // herencia
-        super(cantidadRuedasMoto, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar);
+        super(cantidadRuedasMoto, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar,
+                fueCobrado);
         this.cilindrada = cilindrada;
 
         calcularMontoACobrar(precioDiario);
         calcularCotizacion(precioDiario);
+        calcularSiFueCobrado(precioDiario);
     }
 
     // constructor vacio
@@ -41,6 +43,8 @@ public class Moto extends Vehiculo {
                 "\n   Cotizacion           : $" + String.format("%.2f", this.getCotizacion()) +
                 "\n   Ruedas Trabajadas    : " + this.getCantidadRuedasTrabajadas() +
                 "\n   Monto a Cobrar       : $" + String.format("%.2f", this.getMontoCobrar()) +
+                "\n   Fue cobrado?         : " + this.isFueCobrado() + 
+                "\n   Monto Cobrado:       : $" + this.getMontoCobrado() +
                 "\n}";
     }
 
@@ -62,6 +66,17 @@ public class Moto extends Vehiculo {
     @Override
     public void agregarCostoAdicional(Double montoAdicional) {
         this.setmontoCobrar(this.getMontoCobrar() + montoAdicional);
+    }
+
+    // si fue cobrado el monto a cobrar es igual al monto cobrado y no se factura
+    @Override
+    public void calcularSiFueCobrado(Double precioDiario) {
+        if (this.isFueCobrado()) {
+            this.setMontoCobrado(this.getMontoCobrar());
+            this.setmontoCobrar(0.0);
+        } else {
+            this.setMontoCobrado(0.0);
+        }
     }
 
 }

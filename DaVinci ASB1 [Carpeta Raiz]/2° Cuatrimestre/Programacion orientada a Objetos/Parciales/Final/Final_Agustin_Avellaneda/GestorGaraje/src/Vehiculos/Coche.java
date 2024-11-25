@@ -10,15 +10,17 @@ public class Coche extends Vehiculo {
     // por defecto todo coche tiene 4 ruedas, lo podemos pasar como constante
     public Coche(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje, String patente,
             String marca,
-            int cantidadPuertas, double precioDiario) {
+            int cantidadPuertas, double precioDiario, boolean fueCobrado) {
 
         // pasamos la cantidad de ruedas
-        super(cantidadRuedasCoche, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar);
+        super(cantidadRuedasCoche, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar,
+                fueCobrado);
         this.cantidadPuertas = cantidadPuertas;
 
         // automaticamente se calcula segun el precio diario
         calcularMontoACobrar(precioDiario);
-        calcularCotizacion(kilometraje);
+        calcularCotizacion(precioDiario);
+        calcularSiFueCobrado(precioDiario);
     }
 
     // constructor estableciendo el valor defecto por cantidad de ruedas
@@ -43,10 +45,11 @@ public class Coche extends Vehiculo {
                 "\n   Kilometraje          : " + String.format("%.2f", this.getKilometraje()) +
                 "\n   Cantidad de Ruedas   : " + this.getCantidadRuedas() +
                 "\n   Ruedas a Trabajar    : " + this.getCantidadRuedasATrabajar() +
-                "\n   Cotizacion           : $" + String.format("%.2f", this.getCotizacion()) +
                 "\n   Ruedas Trabajadas    : " + this.getCantidadRuedasTrabajadas() +
+                "\n   Cotizacion           : $" + String.format("%.2f", this.getCotizacion()) +
                 "\n   Monto a Cobrar       : $" + String.format("%.2f", this.getMontoCobrar()) +
-
+                "\n   Fue cobrado?         : " + this.isFueCobrado() +
+                "\n   Monto Cobrado        : $" + String.format("%.2f", this.getMontoCobrado()) +
                 "\n}";
     }
 
@@ -68,6 +71,17 @@ public class Coche extends Vehiculo {
     @Override
     public void agregarCostoAdicional(Double montoAdicional) {
         this.setmontoCobrar(this.getMontoCobrar() + montoAdicional);
+    }
+
+    // si fue cobrado el monto a cobrar es igual al monto cobrado y no se factura
+    @Override
+    public void calcularSiFueCobrado(Double precioDiario) {
+        if (this.isFueCobrado()) {
+            this.setMontoCobrado(this.getMontoCobrar());
+            this.setmontoCobrar(0.0);
+        } else {
+            this.setMontoCobrado(0.0);
+        }
     }
 
 }
