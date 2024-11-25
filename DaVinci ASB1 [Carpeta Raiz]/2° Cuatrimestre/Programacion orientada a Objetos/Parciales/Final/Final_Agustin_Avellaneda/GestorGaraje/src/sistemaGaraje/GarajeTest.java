@@ -88,7 +88,7 @@ public class GarajeTest {
       // la interfaz tiene su propia gestion de una lista de vehiculos, segun la
       // disponibilidad adel garaje
       garaje.setVehiculos(InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc, garaje.isCapacidadAlcanzada(),
-            garaje.getCapacidadDisponible()));
+            garaje.getCapacidadDisponible(), garaje.getPrecioCambioRueda()));
 
       return garaje;
    }
