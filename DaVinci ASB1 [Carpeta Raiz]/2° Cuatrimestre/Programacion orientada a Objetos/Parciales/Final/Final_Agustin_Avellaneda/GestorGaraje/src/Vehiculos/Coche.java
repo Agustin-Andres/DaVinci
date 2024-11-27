@@ -4,28 +4,39 @@ package Vehiculos;
 public class Coche extends Vehiculo {
 
     // constante estableciendo que cada coche tiene 4 ruedas a trabajar
-    private static final int cantidadRuedasCoche = 4;
-    private int cantidadPuertas;
+    private static final int CANTIDAD_DE_RUEDAS_COCHE = 4;
+
+    private int cantidadPuertas; // cantidad de puertas del vehiculo
 
     // por defecto todo coche tiene 4 ruedas, lo podemos pasar como constante
+    // CONSTRUCTOR PARA POPULAR
     public Coche(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje, String patente,
             String marca,
-            int cantidadPuertas, double precioDiario, boolean fueCobrado) {
+            int cantidadPuertas, double precioDiario, boolean fueParcialmenteCobrado, boolean fueTotalmenteCobrado) {
 
         // pasamos la cantidad de ruedas
-        super(cantidadRuedasCoche, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar,
-                fueCobrado);
+        super(CANTIDAD_DE_RUEDAS_COCHE, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar,
+                fueParcialmenteCobrado, fueTotalmenteCobrado);
         this.cantidadPuertas = cantidadPuertas;
 
-        // automaticamente se calcula segun el precio diario
         calcularMontoACobrar(precioDiario);
-        calcularCotizacion(precioDiario);
-        calcularSiFueCobrado(precioDiario);
+    }
+
+    // CONSTRUCTOR PARA CREACION DESDE INTERFAZ
+    public Coche(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje, String patente,
+            String marca,
+            int cantidadPuertas, double precioDiario) {
+
+        // pasamos la cantidad de ruedas
+        super(CANTIDAD_DE_RUEDAS_COCHE, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar);
+        this.cantidadPuertas = cantidadPuertas;
+
+        calcularMontoACobrar(precioDiario);
     }
 
     // constructor estableciendo el valor defecto por cantidad de ruedas
     public Coche() {
-        this.setCantidadRuedas(cantidadRuedasCoche);
+        this.setCantidadRuedas(CANTIDAD_DE_RUEDAS_COCHE);
     }
 
     public int getCantidadPuertas() {
@@ -39,17 +50,18 @@ public class Coche extends Vehiculo {
     @Override
     public String toString() {
         return "Coche {" +
-                "\n   Marca                : " + this.getMarca() +
-                "\n   Patente              : " + this.getPatente() +
-                "\n   Cantidad de Puertas  : " + this.getCantidadPuertas() +
-                "\n   Kilometraje          : " + String.format("%.2f", this.getKilometraje()) +
-                "\n   Cantidad de Ruedas   : " + this.getCantidadRuedas() +
-                "\n   Ruedas a Trabajar    : " + this.getCantidadRuedasATrabajar() +
-                "\n   Ruedas Trabajadas    : " + this.getCantidadRuedasTrabajadas() +
-                "\n   Cotizacion           : $" + String.format("%.2f", this.getCotizacion()) +
-                "\n   Monto a Cobrar       : $" + String.format("%.2f", this.getMontoCobrar()) +
-                "\n   Fue cobrado?         : " + this.isFueCobrado() +
-                "\n   Monto Cobrado        : $" + String.format("%.2f", this.getMontoCobrado()) +
+                "\n   Marca                     : " + this.getMarca() +
+                "\n   Patente                   : " + this.getPatente() +
+                "\n   Cantidad de Puertas       : " + this.getCantidadPuertas() +
+                "\n   Kilometraje               : " + String.format("%.2f", this.getKilometraje()) +
+                "\n   Cantidad de Ruedas        : " + this.getCantidadRuedas() +
+                "\n\n   Ruedas a Trabajar         : " + this.getCantidadRuedasATrabajar() +
+                "\n   Ruedas Trabajadas         : " + this.getCantidadRuedasTrabajadas() +
+                "\n   Fue Parcialmente cobrado? - " + this.isFueParcialmenteCobrado() +
+                "\n   Fue Totalmente cobrado?     " + this.isFueTotalmenteCobrado() +
+                "\n   Ruedas Pagas              : " + this.getCantidadRuedasPagas() +
+                "\n   Monto a Cobrar            : $" + String.format("%.2f", this.getMontoACobrar()) +
+                "\n   Monto Cobrado             : $" + String.format("%.2f", this.getMontoCobrado()) +
                 "\n}";
     }
 
@@ -57,31 +69,35 @@ public class Coche extends Vehiculo {
     // trabajadas.
     @Override
     public void calcularMontoACobrar(Double precioDiario) {
-        this.setmontoCobrar(this.getCantidadRuedasTrabajadas() * precioDiario);
+        // total de ruedas a trabajar/trabajadas
+        int totalRuedas = (this.getCantidadRuedasATrabajar() + this.getCantidadRuedasTrabajadas());
 
-    }
+        // si el pago es total
+        if (this.isFueTotalmenteCobrado()) {
+            // si fue totalmente pagado, seteamos el monto cobrado
+            this.setMontoCobrado(this.getCantidadRuedasTrabajadas() * precioDiario);
+            this.setMontoACobrar(0.0); // si pago totalmente, no queda nada para cobrar
 
-    // cotizacion por si el ingreso del vehiculo no ha sido trabjado
-    @Override
-    public void calcularCotizacion(Double precioDiario) {
-        this.setCotizacion(this.getCantidadRuedasATrabajar() * precioDiario);
+        } else if (this.isFueParcialmenteCobrado()) {
+
+            // si fue parcialmente pagado, calculamos el monto cobrado de las ruedas pagas
+            // y las ruedas a cobrar x precio diario
+            this.setMontoCobrado(this.getCantidadRuedasPagas() * precioDiario);
+            this.setMontoACobrar((totalRuedas - this.getCantidadRuedasPagas()) * precioDiario);
+
+        } else {
+            // si no pago ninguna rueda, le cobramos el monto total.
+            this.setMontoCobrado(0.0);
+            this.setMontoACobrar(totalRuedas * precioDiario);
+
+        }
+
     }
 
     // por si se quiere agregar algun costo adicional
     @Override
     public void agregarCostoAdicional(Double montoAdicional) {
-        this.setmontoCobrar(this.getMontoCobrar() + montoAdicional);
-    }
-
-    // si fue cobrado el monto a cobrar es igual al monto cobrado y no se factura
-    @Override
-    public void calcularSiFueCobrado(Double precioDiario) {
-        if (this.isFueCobrado()) {
-            this.setMontoCobrado(this.getMontoCobrar());
-            this.setmontoCobrar(0.0);
-        } else {
-            this.setMontoCobrado(0.0);
-        }
+        this.setMontoACobrar(this.getMontoACobrar() + montoAdicional);
     }
 
 }

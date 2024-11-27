@@ -1,86 +1,53 @@
 package Interfaz.Concerns;
 
+import Vehiculos.Vehiculo;
 import java.util.List;
 import java.util.Scanner;
-
-import Vehiculos.Vehiculo;
+import utilities.ValidadorNumeros;
 
 //clase para llevar las
 
 public class VehiculosConcerns {
 
-    private static final int cantidadRuedasCoche = 4;
-    private static final int cantidadRuedasMoto = 2;
+    // calculamos valores validos para cantidadDeRuedasTrabajadas y
+    // cantidadDeRuedasATrabajar se gun la cantidad de ruedas que tiene el vehiculo
+    public static boolean validarRuedasVehiculo(Vehiculo vehiculo, int cantidadDeRuedasTrabajadas,
+            int cantidadDeRuedasATrabajar) {
 
-    // metodo para validar las ruedas ingresadas, necesitamos datos validos para las
-    // ruedas a trabajar y trabajadas
-    public static boolean validarRuedasMoto(int cantidadDeRuedasTrabajadas, int cantidadDeRuedasATrabajar) {
-        // restriccion #1: No pueden ser valores negativosss
+        // se calcula el total de ruedas trabajadas y a trabajar
+        int totalRuedas = cantidadDeRuedasTrabajadas + cantidadDeRuedasATrabajar;
+
+        // #1 - No pueden ser valores negativos
         if (cantidadDeRuedasTrabajadas < 0 || cantidadDeRuedasATrabajar < 0) {
-            System.out.println("#Error en carga de datos: Los datos de ruedas no pueden ser negativos.");
+            System.out.println("#Error en carga de datos: Los valores de ruedas no pueden ser negativos.");
             return false;
         }
 
-        // restriccion #2: La suma no puede exceder las 2 ruedas de una moto
-        if (cantidadDeRuedasTrabajadas + cantidadDeRuedasATrabajar > cantidadRuedasMoto) {
+        // #2 - El total de ruedas no puede exceder el límite de un coche
+        if (totalRuedas > vehiculo.getCantidadRuedas()) {
             System.out.println(
-                    "#Error en carga de datos: La suma de ruedas trabajadas y ruedas a trabajar no puede exceder "
-                            + cantidadRuedasMoto + ".");
+                    "#Error en carga de datos: El total de ruedas a trabajar/trabajadas no puede exceder "
+                            + vehiculo.getCantidadRuedas() + ".");
             return false;
         }
 
-        // restriccion #2: Si todas las ruedas ya fueron trabajadas no pueden quedar
-        // ruedas para trabajar
-        if (cantidadDeRuedasTrabajadas == cantidadRuedasMoto && cantidadDeRuedasATrabajar > 0) {
+        // #3 - Si todas las ruedas ya fueron trabajadas, no puede haber
+        // ruedas a trabajar
+        if (cantidadDeRuedasTrabajadas == vehiculo.getCantidadRuedas() && cantidadDeRuedasATrabajar > 0) {
             System.out.println(
                     "#Error en carga de datos: No puede haber ruedas a trabajar si todas ya fueron trabajadas.");
             return false;
         }
 
-        // Restriccion #4 : coherencia
-        if (cantidadDeRuedasTrabajadas == 1 && cantidadDeRuedasATrabajar > 1) {
-            System.out.println(
-                    "#Error en carga de datos: Solo puede quedar una rueda a trabajar si ya hay una trabajada.");
+        // #4 - No puede haber mas ruedas a trabajar que las restantes
+        int ruedasRestantes = vehiculo.getCantidadRuedas() - cantidadDeRuedasTrabajadas;
+        if (cantidadDeRuedasATrabajar > ruedasRestantes) {
+            System.out.println("#Error en carga de datos: No puede haber mas ruedas a trabajar que las restantes ("
+                    + ruedasRestantes + ").");
             return false;
         }
 
-        // Si pasa todas las validaciones, es válido
-        return true;
-    }
-
-    // valiudador de ruedas de auto
-    public static boolean validarRuedasCoche(int cantidadDeRuedasTrabajadas, int cantidadDeRuedasATrabajar) {
-        // Restriccion #1 - no pueden ser valores negativos
-        if (cantidadDeRuedasTrabajadas < 0 || cantidadDeRuedasATrabajar < 0) {
-            System.out.println("#Error en carga de datos: Los valores no pueden ser negativos.");
-            return false;
-        }
-
-        // restriccion 2 - el total de las ruedas no puede exceder la constante ruedas
-        // de coche
-        if (cantidadDeRuedasTrabajadas + cantidadDeRuedasATrabajar > cantidadRuedasCoche) {
-            System.out.println(
-                    "#Error en carga de datos: La suma de ruedas trabajadas y ruedas a trabajar no puede exceder "
-                            + cantidadRuedasCoche + ".");
-            return false;
-        }
-
-        // Restriccion#3 - Si todas las ruedas ya fueron trabajadas, no pueden quedar
-        // ruedas por trabajar
-        if (cantidadDeRuedasTrabajadas == cantidadRuedasCoche && cantidadDeRuedasATrabajar > 0) {
-            System.out.println(
-                    "#Error en carga de datos: No puede haber ruedas a trabajar si todas ya fueron trabajadas.");
-            return false;
-        }
-
-        // Restriccion #4 logico
-        if (cantidadDeRuedasTrabajadas + cantidadDeRuedasATrabajar != cantidadDeRuedasATrabajar
-                && cantidadDeRuedasATrabajar > cantidadDeRuedasATrabajar - cantidadDeRuedasTrabajadas) {
-            System.out.println("#Error en carga de datos: No puede haber mas ruedas a trabajar que las restantes.");
-            return false;
-        }
-
-        // Si pasa todas las validaciones, es válido
+        // Si pasa todas las validaciones, es valido
         return true;
     }
 
@@ -117,23 +84,80 @@ public class VehiculosConcerns {
 
             // Evaluamos si se encuentra el vehiculo o no
             if (vehiculoEncontrado != null) {
-                System.out.println("\nVehículo encontrado:");
+                System.out.println("\nVehiculo encontrado:");
                 System.out.println(vehiculoEncontrado); // Usa toString() del objeto
                 return vehiculoEncontrado;
             } else {
                 // No se encontró el vehículo
                 System.out
-                        .print("No se encuentra un Vehículo con esa patente. ¿Desea buscar nuevamente? [si | no]\n> ");
+                        .print("No se encuentra un Vehiculo con esa patente. ¿Desea buscar nuevamente? [si | no]\n> ");
                 String busquedaNueva = sc.nextLine().trim().toLowerCase();
 
                 if (busquedaNueva.contains("n")) {
-                    System.out.println("Volviendo al menú Vehículo...");
+                    System.out.println("Volviendo al menú Vehiculo...");
                     return null; // retornamos null si no se desea continuar
                 } else {
                     System.out.print("Ingrese otra patente a buscar\n> ");
                 }
             }
         }
+    }
+
+    // aca evaluamos cuantas ruedas el titular del vehiculo pago, si fue parcial o
+    // no y setteamos todo
+    public static void cantidadDeRuedasPagas(Vehiculo vehiculo, Scanner sc, Double precioDiario, boolean pagoCliente) {
+
+        while (true && pagoCliente) {
+            // mostramos el mensaje segun el estado de las ruedas a trabajar y trabajadas
+            String mensajeATrabajar = vehiculo.getCantidadRuedasATrabajar() != 0
+                    ? "Las ruedas a trabajar son: " + vehiculo.getCantidadRuedasATrabajar()
+                    : "El vehículo no tiene ruedas a trabajar.";
+            System.out.println(mensajeATrabajar);
+
+            String mensajeTrabajadas = vehiculo.getCantidadRuedasTrabajadas() != 0
+                    ? "Las ruedas trabajadas son: " + vehiculo.getCantidadRuedasTrabajadas()
+                    : "El vehículo no tiene ruedas trabajadas.";
+            System.out.println(mensajeTrabajadas);
+
+            // Obtenemos la cantidad de ruedas que abono el cliente
+            System.out.print("Cuantas ruedas abono el cliente?\n> ");
+            int ruedasPagas = ValidadorNumeros.validarEntero(sc);
+
+            // Validamos las ruedas pagas
+            int totalRuedasPosibles = vehiculo.getCantidadRuedasATrabajar() + vehiculo.getCantidadRuedasTrabajadas();
+
+            if (ruedasPagas < 0) {
+                System.out.println(
+                        "#Error en carga de datos: La cantidad de ruedas pagas no puede ser un valor negativo.");
+
+            } else if (ruedasPagas > totalRuedasPosibles) {
+                System.out.println(
+                        "##Error en carga de datos: Las ruedas pagas no pueden exceder el total de ruedas trabajadas/a trabajar ("
+                                + totalRuedasPosibles + ").");
+            } else {
+
+                // setteamos cantidadRuedasPagas y llamamos al metodo interno para calcular:
+                // el monto a cobrar + el monto cobrado
+                vehiculo.setCantidadRuedasPagas(ruedasPagas);
+
+                if (ruedasPagas < totalRuedasPosibles) {
+                    // pago parcialmente las ruedas, calculamos el monto cobrado y monto a cobrar
+                    vehiculo.setFueParcialmenteCobrado(true);
+                    vehiculo.setFueTotalmenteCobrado(false);
+
+                } else if (ruedasPagas == totalRuedasPosibles) {
+                    // pago todas las ruedas a trabajar
+                    vehiculo.setFueParcialmenteCobrado(false);
+                    vehiculo.setFueTotalmenteCobrado(true);
+                }
+                vehiculo.calcularMontoACobrar(precioDiario);
+                return;
+            }
+        }
+        // si no abono totalmente o parcial
+        vehiculo.setFueParcialmenteCobrado(false);
+        vehiculo.setFueTotalmenteCobrado(false);
+
     }
 
 }

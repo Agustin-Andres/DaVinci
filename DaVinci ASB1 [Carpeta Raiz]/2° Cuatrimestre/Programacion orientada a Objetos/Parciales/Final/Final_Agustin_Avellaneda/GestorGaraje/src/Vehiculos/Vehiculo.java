@@ -2,33 +2,51 @@ package Vehiculos;
 
 public abstract class Vehiculo {
 
-    private int cantidadRuedas;
-    private Double montoCobrar; // se settea en las clases hijas.
-    private Double cotizacion; // se settea en clases hijas
+    private int cantidadRuedas; // cantidad de ruedas de vehiculo - constante en clase hija.
+    private int cantidadRuedasTrabajadas; // cantidad de ruedas trabajadas
+    private int cantidadRuedasATrabajar; // cantidad de ruedas a trabajar
+    private int cantidadRuedasPagas;// cantidad de ruedas que pago el titular
+
+    private Double montoACobrar; // se settea en las clases hijas. es el monto a cobrar
+    private Double montoCobrado; // se settea en clases hijas. Es el monto que se cobro, que pago
+
     private Double kilometraje;
+
     private String patente;
     private String marca;
-    private int cantidadRuedasTrabajadas;
-    private int cantidadRuedasATrabajar;
-    private boolean fueCobrado;
-    private Double montoCobrado; // se settea en clases hijas
+
+    private boolean fueParcialmenteCobrado; // para calcular metodos internos de cada objeto
+    private boolean fueTotalmenteCobrado; // para calcular metodos internos de cada objeto
 
     // constructor vacio, no sera instanciada por ser abstracta.
     public Vehiculo() {
 
     }
 
-    // para aplicar herencia
+    // Constructor para popular
     public Vehiculo(int cantidadRuedas, int cantidadRuedasTrabajadas, Double kilometraje,
-            String patente, String marca, int cantidadRuedasATrabajar, boolean fueCobrado) {
+            String patente, String marca, int cantidadRuedasATrabajar, boolean fueParcialmenteCobrado,
+            boolean fueTotalmenteCobrado) {
         this.cantidadRuedas = cantidadRuedas;
         this.kilometraje = kilometraje;
         this.patente = patente;
         this.marca = marca;
         this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
         this.cantidadRuedasATrabajar = cantidadRuedasATrabajar;
-        this.montoCobrado = montoCobrado;
-        this.fueCobrado = fueCobrado;
+        this.fueParcialmenteCobrado = fueParcialmenteCobrado;
+        this.fueTotalmenteCobrado = fueTotalmenteCobrado;
+    }
+
+    // constructor para creacion de Interfaz
+    public Vehiculo(int cantidadRuedas, int cantidadRuedasTrabajadas, Double kilometraje,
+            String patente, String marca, int cantidadRuedasATrabajar) {
+        this.cantidadRuedas = cantidadRuedas;
+        this.kilometraje = kilometraje;
+        this.patente = patente;
+        this.marca = marca;
+        this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
+        this.cantidadRuedasATrabajar = cantidadRuedasATrabajar;
+
     }
 
     public int getCantidadRuedas() {
@@ -39,12 +57,12 @@ public abstract class Vehiculo {
         this.cantidadRuedas = cantidadRuedas;
     }
 
-    public Double getMontoCobrar() {
-        return this.montoCobrar;
+    public Double getMontoACobrar() {
+        return this.montoACobrar;
     }
 
-    public void setmontoCobrar(Double montoCobrar) {
-        this.montoCobrar = montoCobrar;
+    public void setMontoACobrar(Double montoACobrar) {
+        this.montoACobrar = montoACobrar;
     }
 
     public Double getKilometraje() {
@@ -87,20 +105,28 @@ public abstract class Vehiculo {
         this.cantidadRuedasATrabajar = cantidadRuedasATrabajar;
     }
 
-    public Double getCotizacion() {
-        return this.cotizacion;
+    public int getCantidadRuedasPagas() {
+        return this.cantidadRuedasPagas;
     }
 
-    public void setCotizacion(Double cotizacion) {
-        this.cotizacion = cotizacion;
+    public void setCantidadRuedasPagas(int cantidadRuedasPagas) {
+        this.cantidadRuedasPagas = cantidadRuedasPagas;
     }
 
-    public boolean isFueCobrado() {
-        return this.fueCobrado;
+    public boolean isFueParcialmenteCobrado() {
+        return this.fueParcialmenteCobrado;
     }
 
-    public void setFueCobrado(boolean fueCobrado) {
-        this.fueCobrado = fueCobrado;
+    public void setFueParcialmenteCobrado(boolean fueParcialmenteCobrado) {
+        this.fueParcialmenteCobrado = fueParcialmenteCobrado;
+    }
+
+    public boolean isFueTotalmenteCobrado() {
+        return this.fueTotalmenteCobrado;
+    }
+
+    public void setFueTotalmenteCobrado(boolean fueTotalmenteCobrado) {
+        this.fueTotalmenteCobrado = fueTotalmenteCobrado;
     }
 
     public Double getMontoCobrado() {
@@ -111,15 +137,12 @@ public abstract class Vehiculo {
         this.montoCobrado = montoCobrado;
     }
 
+    // metodos que pertenecen al objeto
     public void calcularMontoACobrar(Double precioDiario) {
-    };
-
-    public void calcularCotizacion(Double precioDiario) {
     };
 
     public void agregarCostoAdicional(Double montoAdicional) {
     };
 
-    public void calcularSiFueCobrado(Double montoAdicional){};
     public abstract String toString();
 }

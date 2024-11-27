@@ -2,7 +2,6 @@ package sistemaGaraje;
 
 import Vehiculos.Coche;
 import Vehiculos.Vehiculo;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,7 +132,7 @@ public class Garaje {
                 String tipo = v instanceof Coche ? "Coche" : "Moto";
                 sb.append(String.format("%-10s %-15s %-15s %-15.2f %-15d %-15s %-15.2f\n",
                         tipo, v.getMarca(), v.getPatente(), v.getKilometraje(), v.getCantidadRuedasTrabajadas(),
-                        v.isFueCobrado() ? "Si" : "No", v.getMontoCobrado()));
+                        v.isFueTotalmenteCobrado() || v.isFueParcialmenteCobrado() ? "Si" : "No", v.getMontoCobrado()));
             }
         } else {
             sb.append("No hay vehículos almacenados.\n");
