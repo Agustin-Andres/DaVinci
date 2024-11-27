@@ -68,8 +68,8 @@ public class VehiculosConcerns {
 
     // busqueda avanzada - se reutiliza este codigo para el update, delete
     public static Vehiculo busquedaAvanzada(List<Vehiculo> vehiculos, Scanner sc) {
-        System.out.print("> La búsqueda avanzada es por PATENTE. Ingrese la patente del vehículo a buscar\n> ");
 
+        // iniciamos busqueda por patente
         while (true) {
             String patente = sc.nextLine().trim();
 
@@ -139,20 +139,26 @@ public class VehiculosConcerns {
                 // setteamos cantidadRuedasPagas y llamamos al metodo interno para calcular:
                 // el monto a cobrar + el monto cobrado
                 vehiculo.setCantidadRuedasPagas(ruedasPagas);
+                System.out.println("#########Ruedas pagas =" + vehiculo.getCantidadRuedasPagas());
 
                 if (ruedasPagas < totalRuedasPosibles) {
                     // pago parcialmente las ruedas, calculamos el monto cobrado y monto a cobrar
                     vehiculo.setFueParcialmenteCobrado(true);
                     vehiculo.setFueTotalmenteCobrado(false);
 
+                    return;
+
                 } else if (ruedasPagas == totalRuedasPosibles) {
-                    // pago todas las ruedas a trabajar
+                    // pago todas las ruedas a trabajar/trabajadas
                     vehiculo.setFueParcialmenteCobrado(false);
                     vehiculo.setFueTotalmenteCobrado(true);
+
+                    return;
+
                 }
-                vehiculo.calcularMontoACobrar(precioDiario);
-                return;
+
             }
+
         }
         // si no abono totalmente o parcial
         vehiculo.setFueParcialmenteCobrado(false);

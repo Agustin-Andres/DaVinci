@@ -1,6 +1,6 @@
 package Interfaz;
 
-import Interfaz.Concerns.VehiculosConcerns;
+import Interfaz.Concerns.*;
 import Vehiculos.Coche;
 import Vehiculos.Moto;
 import Vehiculos.Vehiculo;
@@ -31,31 +31,32 @@ public class InterfazVehiculo {
                     break;
 
                 case 2:
-                    // Listar todos los vehiculos
+                    // Listar todos los Coches
                     listarCoches(vehiculos);
                     break;
 
                 case 3:
-                    // Listar todos los vehiculos
+                    // Listar todos las Motos
                     listarMotos(vehiculos);
                     break;
 
                 case 4:
+                    System.out.print(
+                            "> La búsqueda avanzada es por PATENTE. Ingrese la patente del vehiculo a buscar\n> ");
+                    // Busqueda avanzada por patente READ
                     Vehiculo vehiculoBuscado = VehiculosConcerns.busquedaAvanzada(vehiculos, sc);
 
                     // mostramos el toString dependiendo de que es
-                    if (vehiculoBuscado instanceof Coche) {
-                        Coche cocheEncontrado = (Coche) vehiculoBuscado;
+                    if (vehiculoBuscado instanceof Coche cocheEncontrado) {
                         System.out.println("Es un Coche: " + cocheEncontrado.getMarca());
 
-                    } else if (vehiculoBuscado instanceof Moto) {
-                        Moto motoEncontrada = (Moto) vehiculoBuscado;
+                    } else if (vehiculoBuscado instanceof Moto motoEncontrada) {
                         System.out.println("Es una Moto: " + motoEncontrada.getMarca());
                     }
                     break;
 
                 case 5:
-
+                    // Ingreso de un vehiculo
                     // validamos que haya espacio para almacenar un vehiculo mas
                     if (capacidadDisponible != 0) {
                         vehiculos = ingresoVehiculo(vehiculos, sc, isCapacidadAlcanzada, capacidadDisponible,
@@ -67,7 +68,15 @@ public class InterfazVehiculo {
                     break;
 
                 case 6:
-                    // actualizacion de
+                    System.out.print("> Ingrese la patente del vehiculo a actualizar\n> ");
+                    // actualizacion de un vehiculo UPDATE
+                    Vehiculo vehiculoAcutalizar = VehiculosConcerns.busquedaAvanzada(vehiculos, sc);
+                    actualizarVehiculo(vehiculoAcutalizar, sc);
+                    break;
+
+                case 7:
+                    // Delete de vehiculo
+                    System.out.print("> Ingrese la patente del vehiculo a dar de baja\n> ");
                     break;
                 case 8:
                     System.out.println("Volviendo a Gestion de Garaje");
@@ -111,9 +120,12 @@ public class InterfazVehiculo {
         StringBuilder sb = new StringBuilder();
 
         if (vehiculos != null && !vehiculos.isEmpty()) {
-            System.out.println("*********************************************************************************************************************************************");
-            System.out.println("                                               Vehículos en Garaje                                                   ");
-            System.out.println("*********************************************************************************************************************************************");
+            System.out.println(
+                    "*********************************************************************************************************************************************");
+            System.out.println(
+                    "                                               Vehículos en Garaje                                                   ");
+            System.out.println(
+                    "*********************************************************************************************************************************************");
 
             // Cabecera
             sb.append(String.format("%-10s %-15s %-10s %-13s %-19s %-19s %-17s %-15s\n",
@@ -138,17 +150,21 @@ public class InterfazVehiculo {
         } else {
             sb.append("No hay vehiculos almacenados.\n");
         }
-        sb.append("-------------------------------------------------------------------------------------------------------------------------------------\n");
+        sb.append(
+                "-------------------------------------------------------------------------------------------------------------------------------------\n");
         System.out.println(sb.toString());
     }
 
     // Listado de coches - agrega la cantidad de puertas
     private static void listarCoches(List<Vehiculo> vehiculos) {
-        System.out.println("***********************************************************************************************************************************");
-        System.out.println("                                                      Coches en Garaje                                                             ");
-        System.out.println("***********************************************************************************************************************************");
+        System.out.println(
+                "***********************************************************************************************************************************");
+        System.out.println(
+                "                                                      Coches en Garaje                                                             ");
+        System.out.println(
+                "***********************************************************************************************************************************");
         StringBuilder sb = new StringBuilder();
-    
+
         if (vehiculos != null && !vehiculos.isEmpty()) {
             // Cabecera
             sb.append(String.format("%-15s %-10s %-10s %-15s %-20s %-20s %-15s %-15s\n",
@@ -156,7 +172,7 @@ public class InterfazVehiculo {
                     "Ruedas a Trabajar", "Monto Cobrado", "Monto a Cobrar"));
             sb.append(
                     "---------------------------------------------------------------------------------------------------------------------------------------\n");
-    
+
             // Filas
             for (Vehiculo v : vehiculos) {
                 if (v instanceof Coche) {
@@ -179,23 +195,26 @@ public class InterfazVehiculo {
                 "---------------------------------------------------------------------------------------------------------------------------------------\n");
         System.out.println(sb.toString());
     }
-    
 
     // Listado de motos - agrega la cilindrada
     private static void listarMotos(List<Vehiculo> vehiculos) {
 
         StringBuilder sb = new StringBuilder();
-    
+
         if (vehiculos != null && !vehiculos.isEmpty()) {
-            System.out.println("*********************************************************************************************************************************************");
-            System.out.println("                                                     Motos en Garaje                                                                         ");
-            System.out.println("*********************************************************************************************************************************************");
+            System.out.println(
+                    "*********************************************************************************************************************************************");
+            System.out.println(
+                    "                                                     Motos en Garaje                                                                         ");
+            System.out.println(
+                    "*********************************************************************************************************************************************");
             // Cabecera de la tabla
             sb.append(String.format("%-17s %-10s %-12s %-13s %-20s %-20s %-17s %-15s\n",
-                    "Marca", "Patente", "Cilindrada", "Kilometraje", "Ruedas Trabajadas", 
+                    "Marca", "Patente", "Cilindrada", "Kilometraje", "Ruedas Trabajadas",
                     "Ruedas a Trabajar", "Monto Cobrado", "Monto a Cobrar"));
-            sb.append("---------------------------------------------------------------------------------------------------------------------------------------------\n");
-    
+            sb.append(
+                    "---------------------------------------------------------------------------------------------------------------------------------------------\n");
+
             // Filas de la tabla
             for (Vehiculo v : vehiculos) {
                 if (v instanceof Moto) {
@@ -214,11 +233,10 @@ public class InterfazVehiculo {
         } else {
             sb.append("No hay motos almacenadas.\n");
         }
-        sb.append("---------------------------------------------------------------------------------------------------------------------------------------------\n");
+        sb.append(
+                "---------------------------------------------------------------------------------------------------------------------------------------------\n");
         System.out.println(sb.toString());
     }
-    
-    
 
     // createeeeee
     // para creacion de objeto vehiculo / sea moto o coche --- llama metodos
@@ -235,7 +253,6 @@ public class InterfazVehiculo {
                 return vehiculos;
             }
 
-            boolean seIngresounVehiculo = false;
             System.out.print("Desea ingresar un coche o una moto? [Coche | Moto | Volver]\n> ");
             String vehiculoAIngresar = sc.nextLine().toLowerCase();
 
@@ -243,15 +260,13 @@ public class InterfazVehiculo {
             if (vehiculoAIngresar.contains("m")) {
 
                 // agregamos la moto y descontamos de la disponibilidad
-                vehiculos.add(ingresoMoto(vehiculos, precioDiario, sc));
+                vehiculos.add(MotoConcerns.ingresoMoto(vehiculos, precioDiario, sc));
                 capacidadDisponible = capacidadDisponible - 1;
-                seIngresounVehiculo = !seIngresounVehiculo;
 
             } else if (vehiculoAIngresar.contains("c")) {
 
                 vehiculos.add(ingresoCoche(vehiculos, precioDiario, sc));
                 capacidadDisponible--;
-                seIngresounVehiculo = !seIngresounVehiculo;
 
             } else if (vehiculoAIngresar.substring(0, 1).contains("v")) {
 
@@ -266,85 +281,6 @@ public class InterfazVehiculo {
 
         return vehiculos;
     }
-
-    // metodo de ingreso moto para ingreso de vehiculo
-    private static Moto ingresoMoto(List<Vehiculo> vehiculos, Double precioDiario, Scanner sc) {
-
-        System.out.println("\n-- Iniciando Gestion de ingreso de una Moto --");
-        Moto motoAIngresar = new Moto();
-
-        // obtenemos los datos hasta que todos sean validos
-        while (true) {
-
-            System.out.print("\nIngrese las ruedas a trabajar \n> ");
-            int cantidadDeRuedasATrabajar = ValidadorNumeros.validarEntero(sc);
-
-            System.out.print("\nIngrese la cantidad de ruedas trabajadas \n> ");
-            int cantidadDeRuedasTrabajadas = ValidadorNumeros.validarEntero(sc);
-
-            System.out.print("\nIngrese la marca de la moto \n> ");
-            String marca = sc.nextLine().trim();
-
-            System.out.print("\nIngrese la patente de la moto \n> ");
-            String patente = sc.nextLine().trim();
-
-            System.out.print("\nIngrese el kilometraje de la moto \n> ");
-            Double kilometraje = ValidadorNumeros.validarFloat(sc);
-
-            System.out.print("\nIngrese el cilindraje de la moto \n> ");
-            int cilindrada = ValidadorNumeros.validarEntero(sc);
-
-            System.out.println("El titular ya abono de totalmente o parcialmente?");
-            boolean fueCobrado = ValidadorVehiculo.validadorBooleanoConfirmacion(sc);
-
-            VehiculosConcerns.cantidadDeRuedasPagas(motoAIngresar, sc, precioDiario, fueCobrado);
-
-            // Validacionnes
-            // validamos algunas restricciones logicas de ruedas
-            if (!VehiculosConcerns.validarRuedasVehiculo(motoAIngresar, cantidadDeRuedasTrabajadas,
-                    cantidadDeRuedasATrabajar)) {
-                // dejamos vacio porque los mensajes estan en validarRuedasVehiculo dentro de
-                // concerns.
-            } else if (kilometraje < 0) {
-                System.out.println("#Error en carga de datos: El kilometraje no puede ser un numero negativo");
-                System.out.println("\t> Reiniciando la carga de datos...\n");
-
-            } else if (cilindrada < 0) {
-                System.out.println("#Error en carga de datos: El Cilindraje no puede ser un numero negativo");
-                System.out.println("\t> Reiniciando la carga de datos...\n");
-
-            } else if (!VehiculosConcerns.validarPatente(vehiculos, patente) || patente == null || patente.equals("")) {
-                System.out.println("#Error en carga de datos: La patente es invalida.");
-                System.out.println("\t> Reiniciando la carga de datos...\n");
-
-            } else if (marca == null || marca.equals("")) {
-                System.out.println("#Error en carga de datos: La marca no puede estar vacia.");
-                System.out.println("\t> Reiniciando la carga de datos...\n");
-
-            } else {
-
-                // creamos el objeto con los datos validos
-                motoAIngresar = new Moto(cantidadDeRuedasATrabajar, cantidadDeRuedasTrabajadas, kilometraje, patente,
-                        marca, cilindrada, precioDiario);
-
-                System.out.println("Los datos de la moto son:");
-                System.out.println(motoAIngresar);
-
-                // solicitamos confirmacion
-                System.out.print("\n> Confirma el ingreso de la moto? [ si | no ]\n> ");
-
-                if (ValidadorVehiculo.validadorBooleanoConfirmacion(sc)) {
-                    System.out.println("Moto almacenada exitosamente");
-                    break;
-                } else {
-                    System.out.println("Reiniciando carga de datos de moto..\n");
-                }
-            }
-
-        }
-        return motoAIngresar;
-
-    };
 
     // metodo de ingreso de coche para ingreso de vehiculo
     private static Coche ingresoCoche(List<Vehiculo> vehiculos, Double precioDiario, Scanner sc) {
@@ -423,9 +359,9 @@ public class InterfazVehiculo {
     };
 
     // update
-    private static Vehiculo actualizarVehiculo() {
+    private static void actualizarVehiculo(Vehiculo vehiculo, Scanner sc) {
+        System.out.println("\n-- Iniciando Gestion de actualizacion de un vehiculo --");
 
-        return null;
     }
 
 }

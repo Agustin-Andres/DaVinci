@@ -20,13 +20,13 @@ public class Moto extends Vehiculo {
     // Constructor de interfaz
     public Moto(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje, String patente,
             String marca,
-            int cantidadPuertas, double precioDiario) {
+             int cilindrada,double precioDiario) {
 
         // pasamos la cantidad de ruedas
         super(CANTIDAD_DE_RUEDAS_MOTO, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar);
-        this.cilindrada = cilindrada;
 
-        calcularMontoACobrar(precioDiario);
+        this.setCilindrada(cilindrada);
+        this.calcularMontoACobrar(precioDiario);
     }
 
     // constructor vacio
@@ -81,7 +81,7 @@ public class Moto extends Vehiculo {
 
         } else {
             // si no pago ninguna rueda, le cobramos el monto total.
-            this.setMontoCobrado(0.0);
+             this.setMontoCobrado(0.0);
             this.setMontoACobrar(totalRuedas * precioDiario);
 
         }
