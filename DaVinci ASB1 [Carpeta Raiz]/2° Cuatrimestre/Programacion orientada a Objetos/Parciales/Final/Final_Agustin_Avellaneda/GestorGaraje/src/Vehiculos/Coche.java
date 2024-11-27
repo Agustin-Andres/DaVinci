@@ -10,12 +10,14 @@ public class Coche extends Vehiculo {
 
     // por defecto todo coche tiene 4 ruedas, lo podemos pasar como constante
     // CONSTRUCTOR PARA POPULAR
-    public Coche(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje, String patente,
+    public Coche(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, int cantidadRuedasPagas, Double kilometraje,
+            String patente,
             String marca,
             int cantidadPuertas, double precioDiario, boolean fueParcialmenteCobrado, boolean fueTotalmenteCobrado) {
 
         // pasamos la cantidad de ruedas
-        super(CANTIDAD_DE_RUEDAS_COCHE, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar,
+        super(CANTIDAD_DE_RUEDAS_COCHE, cantidadRuedasTrabajadas, cantidadRuedasPagas, kilometraje, patente, marca,
+                cantidadRuedasATrabajar,
                 fueParcialmenteCobrado, fueTotalmenteCobrado);
         this.cantidadPuertas = cantidadPuertas;
 

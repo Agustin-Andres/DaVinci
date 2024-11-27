@@ -24,15 +24,19 @@ public abstract class Vehiculo {
     }
 
     // Constructor para popular
-    public Vehiculo(int cantidadRuedas, int cantidadRuedasTrabajadas, Double kilometraje,
+    public Vehiculo(int cantidadRuedas, int cantidadRuedasTrabajadas, int cantidadRuedasPagas, Double kilometraje,
             String patente, String marca, int cantidadRuedasATrabajar, boolean fueParcialmenteCobrado,
             boolean fueTotalmenteCobrado) {
+
         this.cantidadRuedas = cantidadRuedas;
+        this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
+        this.cantidadRuedasPagas = cantidadRuedasPagas;
+        this.cantidadRuedasATrabajar = cantidadRuedasATrabajar;
+
         this.kilometraje = kilometraje;
         this.patente = patente;
         this.marca = marca;
-        this.cantidadRuedasTrabajadas = cantidadRuedasTrabajadas;
-        this.cantidadRuedasATrabajar = cantidadRuedasATrabajar;
+
         this.fueParcialmenteCobrado = fueParcialmenteCobrado;
         this.fueTotalmenteCobrado = fueTotalmenteCobrado;
     }

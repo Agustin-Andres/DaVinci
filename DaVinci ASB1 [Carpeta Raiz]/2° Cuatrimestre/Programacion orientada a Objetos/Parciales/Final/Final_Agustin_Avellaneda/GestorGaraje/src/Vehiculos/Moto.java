@@ -5,11 +5,12 @@ public class Moto extends Vehiculo {
     private static final int CANTIDAD_DE_RUEDAS_MOTO = 2;
     private int cilindrada;
 
-    public Moto(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje,
+    public Moto(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, int cantidadRuedasPagas, Double kilometraje,
             String patente, String marca,
             int cilindrada, double precioDiario, boolean fueParcialmenteCobrado, boolean fueTotalmenteCobrado) {
         // herencia
-        super(CANTIDAD_DE_RUEDAS_MOTO, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar,
+        super(CANTIDAD_DE_RUEDAS_MOTO, cantidadRuedasTrabajadas, cantidadRuedasPagas, kilometraje, patente, marca,
+                cantidadRuedasATrabajar,
                 fueParcialmenteCobrado, fueTotalmenteCobrado);
         this.cilindrada = cilindrada;
 
