@@ -109,13 +109,13 @@ public class VehiculosConcerns {
         while (true && pagoCliente) {
             // mostramos el mensaje segun el estado de las ruedas a trabajar y trabajadas
             String mensajeATrabajar = vehiculo.getCantidadRuedasATrabajar() != 0
-                    ? "Las ruedas a trabajar son: " + vehiculo.getCantidadRuedasATrabajar()
-                    : "El vehículo no tiene ruedas a trabajar.";
+                    ? "## Las ruedas a trabajar son: " + vehiculo.getCantidadRuedasATrabajar()
+                    : "## El vehículo no tiene ruedas a trabajar.";
             System.out.println(mensajeATrabajar);
 
             String mensajeTrabajadas = vehiculo.getCantidadRuedasTrabajadas() != 0
-                    ? "Las ruedas trabajadas son: " + vehiculo.getCantidadRuedasTrabajadas()
-                    : "El vehículo no tiene ruedas trabajadas.";
+                    ? " ## Las ruedas trabajadas son: " + vehiculo.getCantidadRuedasTrabajadas()
+                    : "## El vehículo no tiene ruedas trabajadas.";
             System.out.println(mensajeTrabajadas);
 
             // Obtenemos la cantidad de ruedas que abono el cliente

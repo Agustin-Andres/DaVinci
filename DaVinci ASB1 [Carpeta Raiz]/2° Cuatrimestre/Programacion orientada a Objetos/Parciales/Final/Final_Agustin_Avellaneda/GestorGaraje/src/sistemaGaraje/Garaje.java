@@ -8,7 +8,7 @@ import java.util.List;
 public class Garaje {
     private Double precioCambioRueda;
     private int capacidadMaxima;
-    
+
     // capacidadActual muestra la diferencia entre la cantidad de vehiculos y la
     // capacidad maxima
     private int capacidadActual;
@@ -36,6 +36,7 @@ public class Garaje {
 
     // por defecto, no tiene la capacidad alcanzada
     public Garaje() {
+        this.vehiculos = new ArrayList<>();
         this.setCapacidadAlcanzada(false);
     }
 
