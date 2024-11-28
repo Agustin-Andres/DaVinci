@@ -27,13 +27,11 @@ public class Coche extends Vehiculo {
     // CONSTRUCTOR PARA CREACION DESDE INTERFAZ
     public Coche(int cantidadRuedasATrabajar, int cantidadRuedasTrabajadas, Double kilometraje, String patente,
             String marca,
-            int cantidadPuertas, double precioDiario) {
+            int cantidadPuertas) {
 
         // pasamos la cantidad de ruedas
         super(CANTIDAD_DE_RUEDAS_COCHE, cantidadRuedasTrabajadas, kilometraje, patente, marca, cantidadRuedasATrabajar);
         this.cantidadPuertas = cantidadPuertas;
-
-        calcularMontoACobrar(precioDiario);
     }
 
     // constructor estableciendo el valor defecto por cantidad de ruedas
@@ -89,7 +87,7 @@ public class Coche extends Vehiculo {
 
         } else {
             // si no pago ninguna rueda, le cobramos el monto total.
-            this.setMontoCobrado(0.0);
+             this.setMontoCobrado(0.0);
             this.setMontoACobrar(totalRuedas * precioDiario);
 
         }

@@ -37,4 +37,10 @@ public class ValidadorVehiculo {
 
         }
     }
+
+    // validor si la capacidad fue alcanzada
+    public static boolean validarDisponibilidadCapacidad(int capacidadActual, int capacidadMaxima) {
+        return capacidadActual >= capacidadMaxima;
+    }
+
 }

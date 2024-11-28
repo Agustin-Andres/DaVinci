@@ -1,11 +1,8 @@
 package sistemaGaraje;
 
-import java.util.List;
-import java.util.Scanner;
-
 import Interfaz.InterfazGaraje;
 import Interfaz.InterfazVehiculo;
-import Vehiculos.Vehiculo;
+import java.util.Scanner;
 import utilities.ValidadorNumeros;
 
 public class GarajeTest {
@@ -87,8 +84,8 @@ public class GarajeTest {
       // sacamos la lista de objetos de los vehiculos para enviar a interfaz vehiculos
       // la interfaz tiene su propia gestion de una lista de vehiculos, segun la
       // disponibilidad adel garaje
-      garaje.setVehiculos(InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc, garaje.isCapacidadAlcanzada(),
-            garaje.getCapacidadDisponible(), garaje.getPrecioCambioRueda()));
+      garaje.setVehiculos(InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
+            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda()));
 
       return garaje;
    }

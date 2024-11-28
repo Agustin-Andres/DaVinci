@@ -84,8 +84,7 @@ public class VehiculosConcerns {
 
             // Evaluamos si se encuentra el vehiculo o no
             if (vehiculoEncontrado != null) {
-                System.out.println("\nVehiculo encontrado:");
-                System.out.println(vehiculoEncontrado); // Usa toString() del objeto
+                //mostramos el to string en la llamada
                 return vehiculoEncontrado;
             } else {
                 // No se encontró el vehículo
@@ -139,8 +138,6 @@ public class VehiculosConcerns {
                 // setteamos cantidadRuedasPagas y llamamos al metodo interno para calcular:
                 // el monto a cobrar + el monto cobrado
                 vehiculo.setCantidadRuedasPagas(ruedasPagas);
-                System.out.println("#########Ruedas pagas =" + vehiculo.getCantidadRuedasPagas());
-
                 if (ruedasPagas < totalRuedasPosibles) {
                     // pago parcialmente las ruedas, calculamos el monto cobrado y monto a cobrar
                     vehiculo.setFueParcialmenteCobrado(true);
