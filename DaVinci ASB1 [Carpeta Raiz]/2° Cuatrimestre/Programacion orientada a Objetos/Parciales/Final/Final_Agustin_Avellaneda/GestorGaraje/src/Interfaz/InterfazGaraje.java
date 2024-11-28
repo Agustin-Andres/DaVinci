@@ -1,39 +1,19 @@
 package Interfaz;
 
+import Vehiculos.Vehiculo;
 import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.text.Utilities;
-
-import Vehiculos.Vehiculo;
 import sistemaGaraje.Garaje;
 import utilities.ValidadorNumeros;
-import utilities.popularVehiculos;
 
 public class InterfazGaraje {
 
     // para iniciar las instancias de garaje necesario en caso de escabilidad
     public static Garaje creacionGaraje(Scanner sc) {
+
         Garaje garaje = menuGaraje(sc);
         return garaje;
     }
-
-    // menu inicial, comenzamos con este menu para ver como se desea gestionar
-    // garaje.
-    private static void mostrarMenuGaraje() {
-        System.out.println("*******************************************");
-        System.out.println("               Menu del Garaje              ");
-        System.out.println("*******************************************");
-        System.out.printf("%-5s %-50s\n", "ID", "Descripción");
-        System.out.println("-------------------------------------------");
-        System.out.printf("%-5s %-50s\n", "#1", "Continuar ultima sesion [popular datos aleatorios]");
-        System.out.printf("%-5s %-50s\n", "#2", "Comenzar nueva sesion [Sin vehiculos pre-cargados]");
-        System.out.printf("%-5s %-50s\n", "#3", "Cerrar sesion [Cantidad maxima de vehiculos alcanzado]");
-        System.out.printf("%-5s %-50s\n", "#4", "Salir de programa");
-        System.out.println("-------------------------------------------");
-        System.out.print("[#]> ");
-    }
-    
 
     // input de user
     private static Garaje menuGaraje(Scanner sc) {
@@ -52,21 +32,22 @@ public class InterfazGaraje {
             // switch para menu
             switch (opcionUser) {
                 case 1:
-                    // populamos el garaje con valores prestablecidos hardcodeado
-                    garaje = popularGaraje(sesionfinal);
-                    flag = false;
-                    break;
-                case 2:
-                    // garaje con capacidad maxima y precio nomas
+                    // Comenzar nueva sesion
                     garaje = sessionNuevaGaraje(sc);
-                    flag = false;
+                    flag = !flag;
+                    break;
+
+                case 2:
+                    // Continuar ultima sesion disponible disponibilidad : 1
+                    garaje = popularGaraje(sesionfinal);
+                    flag = !flag;
                     break;
 
                 case 3:
-                    sesionfinal = !sesionfinal;
-                    // populamos el garaje con valores prestablecidos hardcodeado
+                // completamente lleno
+                    sesionfinal = !sesionfinal; 
                     garaje = popularGaraje(sesionfinal);
-                    flag = false;
+                    flag = !flag;
                     break;
 
                 case 4:
@@ -84,6 +65,29 @@ public class InterfazGaraje {
 
         System.out.println(garaje.toStringCompleto());
         return garaje;
+    }
+
+    // menu inicial, comenzamos con este menu para ver como se desea gestionar
+    // garaje.
+
+    private static void mostrarMenuGaraje() {
+        System.out.println(
+                "*********************************************************************************************************************************************");
+        System.out.println(
+                "                                               Menu del Garaje                                                                    ");
+        System.out.println(
+                "*********************************************************************************************************************************************");
+        System.out.printf("%-5s %-50s\n", "ID", "Descripción");
+        System.out.println(
+                "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+        System.out.printf("%-5s %-50s\n", "#1", "Comenzar nueva sesion [Sin vehiculos - completamente vacio]");
+        System.out.printf("%-5s %-50s\n", "#2",
+                "Continuar ultima sesion disponible [Garaje populado - 1 espacio disponible de almacenamiento]");
+        System.out.printf("%-5s %-50s\n", "#3", "Continuar sesion [Garaje populado - completamente lleno]");
+        System.out.printf("%-5s %-50s\n", "#4", "Salir de programa");
+        System.out.println(
+                "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+        System.out.print("[#]> ");
     }
 
     // Retorna garaje ya populado completamente.
@@ -113,8 +117,7 @@ public class InterfazGaraje {
             garaje.setVehiculos(vehiculos_actuales);
 
             // capacidad disponible es cantidad maxima - autos actuales. (1)
-            garaje.setCapacidadDisponible(garaje.getCapacidadMaxima() - vehiculos_actuales.size());
-            garaje.setCapacidadActual(garaje.getCapacidadMaxima()- garaje.getCapacidadDisponible());
+            garaje.calcularDisponibilidad();
 
         }
 
@@ -128,11 +131,15 @@ public class InterfazGaraje {
         System.out.println("\nIniciando session....");
 
         while (true) {
+
             // Precio diario
             System.out.print("Ingrese el precio del dia para el Cambio de rueda\n> ");
             garaje.setPrecioCambioRueda(utilities.ValidadorNumeros.validarFloat(sc));
+
+            // capacidad maxima de almacenamiento de garaje
             System.out.print("Ingrese la capacidad maxima del dia de hoy\n> ");
             garaje.setCapacidadMaxima(utilities.ValidadorNumeros.validarEntero(sc));
+
             garaje.setCapacidadDisponible(garaje.getCapacidadMaxima());
             garaje.setCapacidadActual(garaje.getCapacidadMaxima());
 
@@ -152,20 +159,15 @@ public class InterfazGaraje {
         return garaje;
     }
 
-    public static void mensajeCapacidadAlcanzada(Garaje garaje) {
-        if (garaje.isCapacidadAlcanzada()) {
-            System.out.println(">> Capacidad de garaje alcanzada. No se podra ingresar mas vehiculos");
-        }
-    }
+    public static void informacionFinanciera(Garaje garaje) {
 
-    public static void informacionFinanciera(Garaje garaje){
-        
         System.out.println("*******************************************");
         System.out.println("--- \tInformacion Financiera\t---");
         System.out.println("Precio del cambio de rueda:\t$" + garaje.getPrecioCambioRueda());
-        System.out.println("Monto acumulado por #"+ garaje.getCapacidadActual()+ "\t $" + (garaje.getCapacidadActual() * garaje.getPrecioCambioRueda()));
+        System.out.println("Monto acumulado por #" + garaje.getCapacidadActual() + "\t $"
+                + (garaje.getCapacidadActual() * garaje.getPrecioCambioRueda()));
         System.out.println("*******************************************");
 
     }
-    
+
 }

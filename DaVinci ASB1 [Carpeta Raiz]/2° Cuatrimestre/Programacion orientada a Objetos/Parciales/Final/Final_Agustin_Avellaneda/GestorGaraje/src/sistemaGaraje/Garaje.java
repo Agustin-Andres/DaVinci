@@ -19,17 +19,21 @@ public class Garaje {
 
     // constructor para opcion por defecto populado por el sistema
     public Garaje(Double precioCambioRueda, int capacidadMaxima, int capacidadActual, int capacidadDisponible) {
+
         this.precioCambioRueda = precioCambioRueda;
         this.capacidadMaxima = capacidadMaxima;
         this.capacidadActual = capacidadActual; // vemos cuanta disponibiliada hay
-        // lo populamos en el main
+
+        // lo populamos en el main pero la dejamos empty
         this.vehiculos = new ArrayList<>();
     }
 
     // constructor para opcion de nueva sesion por el user
     public Garaje(Double precioCambioRueda, int capacidadMaxima) {
+
         this.precioCambioRueda = precioCambioRueda;
         this.capacidadMaxima = capacidadMaxima;
+
         // lo populamos desde la interfaz
         this.vehiculos = new ArrayList<>();
     }
@@ -101,45 +105,81 @@ public class Garaje {
                 "\nVehiculos almacenados: \n " + (vehiculos != null ? this.vehiculos.toString() : "[]");
     }
 
+    // output estetic xd
     public String toStringCompleto() {
         StringBuilder sb = new StringBuilder();
-        sb.append("--------------------------------------------------\n");
-        sb.append("               Informacion de Garaje              \n");
-        sb.append("--------------------------------------------------\n");
+        sb.append(  "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+        sb.append("                                               Informacion de Garaje                                                                             \n");
+        sb.append(  "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
         sb.append(String.format("%-30s: $%.2f\n", "Precio del Cambio de rueda", this.getPrecioCambioRueda()));
         sb.append(String.format("%-30s: %d\n", "Capacidad Maxima de garaje", this.getCapacidadMaxima()));
         sb.append(String.format("%-30s: %d\n", "Capacidad Actual", this.getCapacidadActual()));
         sb.append(String.format("%-30s: %d\n", "Capacidad Disponible", this.getCapacidadDisponible()));
         sb.append(String.format("%-30s: %b\n", "Capacidad Maxima alcanzada?", this.isCapacidadAlcanzada()));
-        sb.append("--------------------------------------------------\n\n");
-
+        sb.append(  "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+        sb.append(hayCapacidadDisponible());
+      
         return sb.toString();
     }
 
+    // calculamos la disponibilidad, si capacidad max = capacidad disponible no hay
+    // capacidad.
+    public void calcularDisponibilidad() {
+
+        this.setCapacidadDisponible(this.getCapacidadMaxima() - this.vehiculos.size());
+        this.setCapacidadActual(this.getCapacidadMaxima() - this.getCapacidadDisponible());
+
+        if (this.getCapacidadDisponible() == this.getCapacidadMaxima()) {
+            this.setCapacidadAlcanzada(true);
+        }
+
+    }
+
+    private String hayCapacidadDisponible() {
+        if (this.isCapacidadAlcanzada()) {
+            return " >> Capacidad de garaje alcanzada. No se podra ingresar mas vehiculos";
+        } else {
+            return" >> Se pueden almacenar " + this.getCapacidadDisponible() + " vehiculos";
+        }
+    }
+
     public void informacionVehiculos() {
+
         StringBuilder sb = new StringBuilder();
 
+        System.out.println(
+                "*********************************************************************************************************************************************");
+        System.out.println(
+                "                                               Vehículos en Garaje                                                   ");
+        System.out.println(
+                "*********************************************************************************************************************************************");
         if (vehiculos != null && !vehiculos.isEmpty()) {
-            System.out.println("*****************************************************************************");
-            System.out.println("                          Vehiculos en Garaje                            ");
-            System.out.println("*****************************************************************************");
 
-            // Cabecera (todos los formatos deben estar bien definidos)
-            sb.append(String.format("%-10s %-15s %-15s %-15s %-15s %-15s %-15s\n",
-                    "Tipo", "Marca", "Patente", "Kilometraje", "Ruedas Trabajadas", "Fue Cobrado?", "Monto Cobrado"));
-            sb.append("----------------------------------------------------------------------------------\n");
+            // Cabecera
+            sb.append(String.format("%-10s %-15s %-10s %-13s %-19s %-19s %-17s %-15s\n",
+                    "Tipo", "Marca", "Patente", "Kilometraje", "Ruedas Trabajadas", "Ruedas a Trabajar",
+                    "Monto Cobrado", "Monto a Cobrar"));
+            sb.append(
+                    "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
 
             // Filas
             for (Vehiculo v : vehiculos) {
                 String tipo = v instanceof Coche ? "Coche" : "Moto";
-                sb.append(String.format("%-10s %-15s %-15s %-15.2f %-15d %-15s %-15.2f\n",
-                        tipo, v.getMarca(), v.getPatente(), v.getKilometraje(), v.getCantidadRuedasTrabajadas(),
-                        v.isFueTotalmenteCobrado() || v.isFueParcialmenteCobrado() ? "Si" : "No", v.getMontoCobrado()));
+                sb.append(String.format("%-10s %-15s %-12s %-19.2f %-19d %-15d %-15.2f %-15.2f\n",
+                        tipo,
+                        v.getMarca(),
+                        v.getPatente(),
+                        v.getKilometraje(),
+                        v.getCantidadRuedasTrabajadas(),
+                        v.getCantidadRuedasATrabajar(),
+                        v.getMontoCobrado(),
+                        v.getMontoACobrar()));
             }
         } else {
-            sb.append("No hay vehículos almacenados.\n");
+            sb.append("No hay vehiculos almacenados.\n");
         }
-        sb.append("----------------------------------------------------------------------------------\n");
+        sb.append(
+                "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
         System.out.println(sb.toString());
     }
 

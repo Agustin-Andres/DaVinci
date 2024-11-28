@@ -7,37 +7,21 @@ import utilities.ValidadorNumeros;
 
 public class GarajeTest {
 
-   // creacion de gajare
+   // Comienza aca
+   // creacion de garaje
    public static void iniciarSession() {
       Scanner sc = new Scanner(System.in);
 
       // aca retorna el garaje coin sus atributos.
       Garaje garaje = InterfazGaraje.creacionGaraje(sc);
 
-      // mostramos el mensaje de aviso por si la session tiene la capacidad maxima
-      // alcanzada
-      InterfazGaraje.mensajeCapacidadAlcanzada(garaje);
-
+      // Ya que iniciamos sesion correctamente, mostramos el menu de Gestion Garaje
       menuGestionGaraje(garaje, sc);
 
       sc.close();
    }
 
-   private static void mostrarMenuGestionGaraje() {
-      System.out.println("*******************************************");
-      System.out.println("               Gestion Garaje               ");
-      System.out.println("*******************************************");
-      System.out.printf("%-5s %-50s\n", "ID", "Descripción");
-      System.out.println("-------------------------------------------");
-      System.out.printf("%-5s %-50s\n", "#1", "Menu Gestion de vehiculos dentro del garaje");
-      System.out.printf("%-5s %-50s\n", "#2", "Mostrar informacion financiera de Garaje");
-      System.out.printf("%-5s %-50s\n", "#3", "Ver informacion actual del garaje");
-      System.out.printf("%-5s %-50s\n", "#4", "Mostrar todos los vehiculos actuales en garaje");
-      System.out.printf("%-5s %-50s\n", "#5", "Cerrar session.");
-      System.out.println("-------------------------------------------");
-      System.out.print("[#]> ");
-   }
-
+   // seleccion de menu
    private static Garaje menuGestionGaraje(Garaje garaje, Scanner sc) {
 
       boolean flag = true;
@@ -50,12 +34,14 @@ public class GarajeTest {
          // switch para menu
          switch (opcionUser) {
             case 1:
-               // Gestion de vehiculos
+               // Menu de Gestion de vehiculos
                garaje = gestionVehiculos(sc, garaje);
                break;
             case 2:
                break;
             case 3:
+               // Ver informacion actual del garaje
+               System.out.println(garaje.toStringCompleto());
                break;
             case 4:
                garaje.informacionVehiculos();
@@ -78,14 +64,39 @@ public class GarajeTest {
       return garaje;
    }
 
-   // mandamos a la interfaz de vehiculos
+   // mostramos el menu
+   private static void mostrarMenuGestionGaraje() {
+      System.out.println(
+            "*********************************************************************************************************************************************");
+      System.out.println(
+            "                                               Gestion Garaje                                                                   ");
+      System.out.println(
+            "*********************************************************************************************************************************************");
+      System.out.printf("%-5s %-50s\n", "ID", "Descripción");
+      System.out.println(
+            "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+      System.out.printf("%-5s %-50s\n", "#1", "Menu Gestion de vehiculos dentro del garaje");
+      System.out.printf("%-5s %-50s\n", "#2", "Mostrar informacion financiera de Garaje");
+      System.out.printf("%-5s %-50s\n", "#3", "Ver informacion actual del garaje");
+      System.out.printf("%-5s %-50s\n", "#4", "Mostrar todos los vehiculos actuales en garaje");
+      System.out.printf("%-5s %-50s\n", "#5", "Cerrar session.");
+      System.out.println(
+            "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
+      System.out.print("[Opcion #]> ");
+   }
+
+   // mandamos a la interfaz de vehiculos - logica completamente aislada y
+   // escalable
    private static Garaje gestionVehiculos(Scanner sc, Garaje garaje) {
 
-      // sacamos la lista de objetos de los vehiculos para enviar a interfaz vehiculos
-      // la interfaz tiene su propia gestion de una lista de vehiculos, segun la
-      // disponibilidad adel garaje
-      garaje.setVehiculos(InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
-            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda()));
+      // InterfazVehiculo, le pasamos el precio lista de hoy +
+      // la lista de vehiculos, capacidad maxima
+      InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
+            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda());
+
+      // una vez gestionada la lista, que fue por referencia
+      // recalculamos la disponibilidad de almacenamientio
+      garaje.calcularDisponibilidad();
 
       return garaje;
    }
