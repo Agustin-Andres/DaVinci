@@ -69,7 +69,7 @@ public class Moto extends Vehiculo {
         // si el pago es total
         if (this.isFueTotalmenteCobrado()) {
             // si fue totalmente pagado, seteamos el monto cobrado
-            this.setMontoCobrado(this.getCantidadRuedasTrabajadas() * precioDiario);
+            this.setMontoCobrado(this.getCantidadRuedasPagas() * precioDiario);
             this.setMontoACobrar(0.0); // si pago totalmente, no queda nada para cobrar
 
         } else if (this.isFueParcialmenteCobrado()) {

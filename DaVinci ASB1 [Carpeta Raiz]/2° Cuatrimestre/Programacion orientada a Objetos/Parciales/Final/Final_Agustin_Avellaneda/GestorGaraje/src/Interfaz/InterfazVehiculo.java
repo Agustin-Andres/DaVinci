@@ -64,14 +64,15 @@ public class InterfazVehiculo {
                 case 5:
                     // si es la apertura, entra derecho
                     if (vehiculos == null || vehiculos.isEmpty()) {
-                        vehiculos = ingresoVehiculo(vehiculos, sc, capacidadMaxima,
+                        ingresoVehiculo(vehiculos, sc, capacidadMaxima,
                                 precioDiario);
                         break;
                     } else { // Ingreso de un vehiculo
                         // validamos que haya espacio para almacenar un vehiculo mas
                         if (!ValidadorVehiculo.validarDisponibilidadCapacidad(vehiculos.size(), capacidadMaxima)) {
-                            vehiculos = ingresoVehiculo(vehiculos, sc, capacidadMaxima,
+                            ingresoVehiculo(vehiculos, sc, capacidadMaxima,
                                     precioDiario);
+                            break;
                         } else {
                             System.out.println("Ya se ha alcanzado la capacidad maxima");
                         }
@@ -106,6 +107,7 @@ public class InterfazVehiculo {
                 case 8:
                     System.out.println("Volviendo a Gestion de Garaje");
                     flag = !flag;
+                    break;
 
                 default:
                     System.out.println("Por Favor ingrese una opcion correcta");
@@ -270,7 +272,7 @@ public class InterfazVehiculo {
 
     // createeeeee
     // para creacion de objeto vehiculo / sea moto o coche --- llama metodos
-    private static List<Vehiculo> ingresoVehiculo(List<Vehiculo> vehiculos, Scanner sc,
+    private static void ingresoVehiculo(List<Vehiculo> vehiculos, Scanner sc,
             int capacidadMaxima, Double precioDiario) {
 
         // bucle para evaluar el tipo de ingreso de vehiculo
@@ -280,7 +282,7 @@ public class InterfazVehiculo {
 
             if (ValidadorVehiculo.validarDisponibilidadCapacidad(vehiculos.size(), capacidadMaxima)) {
                 System.out.println(">>> Capacidad alcanzada, no es posible ingresar un vehiculo");
-                return vehiculos;
+                return;
             }
 
             System.out.print("Desea ingresar un coche o una moto? [Coche | Moto | Volver]\n> ");
@@ -292,16 +294,18 @@ public class InterfazVehiculo {
                 // agregamos la moto y descontamos de la disponibilidad [migrado a concerns de
                 // moto]
                 vehiculos.add(MotoConcerns.ingresoMoto(vehiculos, precioDiario, sc));
+                return;
 
             } else if (vehiculoAIngresar.contains("c")) {
 
                 // [migrado a concerns de coche]
                 vehiculos.add(CocheConcerns.ingresoCoche(vehiculos, precioDiario, sc));
+                return;
 
             } else if (vehiculoAIngresar.substring(0, 1).contains("v")) {
 
                 System.out.println("Ingreso de vehiculo cancelado, volviendo a menu vehiculo");
-                break;
+                return;
 
             } else {
                 System.out.println(">> Por favor ingrese una opcion valida.\n");
@@ -309,7 +313,6 @@ public class InterfazVehiculo {
 
         }
 
-        return vehiculos;
     }
 
     // updateee - NO se actualiza todo...

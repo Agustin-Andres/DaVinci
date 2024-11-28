@@ -99,7 +99,7 @@ public class MotoConcerns {
             Scanner sc) {
 
         System.out.println("-----------------------------------------------------------------------------\n");
-        System.out.println("\n--           Iniciando Gestion de actualizacion de un Moto                --");
+        System.out.println("--           Iniciando Gestion de actualizacion de un Moto                --");
         System.out.println("-----------------------------------------------------------------------------\n");
         System.out.println(motoActualizar);
 
@@ -123,8 +123,8 @@ public class MotoConcerns {
                 // dejamos vacio porque los mensajes estan en validacioRuedasMoto dentro de
                 // concerns.
 
-            } else {
-
+            } else {  
+               
                 // calculamos lo que se debe cobrar y las ruedas que pago
                 System.out
                         .print("\nEl titular ya ha abonado [ si | no ] ?\n> ");
@@ -132,6 +132,8 @@ public class MotoConcerns {
 
                 VehiculosConcerns.cantidadDeRuedasPagas(motoActualizar, sc, precioDiario, fueCobrado);
                 motoActualizar.calcularMontoACobrar(precioDiario);
+           
+
 
                 // output para confirmacion del user
                 System.out.println("Los datos actualizados del Moto son:");
