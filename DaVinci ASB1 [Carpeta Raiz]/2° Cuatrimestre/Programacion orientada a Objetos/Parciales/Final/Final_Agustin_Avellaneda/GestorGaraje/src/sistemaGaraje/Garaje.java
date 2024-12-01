@@ -162,13 +162,7 @@ public class Garaje {
 
         StringBuilder sb = new StringBuilder();
 
-        System.out.println(
-                "*********************************************************************************************************************************************");
-        System.out.println(
-                "                                               Vehículos en Garaje                                                   ");
-        System.out.println(
-                "*********************************************************************************************************************************************");
-        if (vehiculos != null && !vehiculos.isEmpty()) {
+            if (vehiculos != null && !vehiculos.isEmpty()) {
 
             // Cabecera
             sb.append(String.format("%-10s %-15s %-10s %-13s %-19s %-19s %-17s %-15s\n",

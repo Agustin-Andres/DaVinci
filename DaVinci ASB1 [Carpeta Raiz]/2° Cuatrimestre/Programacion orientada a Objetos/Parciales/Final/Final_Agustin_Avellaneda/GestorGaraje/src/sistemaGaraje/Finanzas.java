@@ -102,7 +102,7 @@ public class Finanzas {
         sb.append(
                 "*********************************************************************************************************************************************\n");
         sb.append(String.format("%-50s: $%.2f\n", "Total Recaudado", this.totalRecaudado));
-        sb.append(String.format("%-50s: $%.2f\n", "Total a Recaudar", this.totalARecaudar));
+        sb.append(String.format("%-50s: $%.2f\n\n", "Total a Recaudar", this.totalARecaudar));
         sb.append(String.format("%-50s: $%.2f\n", "Total Recaudado Vehículos Actuales",
                 this.totalRecaudadoVehiculosActuales));
         sb.append(String.format("%-50s: $%.2f\n", "Total a Recaudar Vehículos Actuales",

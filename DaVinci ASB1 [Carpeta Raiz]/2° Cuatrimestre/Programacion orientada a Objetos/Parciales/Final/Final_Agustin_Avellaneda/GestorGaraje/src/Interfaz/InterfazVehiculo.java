@@ -101,7 +101,12 @@ public class InterfazVehiculo {
                     } else {
                         System.out.print("> Ingrese la patente del vehículo a dar de baja\n> ");
                         Vehiculo vehiculoRetirar = VehiculosConcerns.busquedaAvanzada(vehiculos, sc);
-                        retirarVehiculo(vehiculos, vehiculoRetirar, sc, vehiculosRetirados);
+                        
+                        //validamos que exista algun vehiculo a retirar
+                        if (vehiculoRetirar != null) {
+                            retirarVehiculo(vehiculos, vehiculoRetirar, sc, vehiculosRetirados);
+                        }
+
                     }
 
                     break;
@@ -340,6 +345,7 @@ public class InterfazVehiculo {
 
         // solicitamos confirmacion
         System.out.println("Datos del vehiculo a retirar:\n" + vehiculo);
+
         System.out.print("\nEsta seguro que quiere retirar el vehiculo [ si | no ] ["
                 + vehiculo.getPatente() + "] ?\n>");
         boolean confirmarRetiro = ValidadorVehiculo.validadorBooleanoConfirmacion(sc);
@@ -349,7 +355,7 @@ public class InterfazVehiculo {
             // ya confirmado, actualizamos el monto cobrado del vehiculo y agregamos a la
             // lista de vehiculos retirados
             VehiculosConcerns.retiroDeVehiculo(vehiculo);
-            
+
             vehiculosRetirados.add(vehiculo);
 
             // Intentamos eliminar directamente

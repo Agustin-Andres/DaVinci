@@ -2,6 +2,8 @@ package sistemaGaraje;
 
 import Interfaz.InterfazGaraje;
 import Interfaz.InterfazVehiculo;
+import Vehiculos.Vehiculo;
+import java.util.List;
 import java.util.Scanner;
 import utilities.ValidadorNumeros;
 
@@ -53,10 +55,24 @@ public class GarajeTest {
                break;
             case 4:
                // vehiculos almacenados actuales
+               System.out.println(
+                     "*********************************************************************************************************************************************");
+               System.out.println(
+                     "                                               Vehiculos en Garaje                                                   ");
+               System.out.println(
+                     "\n*********************************************************************************************************************************************");
+
                garaje.informacionVehiculos(garaje.getVehiculos());
                break;
             case 5:
                // vehiculos retirados
+               System.out.println(
+                     "*********************************************************************************************************************************************");
+               System.out.println(
+                     "                                           Vehiculos retirados del Garaje                                                   ");
+               System.out.println(
+                     "\n*********************************************************************************************************************************************");
+
                garaje.informacionVehiculos(garaje.getVehiculosRetirados());
                break;
             case 6:
@@ -105,9 +121,10 @@ public class GarajeTest {
 
       // InterfazVehiculo, le pasamos el precio lista de hoy +
       // la lista de vehiculos, capacidad maxima
-      garaje.setVehiculosRetirados(InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
-            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda()));
-      ;
+      List<Vehiculo> vehiculosRetirados = InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
+            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda());
+
+      actualizarVehiculosRetirados(garaje.getVehiculosRetirados(), vehiculosRetirados);
 
       // una vez gestionada la lista, que fue por referencia
       // recalculamos la disponibilidad de almacenamientio
@@ -116,5 +133,14 @@ public class GarajeTest {
       return garaje;
    }
 
-   // mostramos la informacion financiera del garaje
+   private static void actualizarVehiculosRetirados(List<Vehiculo> vehiculosRetirados,
+         List<Vehiculo> vehiculosRetiradosActualizado) {
+
+      if (vehiculosRetiradosActualizado == null || vehiculosRetiradosActualizado.isEmpty()) {
+         // No se retiraron vehiculos en la gestion de menu
+         return;
+      }
+      vehiculosRetirados.addAll(vehiculosRetiradosActualizado);
+   }
+
 }
