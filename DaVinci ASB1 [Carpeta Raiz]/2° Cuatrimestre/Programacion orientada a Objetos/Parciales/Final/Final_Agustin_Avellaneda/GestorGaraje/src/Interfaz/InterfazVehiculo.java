@@ -4,6 +4,7 @@ import Interfaz.Concerns.*;
 import Vehiculos.Coche;
 import Vehiculos.Moto;
 import Vehiculos.Vehiculo;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import utilities.*;
@@ -16,6 +17,7 @@ public class InterfazVehiculo {
     public static List<Vehiculo> gestionVehiculos(List<Vehiculo> vehiculos, Scanner sc,
             int capacidadMaxima, Double precioDiario) {
 
+        List<Vehiculo> vehiculosRetirados = new ArrayList<>();
         // mostramos el menu para que el user seleccione la opcion de manipulacion
         boolean flag = true;
         int opcionUser;
@@ -99,7 +101,7 @@ public class InterfazVehiculo {
                     } else {
                         System.out.print("> Ingrese la patente del vehículo a dar de baja\n> ");
                         Vehiculo vehiculoRetirar = VehiculosConcerns.busquedaAvanzada(vehiculos, sc);
-                        retirarVehiculo(vehiculos, vehiculoRetirar, sc);
+                        retirarVehiculo(vehiculos, vehiculoRetirar, sc, vehiculosRetirados);
                     }
 
                     break;
@@ -115,7 +117,7 @@ public class InterfazVehiculo {
 
         }
 
-        return vehiculos;
+        return vehiculosRetirados;
     }
 
     // menu donde hacemos el CRUD de un vehiculo
@@ -332,7 +334,8 @@ public class InterfazVehiculo {
 
     }
 
-    private static void retirarVehiculo(List<Vehiculo> vehiculos, Vehiculo vehiculo, Scanner sc) {
+    private static void retirarVehiculo(List<Vehiculo> vehiculos, Vehiculo vehiculo, Scanner sc,
+            List<Vehiculo> vehiculosRetirados) {
         System.out.println("-------------------------------------------");
 
         // solicitamos confirmacion
@@ -342,6 +345,13 @@ public class InterfazVehiculo {
         boolean confirmarRetiro = ValidadorVehiculo.validadorBooleanoConfirmacion(sc);
 
         if (confirmarRetiro) {
+
+            // ya confirmado, actualizamos el monto cobrado del vehiculo y agregamos a la
+            // lista de vehiculos retirados
+            VehiculosConcerns.retiroDeVehiculo(vehiculo);
+            
+            vehiculosRetirados.add(vehiculo);
+
             // Intentamos eliminar directamente
             if (vehiculos.remove(vehiculo)) {
                 System.out.println("El vehiculo fue retirado exitosamente.");

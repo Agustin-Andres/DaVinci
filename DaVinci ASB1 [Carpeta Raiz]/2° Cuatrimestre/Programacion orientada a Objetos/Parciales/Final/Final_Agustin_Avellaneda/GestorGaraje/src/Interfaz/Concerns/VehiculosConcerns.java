@@ -1,5 +1,7 @@
 package Interfaz.Concerns;
 
+import Vehiculos.Coche;
+import Vehiculos.Moto;
 import Vehiculos.Vehiculo;
 import java.util.List;
 import java.util.Scanner;
@@ -84,7 +86,7 @@ public class VehiculosConcerns {
 
             // Evaluamos si se encuentra el vehiculo o no
             if (vehiculoEncontrado != null) {
-                //mostramos el to string en la llamada
+                // mostramos el to string en la llamada
                 return vehiculoEncontrado;
             } else {
                 // No se encontró el vehículo
@@ -163,4 +165,25 @@ public class VehiculosConcerns {
 
     }
 
+    // para settear los valores definitivos al retirar un vehiculo
+    public static void retiroDeVehiculo(Vehiculo vehiculo) {
+
+        if (vehiculo instanceof Coche coche) {
+
+            coche.setMontoCobrado(coche.getMontoCobrado() + coche.getMontoACobrar());
+            coche.setMontoACobrar(0.0);
+
+            coche.setCantidadRuedasTrabajadas(coche.getCantidadRuedasATrabajar() + coche.getCantidadRuedasTrabajadas());
+            coche.setCantidadRuedasATrabajar(0);
+
+        } else if (vehiculo instanceof Moto moto) {
+
+            moto.setMontoCobrado(moto.getMontoCobrado() + moto.getMontoACobrar());
+            moto.setMontoACobrar(0.0);
+
+            moto.setCantidadRuedasTrabajadas(moto.getCantidadRuedasATrabajar() + moto.getCantidadRuedasTrabajadas());
+            moto.setCantidadRuedasATrabajar(0);
+
+        }
+    }
 }

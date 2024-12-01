@@ -16,6 +16,10 @@ public class Garaje {
     private boolean capacidadAlcanzada;
 
     private List<Vehiculo> vehiculos;
+    private List<Vehiculo> vehiculosRetirados;
+
+
+
 
     // constructor para opcion por defecto populado por el sistema
     public Garaje(Double precioCambioRueda, int capacidadMaxima, int capacidadActual, int capacidadDisponible) {
@@ -26,6 +30,7 @@ public class Garaje {
 
         // lo populamos en el main pero la dejamos empty
         this.vehiculos = new ArrayList<>();
+        this.vehiculosRetirados = new ArrayList<>();
     }
 
     // constructor para opcion de nueva sesion por el user
@@ -36,11 +41,13 @@ public class Garaje {
 
         // lo populamos desde la interfaz
         this.vehiculos = new ArrayList<>();
+        this.vehiculosRetirados = new ArrayList<>();
     }
 
     // por defecto, no tiene la capacidad alcanzada
     public Garaje() {
         this.vehiculos = new ArrayList<>();
+        this.vehiculosRetirados = new ArrayList<>();
         this.setCapacidadAlcanzada(false);
     }
 
@@ -90,6 +97,14 @@ public class Garaje {
 
     public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
+    }
+
+    public List<Vehiculo> getVehiculosRetirados() {
+        return this.vehiculosRetirados;
+    }
+
+    public void setVehiculosRetirados(List<Vehiculo> vehiculosRetirados) {
+        this.vehiculosRetirados = vehiculosRetirados;
     }
 
     // toString
@@ -143,7 +158,7 @@ public class Garaje {
         }
     }
 
-    public void informacionVehiculos() {
+    public void informacionVehiculos(List<Vehiculo> vehiculos) {
 
         StringBuilder sb = new StringBuilder();
 
@@ -176,7 +191,7 @@ public class Garaje {
                         v.getMontoACobrar()));
             }
         } else {
-            sb.append("No hay vehiculos almacenados.\n");
+            sb.append("No hay vehiculos para mostrar.\n");
         }
         sb.append(
                 "-----------------------------------------------------------------------------------------------------------------------------------------------\n");

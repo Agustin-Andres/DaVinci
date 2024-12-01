@@ -15,14 +15,17 @@ public class GarajeTest {
       // aca retorna el garaje coin sus atributos.
       Garaje garaje = InterfazGaraje.creacionGaraje(sc);
 
+      // creamos el objeto finanzas asociado al garaje
+      Finanzas informacionFinancierGaraje = new Finanzas(garaje);
+
       // Ya que iniciamos sesion correctamente, mostramos el menu de Gestion Garaje
-      menuGestionGaraje(garaje, sc);
+      menuGestionGaraje(garaje, sc, informacionFinancierGaraje);
 
       sc.close();
    }
 
    // seleccion de menu
-   private static Garaje menuGestionGaraje(Garaje garaje, Scanner sc) {
+   private static Garaje menuGestionGaraje(Garaje garaje, Scanner sc, Finanzas informacionFinancierGaraje) {
 
       boolean flag = true;
       int opcionUser;
@@ -38,15 +41,25 @@ public class GarajeTest {
                garaje = gestionVehiculos(sc, garaje);
                break;
             case 2:
+               // cada vez que llamamos la informacion, recalculamos los montos y mostramos el
+               // resumen
+               informacionFinancierGaraje.calcularTotalARecaudarDeGaraje();
+               informacionFinancierGaraje.calcularTotalRecaudadoDeGaraje();
+               System.out.println(informacionFinancierGaraje.resumenFinanciero());
                break;
             case 3:
                // Ver informacion actual del garaje
                System.out.println(garaje.toStringCompleto());
                break;
             case 4:
-               garaje.informacionVehiculos();
+               // vehiculos almacenados actuales
+               garaje.informacionVehiculos(garaje.getVehiculos());
                break;
             case 5:
+               // vehiculos retirados
+               garaje.informacionVehiculos(garaje.getVehiculosRetirados());
+               break;
+            case 6:
                // cerramos sesison
                System.out.println("Cerrando session... ");
                System.out.println(garaje.toStringCompleto());
@@ -79,7 +92,8 @@ public class GarajeTest {
       System.out.printf("%-5s %-50s\n", "#2", "Mostrar informacion financiera de Garaje");
       System.out.printf("%-5s %-50s\n", "#3", "Ver informacion actual del garaje");
       System.out.printf("%-5s %-50s\n", "#4", "Mostrar todos los vehiculos actuales en garaje");
-      System.out.printf("%-5s %-50s\n", "#5", "Cerrar session.");
+      System.out.printf("%-5s %-50s\n", "#5", "Mostrar todos los vehiculos retirados del garaje");
+      System.out.printf("%-5s %-50s\n", "#6", "Cerrar session.");
       System.out.println(
             "-----------------------------------------------------------------------------------------------------------------------------------------------\n");
       System.out.print("[Opcion #]> ");
@@ -91,8 +105,9 @@ public class GarajeTest {
 
       // InterfazVehiculo, le pasamos el precio lista de hoy +
       // la lista de vehiculos, capacidad maxima
-      InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
-            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda());
+      garaje.setVehiculosRetirados(InterfazVehiculo.gestionVehiculos(garaje.getVehiculos(), sc,
+            garaje.getCapacidadMaxima(), garaje.getPrecioCambioRueda()));
+      ;
 
       // una vez gestionada la lista, que fue por referencia
       // recalculamos la disponibilidad de almacenamientio
@@ -101,4 +116,5 @@ public class GarajeTest {
       return garaje;
    }
 
+   // mostramos la informacion financiera del garaje
 }

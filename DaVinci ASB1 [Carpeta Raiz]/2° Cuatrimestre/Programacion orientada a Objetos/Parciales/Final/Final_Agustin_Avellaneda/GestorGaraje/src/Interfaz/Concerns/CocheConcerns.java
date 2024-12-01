@@ -157,8 +157,4 @@ public class CocheConcerns {
         }
     }
 
-    //damos de baja el vehiculo
-    public static void retirarCoche(List<Vehiculo> vehiculos, Coche cocheActualizar){
-    
-    }
 }

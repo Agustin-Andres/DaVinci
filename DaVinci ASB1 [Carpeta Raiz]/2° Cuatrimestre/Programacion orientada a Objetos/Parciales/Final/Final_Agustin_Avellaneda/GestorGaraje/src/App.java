@@ -1,4 +1,3 @@
-import sistemaGaraje.Garaje;
 import sistemaGaraje.GarajeTest;
 
 public class App {
