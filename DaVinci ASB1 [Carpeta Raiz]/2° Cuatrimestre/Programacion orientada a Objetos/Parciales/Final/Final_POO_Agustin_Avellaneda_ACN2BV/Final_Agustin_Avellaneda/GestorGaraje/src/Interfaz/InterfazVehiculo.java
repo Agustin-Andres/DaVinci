@@ -72,10 +72,8 @@ public class InterfazVehiculo {
                     } else { // Ingreso de un vehiculo
                         // validamos que haya espacio para almacenar un vehiculo mas
                         if (!ValidadorVehiculo.validarDisponibilidadCapacidad(vehiculos.size(), capacidadMaxima)) {
-
                             ingresoVehiculo(vehiculos, sc, capacidadMaxima,
                                     precioDiario);
-                                    
                             break;
                         } else {
                             System.out.println("Ya se ha alcanzado la capacidad maxima");
