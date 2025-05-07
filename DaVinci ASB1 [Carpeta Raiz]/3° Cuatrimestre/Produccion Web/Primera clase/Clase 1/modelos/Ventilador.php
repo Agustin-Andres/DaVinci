@@ -17,9 +17,9 @@ class Ventilador{
        public function __construct(string $marca, int $nivel, bool $estado)
        {
            echo "Se creo el objeto ventilador \n";
-           $this.$marca = $marca;
-            $this.$nivel = $nivel;
-            $this.$estado = $estado;
+           $this->marca = $marca;
+            $this->nivel = $nivel;
+            $this-> encendida = $estado;
        }
 
 
